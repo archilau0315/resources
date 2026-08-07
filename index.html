@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源 — 匡形无界 Kbitai</title>
+    <meta name="description" content="匡形无界（Kbitai）文章、教程与更多内容">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e17;
+            --bg-elevated: #0f172a;
+            --bg-card: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.08);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-cyan: #06b6d4;
+            --glow: rgba(99,102,241,0.35);
+            --shadow-card: 0 8px 32px rgba(0,0,0,0.35);
+            --radius: 16px;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; font-size:16px; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height:1.6;
+            overflow-x:hidden;
+            -webkit-font-smoothing:antialiased;
+        }
+
+        /* ===== Navigation ===== */
+        .nav {
+            position:fixed; top:0; left:0; right:0; z-index:100;
+            padding:1rem 5vw;
+            backdrop-filter:blur(24px) saturate(180%);
+            -webkit-backdrop-filter:blur(24px) saturate(180%);
+            background:rgba(10,14,23,0.72);
+            border-bottom:1px solid var(--border);
+            transition:all .4s cubic-bezier(.22,1,.36,1);
+        }
+        .nav.scrolled { padding:.6rem 5vw; background:rgba(10,14,23,0.88); }
+        .nav-inner {
+            max-width:1400px; margin:0 auto;
+            display:flex; align-items:center; justify-content:space-between;
+        }
+        .nav-logo { display:flex; align-items:center; gap:.75rem; text-decoration:none; color:var(--text-primary); }
+        .nav-logo img { width:36px; height:36px; border-radius:8px; object-fit:contain; }
+        .nav-logo span { font-weight:700; letter-spacing:2px; font-size:1.1rem; }
+        .nav-links { display:flex; gap:.25rem; list-style:none; align-items:center; }
+        .nav-links a {
+            text-decoration:none; color:var(--text-secondary); font-size:.85rem; font-weight:500;
+            padding:.5rem 1rem; border-radius:8px; transition:all .3s ease; letter-spacing:.02em;
+        }
+        .nav-links a:hover { color:var(--text-primary); background:var(--bg-card); }
+        .nav-links .nav-cta {
+            background:linear-gradient(135deg, var(--accent), var(--accent-cyan));
+            color:#fff; font-weight:600; padding:.5rem 1.25rem; border-radius:8px;
+        }
+        .nav-links .nav-cta:hover { transform:translateY(-1px); box-shadow:0 4px 20px var(--glow); }
+        .lang-toggle {
+            position:fixed; top:16px; right:16px; z-index:101;
+            background:rgba(30,30,30,0.85); backdrop-filter:blur(20px) saturate(180%);
+            -webkit-backdrop-filter:blur(20px) saturate(180%);
+            border:1px solid rgba(255,255,255,0.06); border-radius:24px; padding:4px; display:flex; gap:2px;
+            box-shadow:0 4px 24px rgba(0,0,0,0.3);
+        }
+        @media (max-width:768px) {
+            .lang-toggle { right: 56px; }
+        }
+        .lang-btn { border:none; background:none; color:#777; font-size:.7rem; font-weight:500; letter-spacing:.05em; padding:8px 14px; border-radius:20px; cursor:pointer; transition:all .4s cubic-bezier(.22,1,.36,1); font-family:inherit; }
+        .lang-btn.active { background:rgba(255,255,255,0.12); color:#f0f0f0; }
+        .nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+        .nav-toggle span { display:block; width:22px; height:2px; background:var(--text-primary); border-radius:2px; transition:.3s; }
+
+        /* ===== Page Header ===== */
+        .page-header {
+            padding:140px 5vw 60px; text-align:center;
+            background:linear-gradient(180deg, rgba(99,102,241,0.06) 0%, var(--bg) 100%);
+            border-bottom:1px solid var(--border);
+        }
+        .page-tag {
+            font-size:.7rem; font-weight:600; letter-spacing:.25em; color:var(--accent-light);
+            text-transform:uppercase; margin-bottom:1rem; display:block;
+        }
+        .page-title {
+            font-size:clamp(2rem, 5vw, 3.2rem); font-weight:900; letter-spacing:.04em;
+            background:linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        .page-subtitle {
+            font-size:1rem; color:var(--text-secondary); max-width:520px; margin:1rem auto 0; font-weight:300;
+        }
+
+        /* ===== Content ===== */
+        .article-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+
+        /* ===== Article Card ===== */
+        .article-card {
+            display:grid; grid-template-columns:150px 1fr; gap:1.5rem;
+            background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+            padding:1.5rem; transition:all .4s cubic-bezier(.22,1,.36,1);
+            text-decoration:none; color:var(--text-primary); cursor:pointer;
+        }
+        .article-card:hover {
+            transform:translateY(-4px); box-shadow:var(--shadow-card);
+            border-color:rgba(99,102,241,0.2);
+        }
+        .article-thumb {
+            width:150px; height:150px; border-radius:12px; overflow:hidden;
+            background:linear-gradient(135deg, rgba(99,102,241,0.15), rgba(6,182,212,0.1));
+            display:flex; align-items:center; justify-content:center;
+        }
+        .article-thumb svg { width:48px; height:48px; opacity:.6; }
+        .article-info { display:flex; flex-direction:column; justify-content:center; }
+        .article-tag {
+            display:inline-flex; align-items:center; gap:.4rem;
+            background:rgba(99,102,241,0.12); color:var(--accent-light); font-size:.65rem; font-weight:600;
+            letter-spacing:.1em; padding:.25rem .75rem; border-radius:20px; text-transform:uppercase;
+            margin-bottom:.75rem; width:fit-content;
+        }
+        .article-title { font-size:1.25rem; font-weight:700; margin-bottom:.5rem; line-height:1.4; }
+        .article-desc { font-size:.9rem; color:var(--text-secondary); line-height:1.7; font-weight:300; }
+        .article-meta { display:flex; gap:1rem; margin-top:1rem; font-size:.75rem; color:var(--text-muted); }
+
+        /* ===== Empty State ===== */
+        .empty-state {
+            text-align:center; padding:4rem 2rem;
+            color:var(--text-muted);
+        }
+        .empty-state svg { width:64px; height:64px; margin-bottom:1.5rem; opacity:.4; }
+        .empty-state p { font-size:.9rem; font-weight:300; }
+
+        /* ===== Footer ===== */
+        .footer {
+            border-top:1px solid var(--border); background:rgba(10,14,23,0.6); padding:3rem 5vw 2rem;
+        }
+        .footer-inner { max-width:1400px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
+        .footer-slogan-cn { font-size:1.25rem; font-weight:700; letter-spacing:4px; color:var(--text-primary); }
+        .footer-slogan-en { font-size:.85rem; color:var(--text-muted); letter-spacing:3px; }
+        .footer-links { display:flex; gap:2rem; flex-wrap:wrap; justify-content:center; }
+        .footer-links a { color:var(--text-muted); text-decoration:none; font-size:.8rem; transition:color .3s; }
+        .footer-links a:hover { color:var(--text-secondary); }
+        .footer-record { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; align-items:center; font-size:.7rem; color:var(--text-muted); }
+        .footer-record a { color:var(--text-muted); text-decoration:none; display:flex; align-items:center; gap:.4rem; transition:color .3s; }
+        .footer-record a:hover { color:var(--text-secondary); }
+        .footer-record img { width:14px; height:14px; object-fit:contain; }
+        .footer-copyright { font-size:.75rem; color:var(--text-muted); margin-top:.5rem; }
+
+        /* ===== Scroll Reveal ===== */
+        .reveal { opacity:0; transform:translateY(40px); transition:all .8s cubic-bezier(.22,1,.36,1); }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        /* ===== Responsive ===== */
+        @media (max-width:768px) {
+            .nav-links.active {
+                position: fixed; top: 60px; left: 5vw; right: 5vw;
+                background: rgba(10,14,23,0.95); backdrop-filter: blur(24px);
+                border: 1px solid var(--border); border-radius: 12px;
+                padding: 1rem; flex-direction: column; gap: 0.5rem;
+                box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+            }
+            .nav-links.active a { display: block; text-align: center; padding: 0.75rem 1rem; }
+            .nav-toggle { display:flex; }
+            .page-header { padding:120px 5vw 40px; }
+            .article-card { grid-template-columns:1fr; }
+            .article-thumb { width:100%; height:180px; }
+        }
+        @media (prefers-reduced-motion:reduce) {
+            *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="navbar">
+    <div class="nav-inner">
+        <a href="../" class="nav-logo">
+            <img src="../public/Com_Logo.png" alt="KBITAI">
+            <span>KBITAI</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../#works" data-i18n="nav-works">作品</a></li>
+            <li><a href="../#services" data-i18n="nav-services">服务</a></li>
+            <li><a href="../#ai" data-i18n="nav-ai">AI工具</a></li>
+            <li><a href="../#about" data-i18n="nav-about">关于</a></li>
+            <li><a href="../#contact" data-i18n="nav-contact">联系</a></li>
+            <li><a href="../Portfolio/" class="nav-cta" data-i18n="nav-portfolio">作品集</a></li>
+            <li><a href="./" class="nav-cta" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);" data-i18n="nav-other">资源</a></li>
+        </ul>
+        <div class="lang-toggle">
+            <button class="lang-btn active" onclick="setLang('zh')" data-lang="zh" id="btn-zh">CN</button>
+            <button class="lang-btn" onclick="setLang('en')" data-lang="en" id="btn-en">EN</button>
+        </div>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <span class="page-tag" data-i18n="page-tag">Articles & Tutorials</span>
+    <h1 class="page-title" data-i18n="page-title">资源</h1>
+    <p class="page-subtitle" data-i18n="page-subtitle">文章、教程与更多探索</p>
+</section>
+
+<!-- Content -->
+<section class="content">
+    <a href="./magictomagic/index.html" class="article-card reveal">
+        <div class="article-thumb">
+            <img src="./magictomagic.jpg" alt="用魔法创建魔法">
+        </div>
+        <div class="article-info">
+            <div class="article-tag" data-i18n="article-1-tag">课件</div>
+            <h2 class="article-title" data-i18n="article-1-title">用魔法创建魔法</h2>
+            <p class="article-desc" data-i18n="article-1-desc">探索如何运用AI工具与参数化设计思维，将创意构想转化为令人惊叹的视觉作品。从概念到实现，用魔法般的创作流程打造属于你的设计魔法。</p>
+            <div class="article-meta">
+                <span data-i18n="article-1-date">2024</span>
+                <span data-i18n="article-1-read">阅读更多 →</span>
+            </div>
+        </div>
+    </a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-slogan">
+            <div class="footer-slogan-cn" data-i18n="slogan-cn">设计有形 科技无界</div>
+            <div class="footer-slogan-en">FINITE FORM INFINITE TECH</div>
+        </div>
+        <div class="footer-links">
+            <a href="../Portfolio/" data-i18n="footer-link-1">建筑设计作品集</a>
+            <a href="https://www.kbitai.com.cn/architect/" data-i18n="footer-link-2">首席图像架构师</a>
+            <a href="https://www.kbitai.com.cn/architect/terms.html" data-i18n="footer-link-3">服务协议</a>
+        </div>
+        <div class="footer-record">
+            <a href="https://beian.miit.gov.cn/" target="_blank">津ICP备2026002055号-1</a>
+            <a href="https://beian.mps.gov.cn/#/query/webSearch?code=12010402002460" target="_blank">
+                <img src="../public/备案图标.png" alt="公安备案">津公网安备12010402002460号
+            </a>
+        </div>
+        <div class="footer-copyright" data-i18n="copyright">© 2024 天津匡形无界智能科技有限公司（KBITAI）. All rights reserved.</div>
+    </div>
+</footer>
+
+<script>
+// ===== I18N =====
+const I18N = {
+  zh: {
+    'nav-works': '作品', 'nav-services': '服务', 'nav-ai': 'AI工具', 'nav-about': '关于', 'nav-contact': '联系', 'nav-portfolio': '作品集', 'nav-other': '资源',
+    'page-tag': 'Articles & Tutorials', 'page-title': '资源', 'page-subtitle': '文章、教程与更多探索',
+    'article-1-tag': '课件', 'article-1-title': '用魔法创建魔法', 'article-1-desc': '探索如何运用AI工具与参数化设计思维，将创意构想转化为令人惊叹的视觉作品。从概念到实现，用魔法般的创作流程打造属于你的设计魔法。', 'article-1-date': '2024', 'article-1-read': '阅读更多 →',
+    'slogan-cn': '设计有形 科技无界', 'footer-link-1': '建筑设计作品集', 'footer-link-2': '首席图像架构师', 'footer-link-3': '服务协议',
+    'copyright': '© 2024 天津匡形无界智能科技有限公司（KBITAI）. All rights reserved.'
+  },
+  en: {
+    'nav-works': 'Works', 'nav-services': 'Services', 'nav-ai': 'AI', 'nav-about': 'About', 'nav-contact': 'Contact', 'nav-portfolio': 'Portfolio', 'nav-other': 'Resources',
+    'page-tag': 'Articles & Tutorials', 'page-title': 'Resources', 'page-subtitle': 'Articles, tutorials, and more explorations',
+    'article-1-tag': 'Tutorial', 'article-1-title': 'Magic to Magic', 'article-1-desc': 'Explore how to use AI tools and parametric design thinking to transform creative concepts into stunning visual works. From concept to realization, create your own design magic with a magical workflow.', 'article-1-date': '2024', 'article-1-read': 'Read more →',
+    'slogan-cn': 'FINITE FORM INFINITE TECH', 'footer-link-1': 'Architectural Portfolio', 'footer-link-2': 'Chief Image Architect', 'footer-link-3': 'Terms of Service',
+    'copyright': '© 2024 Tianjin Kbitai Intelligent Technology Co., Ltd. All rights reserved.'
+  }
+};
+
+let currentLang = 'zh';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); });
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (I18N[lang][key]) {
+      el.innerHTML = I18N[lang][key];
+    }
+  });
+  document.title = lang === 'en' ? 'Resources — Kbitai' : '资源 — 匡形无界 Kbitai';
+}
+
+// Init default
+setLang('zh');
+
+// ===== Scroll Effects =====
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
