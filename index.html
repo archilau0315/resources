@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../public/sub-topbar.css">
+<link rel="stylesheet" href="../public/sub-footer.css">
 <style>
         :root {
             --bg: #0a0e17;
@@ -105,21 +106,6 @@
         .empty-state p { font-size:.9rem; font-weight:300; }
 
         /* ===== Footer ===== */
-        .footer {
-            border-top:1px solid var(--border); background:rgba(10,14,23,0.6); padding:3rem 5vw 2rem;
-        }
-        .footer-inner { max-width:1400px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
-        .footer-slogan-cn { font-size:1.25rem; font-weight:700; letter-spacing:4px; color:var(--text-primary); }
-        .footer-slogan-en { font-size:.85rem; color:var(--text-muted); letter-spacing:3px; }
-        .footer-links { display:flex; gap:2rem; flex-wrap:wrap; justify-content:center; }
-        .footer-links a { color:var(--text-muted); text-decoration:none; font-size:.8rem; transition:color .3s; }
-        .footer-links a:hover { color:var(--text-secondary); }
-        .footer-record { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; align-items:center; font-size:.7rem; color:var(--text-muted); }
-        .footer-record a { color:var(--text-muted); text-decoration:none; display:flex; align-items:center; gap:.4rem; transition:color .3s; }
-        .footer-record a:hover { color:var(--text-secondary); }
-        .footer-record img { width:14px; height:14px; object-fit:contain; }
-        .footer-copyright { font-size:.75rem; color:var(--text-muted); margin-top:.5rem; }
-
         /* ===== Scroll Reveal ===== */
         .reveal { opacity:0; transform:translateY(40px); transition:all .8s cubic-bezier(.22,1,.36,1); }
         .reveal.visible { opacity:1; transform:translateY(0); }
@@ -230,24 +216,28 @@
 </section>
 
 <!-- Footer -->
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-slogan">
-            <div class="footer-slogan-cn" data-i18n="slogan-cn">设计有形 科技无界</div>
-            <div class="footer-slogan-en">FINITE FORM INFINITE TECH</div>
+<footer class="sub-footer">
+    <div class="sub-footer-inner">
+        <div class="sub-footer-slogan">
+            <div class="sub-footer-slogan-cn" data-i18n="slogan-cn">设计有形 科技无界</div>
+            <div class="sub-footer-slogan-en">FINITE FORM INFINITE TECH</div>
         </div>
-        <div class="footer-links">
+        <div class="sub-footer-links">
             <a href="../Portfolio/" data-i18n="footer-link-1">建筑设计作品集</a>
-            <a href="https://www.kbitai.com.cn/architect/" data-i18n="footer-link-2">首席图像架构师</a>
-            <a href="https://www.kbitai.com.cn/architect/terms.html" data-i18n="footer-link-3">服务协议</a>
+            <a href="../aitools/architect/" data-i18n="footer-link-2">首席图像架构师</a>
+            <a href="../aitools/architect/terms.html" data-i18n="footer-link-3">服务协议</a>
         </div>
-        <div class="footer-record">
+        <div class="sub-footer-contact">
+            <span data-i18n="tel">TEL</span>：13512848962 刘珂 ·
+            <span data-i18n="email">E-mail</span>：<a href="mailto:kbit_ai@126.com">kbit_ai@126.com</a>
+        </div>
+        <div class="sub-footer-record">
             <a href="https://beian.miit.gov.cn/" target="_blank">津ICP备2026002055号-1</a>
             <a href="https://beian.mps.gov.cn/#/query/webSearch?code=12010402002460" target="_blank">
                 <img src="../public/备案图标.png" alt="公安备案">津公网安备12010402002460号
             </a>
         </div>
-        <div class="footer-copyright" data-i18n="copyright">© 2024 天津匡形无界智能科技有限公司（KBITAI）. All rights reserved.</div>
+        <div class="sub-footer-copyright" data-i18n="copyright">© 2024 天津匡形无界智能科技有限公司（KBITAI）. All rights reserved.</div>
     </div>
 </footer>
 
@@ -262,6 +252,7 @@ const I18N = {
     'article-autrain-desc': '面向澳洲项目的内部培训资料包：中英双语，覆盖建筑设计实务、出图规范、图纸编号与门窗标记等交付标准。',
     'article-autrain-date': '2026', 'article-autrain-read': '登录进入 →',
     'back-home': '返回主站',
+    'tel': 'TEL', 'email': 'E-mail',
     'article-citools-tag': '插件手册', 'article-citools-title': 'Archicad CI Tools 完全指南',
     'article-citools-desc': '16 个效率插件的官方教程全量中文版：357 篇文档、1193 张界面截图，覆盖文字格式、算量、属性管理、橱柜门窗等全部功能细节。',
     'article-citools-date': '2026', 'article-citools-read': '阅读更多 →', 'article-vibe-date': '2024', 'article-vibe-read': '阅读更多 →',
@@ -276,6 +267,7 @@ const I18N = {
     'article-autrain-desc': 'Internal training kit for AU projects: bilingual, covering design practice, drawing standards, sheet numbering and door/window tagging.',
     'article-autrain-date': '2026', 'article-autrain-read': 'Sign in →',
     'back-home': 'Back to Home',
+    'tel': 'TEL', 'email': 'E-mail',
     'article-citools-tag': 'Plugin Manual', 'article-citools-title': 'Archicad CI Tools Complete Handbook',
     'article-citools-desc': 'The complete bilingual edition of the official Archicad CI Tools documentation: 357 articles and 1193 interface screenshots covering text formatting, quantity take-off, property management, cabinets, doors and windows.',
     'article-citools-date': '2026', 'article-citools-read': 'Read More →', 'article-vibe-date': '2024', 'article-vibe-read': 'Read more →',
