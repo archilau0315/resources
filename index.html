@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,82 +42,40 @@
             -webkit-font-smoothing:antialiased;
         }
 
-        /* ===== Navigation ===== */
-        .nav {
+        /* ===== Top bar（轻量顶栏，与 Portfolio 子页一致） ===== */
+        .topbar {
             position:fixed; top:0; left:0; right:0; z-index:100;
-            padding:1rem 5vw;
-            backdrop-filter:blur(24px) saturate(180%);
-            -webkit-backdrop-filter:blur(24px) saturate(180%);
-            background:rgba(10,14,23,0.72);
-            border-bottom:1px solid var(--border);
-            transition:all .4s cubic-bezier(.22,1,.36,1);
-        }
-        .nav.scrolled { padding:.6rem 5vw; background:rgba(10,14,23,0.88); }
-        .nav-inner {
-            max-width:1400px; margin:0 auto;
-            display:flex; align-items:center; justify-content:space-between;
-        }
-        .nav-logo { display:flex; align-items:center; gap:.75rem; text-decoration:none; color:var(--text-primary); }
-        .nav-logo img { width:36px; height:36px; border-radius:8px; object-fit:contain; }
-        .nav-logo-text { display:flex; flex-direction:column; line-height:1; }
-        .nav-logo-en { font-weight:700; letter-spacing:2px; font-size:1.1rem; }
-        .nav-logo-zh { font-size:.7rem; color:var(--text-secondary); letter-spacing:.3em; margin-top:.2rem; font-weight:400; }
-        .nav-links { display:flex; gap:.25rem; list-style:none; align-items:center; }
-        .nav-links a {
-            text-decoration:none; color:var(--text-secondary); font-size:.85rem; font-weight:500;
-            padding:.5rem 1rem; border-radius:8px; transition:all .3s ease; letter-spacing:.02em;
-        }
-        .nav-links a:hover { color:var(--text-primary); background:var(--bg-card); }
-        .nav-links .nav-cta {
-            color:#fff; font-weight:600; padding:.5rem 1.25rem; border-radius:8px;
-        }
-        .nav-links .nav-cta:hover { transform:translateY(-1px); }
-        .nav-links .nav-cta.ai-cta { background:linear-gradient(135deg, var(--btn-ai), var(--btn-ai-dark)); box-shadow:0 4px 16px rgba(255,183,77,0.35); }
-        .nav-links .nav-cta.resource-cta { background:linear-gradient(135deg, var(--btn-resource), var(--btn-resource-dark)); box-shadow:0 4px 16px rgba(186,104,200,0.35); }
-        .nav-links .nav-cta.portfolio-cta { background:linear-gradient(135deg, var(--btn-works), var(--btn-works-dark)); box-shadow:0 4px 16px rgba(100,181,246,0.35); }
-        /* ===== Nav dropdown（与主站同款） ===== */
-        .nav-dropdown { position:relative; }
-        .nav-dropdown-toggle::after { content:'▾'; margin-left:.35rem; font-size:.75em; }
-        .nav-dropdown-menu {
-            position:absolute; top:calc(100% + 10px); right:0; min-width:210px;
-            background:rgba(14,18,28,0.97); border:1px solid var(--border); border-radius:12px;
-            padding:.5rem; list-style:none; z-index:102;
-            backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%);
-            box-shadow:0 16px 48px rgba(0,0,0,0.5);
-            opacity:0; visibility:hidden; transform:translateY(-8px);
-            transition:all .25s cubic-bezier(.22,1,.36,1);
-        }
-        .nav-dropdown:hover .nav-dropdown-menu,
-        .nav-dropdown.open .nav-dropdown-menu { opacity:1; visibility:visible; transform:translateY(0); }
-        .nav-dropdown > .nav-dropdown-toggle { position:relative; z-index:103; }
-        .nav-dropdown-menu li { display:block; }
-        .nav-dropdown-menu a {
-            display:block; padding:.6rem .9rem; border-radius:8px; font-size:.85rem;
-            white-space:nowrap; color:var(--text-secondary);
-        }
-        .nav-dropdown-menu a:hover { background:var(--bg-card); color:var(--text-primary); }
-        @media (max-width:768px) {
-            .nav-dropdown-menu {
-                position:static; opacity:1; visibility:visible; transform:none;
-                display:none; border:none; box-shadow:none; background:rgba(255,255,255,0.04);
-                margin:.25rem 0 0; min-width:0;
-            }
-            .nav-dropdown.open .nav-dropdown-menu { display:block; }
-        }
-        .lang-toggle {
-            position:fixed; top:16px; right:16px; z-index:101;
-            background:rgba(30,30,30,0.85); backdrop-filter:blur(20px) saturate(180%);
+            display:flex; align-items:center; justify-content:space-between; gap:1rem;
+            padding:.85rem 5vw;
+            background:rgba(10,14,23,0.72); backdrop-filter:blur(20px) saturate(180%);
             -webkit-backdrop-filter:blur(20px) saturate(180%);
-            border:1px solid rgba(255,255,255,0.06); border-radius:24px; padding:4px; display:flex; gap:2px;
-            box-shadow:0 4px 24px rgba(0,0,0,0.3);
+            border-bottom:1px solid var(--border);
         }
-        @media (max-width:768px) {
-            .lang-toggle { right: 56px; }
+        .topbar-brand { display:flex; align-items:center; gap:.75rem; text-decoration:none; color:var(--text-primary); }
+        .topbar-brand img { width:34px; height:34px; border-radius:8px; object-fit:contain; }
+        .topbar-brand-text { display:flex; flex-direction:column; line-height:1; }
+        .topbar-brand-en { font-weight:700; letter-spacing:2px; font-size:1.05rem; }
+        .topbar-brand-zh { font-size:.65rem; color:var(--text-secondary); letter-spacing:.3em; margin-top:.2rem; font-weight:400; }
+        .topbar-back {
+            display:inline-flex; align-items:center; gap:.45rem; text-decoration:none;
+            color:var(--text-secondary); font-size:.82rem; padding:.45rem .9rem;
+            border:1px solid var(--border); border-radius:9999px;
+            transition:color .2s, border-color .2s, background .2s;
+        }
+        .topbar-back:hover { color:var(--text-primary); border-color:rgba(99,102,241,.4); background:var(--bg-card); }
+        .topbar-back-arrow { font-size:1rem; line-height:1; }
+        /* 中英切换显隐 */
+        .zh-only { display:inline; }
+        .en-only { display:none; }
+        html[data-lang="en"] .zh-only { display:none; }
+        html[data-lang="en"] .en-only { display:inline; }
+        .topbar-right { display:flex; align-items:center; gap:.75rem; }
+        .lang-toggle {
+            background:rgba(30,30,30,0.55);
+            border:1px solid rgba(255,255,255,0.06); border-radius:24px; padding:4px; display:flex; gap:2px;
         }
         .lang-btn { border:none; background:none; color:#777; font-size:.7rem; font-weight:500; letter-spacing:.05em; padding:8px 14px; border-radius:20px; cursor:pointer; transition:all .4s cubic-bezier(.22,1,.36,1); font-family:inherit; }
         .lang-btn.active { background:rgba(255,255,255,0.12); color:#f0f0f0; }
-        .nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
-        .nav-toggle span { display:block; width:22px; height:2px; background:var(--text-primary); border-radius:2px; transition:.3s; }
 
         /* ===== Page Header ===== */
         .page-header {
@@ -140,6 +98,8 @@
 
         /* ===== Content ===== */
         .article-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+        /* 正方形封面在正方形容器内完整显示 */
+        .article-thumb.square img { object-fit:contain; background:#fbfbfa; }
 
         /* ===== Article Card ===== */
         .article-card {
@@ -199,18 +159,11 @@
 
         /* ===== Responsive ===== */
         @media (max-width:768px) {
-            .nav-links.active {
-                position: fixed; top: 60px; left: 5vw; right: 5vw;
-                background: rgba(10,14,23,0.95); backdrop-filter: blur(24px);
-                border: 1px solid var(--border); border-radius: 12px;
-                padding: 1rem; flex-direction: column; gap: 0.5rem;
-                box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-            }
-            .nav-links.active a { display: block; text-align: center; padding: 0.75rem 1rem; }
-            .nav-toggle { display:flex; }
             .page-header { padding:120px 5vw 40px; }
             .article-card { grid-template-columns:1fr; }
             .article-thumb { width:100%; height:180px; }
+            /* 正方形封面（CI Tools / 澳洲内训）用 contain 完整显示 */
+            .article-thumb.square img { object-fit:contain; background:#fbfbfa; }
         }
         @media (prefers-reduced-motion:reduce) {
             *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
@@ -220,42 +173,27 @@
 <body>
 
 <!-- Navigation -->
-<nav class="nav" id="navbar">
-    <div class="nav-inner">
-        <a href="../" class="nav-logo">
-            <img src="../public/Com_Logo.png" alt="KBITAI">
-            <span class="nav-logo-text">
-                <span class="nav-logo-en">KBITAI</span>
-                <span class="nav-logo-zh">匡形无界</span>
-            </span>
+<!-- 轻量顶栏：与 Portfolio 子页一致，logo 返主站 + 语言切换 -->
+<div class="topbar">
+    <a href="../" class="topbar-brand">
+        <img src="../public/Com_Logo.png" alt="KBITAI">
+        <span class="topbar-brand-text">
+            <span class="topbar-brand-en">KBITAI</span>
+            <span class="topbar-brand-zh">匡形无界</span>
+        </span>
+    </a>
+    <div class="topbar-right">
+        <a href="../" class="topbar-back">
+            <span class="topbar-back-arrow">←</span>
+            <span class="zh-only" data-i18n="back-home">返回主站</span>
+            <span class="en-only" data-i18n="back-home">Back to Home</span>
         </a>
-        <ul class="nav-links">
-            <li><a href="../" data-i18n="nav-home">主站</a></li>
-            <li><a href="../#works" data-i18n="nav-works">作品</a></li>
-            <li><a href="../#services" data-i18n="nav-services">服务</a></li>
-            <li><a href="../#ai" data-i18n="nav-ai">AI工具</a></li>
-            <li><a href="../#about" data-i18n="nav-about">关于</a></li>
-            <li><a href="../#contact" data-i18n="nav-contact">联系</a></li>
-            <li class="nav-dropdown" id="aiDropdown">
-                <a href="../#ai" class="nav-cta ai-cta nav-dropdown-toggle" data-i18n="nav-ai-tool" onclick="toggleNavDropdown(event,'aiDropdown')">AI工具</a>
-                <ul class="nav-dropdown-menu">
-                    <li><a href="../aitools/architect/" data-i18n="nav-ai-architect">首席图像架构师</a></li>
-                    <li><a href="../aitools/archiken/" data-i18n="nav-ai-archiken">筑审通 ArchiKen</a></li>
-                    <li><a href="https://github.com/archilau0315/archilinkai" target="_blank" rel="noopener" data-i18n="nav-ai-archilink">筑元智联 ArchiLinkAI</a></li>
-                </ul>
-            </li>
-            <li><a href="../Portfolio/" class="nav-cta portfolio-cta" data-i18n="nav-portfolio">作品集</a></li>
-            <li><a href="./" class="nav-cta resource-cta" data-i18n="nav-other">资源</a></li>
-        </ul>
         <div class="lang-toggle">
             <button class="lang-btn active" onclick="setLang('zh')" data-lang="zh" id="btn-zh">CN</button>
             <button class="lang-btn" onclick="setLang('en')" data-lang="en" id="btn-en">EN</button>
         </div>
-        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
     </div>
-</nav>
+</div>
 
 <!-- Page Header -->
 <section class="page-header">
@@ -267,7 +205,7 @@
 <!-- Content -->
 <section class="content">
     <a href="./autrain/" class="article-card reveal">
-        <div class="article-thumb">
+        <div class="article-thumb square">
             <img src="./autrain_cover.jpg" alt="澳洲设计实务内训">
         </div>
         <div class="article-info">
@@ -281,7 +219,7 @@
         </div>
     </a>
     <a href="./AC_Tutorial/ci_tools/site/index.html" class="article-card reveal">
-        <div class="article-thumb">
+        <div class="article-thumb square">
             <img src="./AC_Tutorial/ci_tools/cover.jpg" alt="Archicad CI Tools 完全指南">
         </div>
         <div class="article-info">
@@ -350,14 +288,13 @@
 // ===== I18N =====
 const I18N = {
   zh: {
-    'nav-home': '主站', 'nav-works': '作品', 'nav-services': '服务', 'nav-ai': 'AI工具', 'nav-ai-tool': 'AI工具', 'nav-about': '关于', 'nav-contact': '联系', 'nav-portfolio': '作品集', 'nav-other': '资源',
     'page-tag': 'Articles & Tutorials', 'page-title': '资源', 'page-subtitle': '文章、教程与更多探索',
     'article-1-tag': '课件', 'article-1-title': '用魔法创建魔法', 'article-1-desc': '探索如何运用AI工具与参数化设计思维，将创意构想转化为令人惊叹的视觉作品。从概念到实现，用魔法般的创作流程打造属于你的设计魔法。', 'article-1-date': '2024', 'article-1-read': '阅读更多 →',
     'article-vibe-tag': '课程手册', 'article-vibe-title': 'Vibe Coding 学员实践手册（完整课程版）', 'article-vibe-desc': '面向AI时代开发者的完整实践课程，从基础概念到实战案例，系统化掌握Vibe Coding方法论，助力学员快速成长为AI辅助开发的高效实践者。',
-    'nav-ai-architect': '首席图像架构师', 'nav-ai-archiken': '筑审通 ArchiKen', 'nav-ai-archilink': '筑元智联 ArchiLinkAI',
     'article-autrain-tag': '内训资料', 'article-autrain-title': '澳洲设计实务内训',
     'article-autrain-desc': '面向澳洲项目的内部培训资料包：中英双语，覆盖建筑设计实务、出图规范、图纸编号与门窗标记等交付标准。',
     'article-autrain-date': '2026', 'article-autrain-read': '登录进入 →',
+    'back-home': '返回主站',
     'article-citools-tag': '插件手册', 'article-citools-title': 'Archicad CI Tools 完全指南',
     'article-citools-desc': '16 个效率插件的官方教程全量中文版：357 篇文档、1193 张界面截图，覆盖文字格式、算量、属性管理、橱柜门窗等全部功能细节。',
     'article-citools-date': '2026', 'article-citools-read': '阅读更多 →', 'article-vibe-date': '2024', 'article-vibe-read': '阅读更多 →',
@@ -365,14 +302,13 @@ const I18N = {
     'copyright': '© 2024 天津匡形无界智能科技有限公司（KBITAI）. All rights reserved.'
   },
   en: {
-    'nav-home': 'Home', 'nav-works': 'Works', 'nav-services': 'Services', 'nav-ai': 'AI', 'nav-ai-tool': 'AI Tools', 'nav-about': 'About', 'nav-contact': 'Contact', 'nav-portfolio': 'Portfolio', 'nav-other': 'Resources',
     'page-tag': 'Articles & Tutorials', 'page-title': 'Resources', 'page-subtitle': 'Articles, tutorials, and more explorations',
     'article-1-tag': 'Tutorial', 'article-1-title': 'Magic to Magic', 'article-1-desc': 'Explore how to use AI tools and parametric design thinking to transform creative concepts into stunning visual works. From concept to realization, create your own design magic with a magical workflow.', 'article-1-date': '2024', 'article-1-read': 'Read more →',
     'article-vibe-tag': 'Course Handbook', 'article-vibe-title': 'Vibe Coding Practice Handbook (Complete Course Edition)', 'article-vibe-desc': 'A complete practical course for developers in the AI era. From fundamental concepts to real-world cases, systematically master Vibe Coding methodology and grow into an efficient AI-assisted development practitioner.',
-    'nav-ai-architect': 'Chief Image Architect', 'nav-ai-archiken': 'ArchiKen', 'nav-ai-archilink': 'ArchiLinkAI',
     'article-autrain-tag': 'Training Kit', 'article-autrain-title': 'AU Design Practice Training',
     'article-autrain-desc': 'Internal training kit for AU projects: bilingual, covering design practice, drawing standards, sheet numbering and door/window tagging.',
     'article-autrain-date': '2026', 'article-autrain-read': 'Sign in →',
+    'back-home': 'Back to Home',
     'article-citools-tag': 'Plugin Manual', 'article-citools-title': 'Archicad CI Tools Complete Handbook',
     'article-citools-desc': 'The complete bilingual edition of the official Archicad CI Tools documentation: 357 articles and 1193 interface screenshots covering text formatting, quantity take-off, property management, cabinets, doors and windows.',
     'article-citools-date': '2026', 'article-citools-read': 'Read More →', 'article-vibe-date': '2024', 'article-vibe-read': 'Read more →',
@@ -385,6 +321,8 @@ let currentLang = 'zh';
 
 function setLang(lang) {
   currentLang = lang;
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh-CN');
   document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); });
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
@@ -395,30 +333,8 @@ function setLang(lang) {
   document.title = lang === 'en' ? 'Resources — Kbitai' : '资源 — 匡形无界 Kbitai';
 }
 
-// ===== Nav dropdown (AI 工具) =====
-// PC 端由 CSS :hover 展开；移动端点击切换 .open
-function toggleNavDropdown(e, id) {
-  if (window.innerWidth <= 768) {
-    e.preventDefault();
-    var dd = document.getElementById(id);
-    if (dd) dd.classList.toggle('open');
-  }
-}
-// 点击外部时关闭已展开的下拉
-document.addEventListener('click', function(e) {
-  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
-    if (!dd.contains(e.target)) dd.classList.remove('open');
-  });
-});
-
 // Init default
 setLang('zh');
-
-// ===== Scroll Effects =====
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
