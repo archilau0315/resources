@@ -23,6 +23,13 @@
             --glow: rgba(99,102,241,0.35);
             --shadow-card: 0 8px 32px rgba(0,0,0,0.35);
             --radius: 16px;
+            /* Material Design 3 Dark Theme Button Tokens */
+            --btn-works: #64B5F6;
+            --btn-works-dark: #1976D2;
+            --btn-ai: #FFB74D;
+            --btn-ai-dark: #F57C00;
+            --btn-resource: #BA68C8;
+            --btn-resource-dark: #8E24AA;
         }
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior:smooth; font-size:16px; }
@@ -52,7 +59,9 @@
         }
         .nav-logo { display:flex; align-items:center; gap:.75rem; text-decoration:none; color:var(--text-primary); }
         .nav-logo img { width:36px; height:36px; border-radius:8px; object-fit:contain; }
-        .nav-logo span { font-weight:700; letter-spacing:2px; font-size:1.1rem; }
+        .nav-logo-text { display:flex; flex-direction:column; line-height:1; }
+        .nav-logo-en { font-weight:700; letter-spacing:2px; font-size:1.1rem; }
+        .nav-logo-zh { font-size:.7rem; color:var(--text-secondary); letter-spacing:.3em; margin-top:.2rem; font-weight:400; }
         .nav-links { display:flex; gap:.25rem; list-style:none; align-items:center; }
         .nav-links a {
             text-decoration:none; color:var(--text-secondary); font-size:.85rem; font-weight:500;
@@ -60,10 +69,41 @@
         }
         .nav-links a:hover { color:var(--text-primary); background:var(--bg-card); }
         .nav-links .nav-cta {
-            background:linear-gradient(135deg, var(--accent), var(--accent-cyan));
             color:#fff; font-weight:600; padding:.5rem 1.25rem; border-radius:8px;
         }
-        .nav-links .nav-cta:hover { transform:translateY(-1px); box-shadow:0 4px 20px var(--glow); }
+        .nav-links .nav-cta:hover { transform:translateY(-1px); }
+        .nav-links .nav-cta.ai-cta { background:linear-gradient(135deg, var(--btn-ai), var(--btn-ai-dark)); box-shadow:0 4px 16px rgba(255,183,77,0.35); }
+        .nav-links .nav-cta.resource-cta { background:linear-gradient(135deg, var(--btn-resource), var(--btn-resource-dark)); box-shadow:0 4px 16px rgba(186,104,200,0.35); }
+        .nav-links .nav-cta.portfolio-cta { background:linear-gradient(135deg, var(--btn-works), var(--btn-works-dark)); box-shadow:0 4px 16px rgba(100,181,246,0.35); }
+        /* ===== Nav dropdown（与主站同款） ===== */
+        .nav-dropdown { position:relative; }
+        .nav-dropdown-toggle::after { content:'▾'; margin-left:.35rem; font-size:.75em; }
+        .nav-dropdown-menu {
+            position:absolute; top:calc(100% + 10px); right:0; min-width:210px;
+            background:rgba(14,18,28,0.97); border:1px solid var(--border); border-radius:12px;
+            padding:.5rem; list-style:none; z-index:102;
+            backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%);
+            box-shadow:0 16px 48px rgba(0,0,0,0.5);
+            opacity:0; visibility:hidden; transform:translateY(-8px);
+            transition:all .25s cubic-bezier(.22,1,.36,1);
+        }
+        .nav-dropdown:hover .nav-dropdown-menu,
+        .nav-dropdown.open .nav-dropdown-menu { opacity:1; visibility:visible; transform:translateY(0); }
+        .nav-dropdown > .nav-dropdown-toggle { position:relative; z-index:103; }
+        .nav-dropdown-menu li { display:block; }
+        .nav-dropdown-menu a {
+            display:block; padding:.6rem .9rem; border-radius:8px; font-size:.85rem;
+            white-space:nowrap; color:var(--text-secondary);
+        }
+        .nav-dropdown-menu a:hover { background:var(--bg-card); color:var(--text-primary); }
+        @media (max-width:768px) {
+            .nav-dropdown-menu {
+                position:static; opacity:1; visibility:visible; transform:none;
+                display:none; border:none; box-shadow:none; background:rgba(255,255,255,0.04);
+                margin:.25rem 0 0; min-width:0;
+            }
+            .nav-dropdown.open .nav-dropdown-menu { display:block; }
+        }
         .lang-toggle {
             position:fixed; top:16px; right:16px; z-index:101;
             background:rgba(30,30,30,0.85); backdrop-filter:blur(20px) saturate(180%);
@@ -184,16 +224,28 @@
     <div class="nav-inner">
         <a href="../" class="nav-logo">
             <img src="../public/Com_Logo.png" alt="KBITAI">
-            <span>KBITAI</span>
+            <span class="nav-logo-text">
+                <span class="nav-logo-en">KBITAI</span>
+                <span class="nav-logo-zh">匡形无界</span>
+            </span>
         </a>
         <ul class="nav-links">
+            <li><a href="../" data-i18n="nav-home">主站</a></li>
             <li><a href="../#works" data-i18n="nav-works">作品</a></li>
             <li><a href="../#services" data-i18n="nav-services">服务</a></li>
             <li><a href="../#ai" data-i18n="nav-ai">AI工具</a></li>
             <li><a href="../#about" data-i18n="nav-about">关于</a></li>
             <li><a href="../#contact" data-i18n="nav-contact">联系</a></li>
-            <li><a href="../Portfolio/" class="nav-cta" data-i18n="nav-portfolio">作品集</a></li>
-            <li><a href="./" class="nav-cta" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);" data-i18n="nav-other">资源</a></li>
+            <li class="nav-dropdown" id="aiDropdown">
+                <a href="../#ai" class="nav-cta ai-cta nav-dropdown-toggle" data-i18n="nav-ai-tool" onclick="toggleNavDropdown(event,'aiDropdown')">AI工具</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="../aitools/architect/" data-i18n="nav-ai-architect">首席图像架构师</a></li>
+                    <li><a href="../aitools/archiken/" data-i18n="nav-ai-archiken">筑审通 ArchiKen</a></li>
+                    <li><a href="https://github.com/archilau0315/archilinkai" target="_blank" rel="noopener" data-i18n="nav-ai-archilink">筑元智联 ArchiLinkAI</a></li>
+                </ul>
+            </li>
+            <li><a href="../Portfolio/" class="nav-cta portfolio-cta" data-i18n="nav-portfolio">作品集</a></li>
+            <li><a href="./" class="nav-cta resource-cta" data-i18n="nav-other">资源</a></li>
         </ul>
         <div class="lang-toggle">
             <button class="lang-btn active" onclick="setLang('zh')" data-lang="zh" id="btn-zh">CN</button>
@@ -214,6 +266,34 @@
 
 <!-- Content -->
 <section class="content">
+    <a href="./autrain/" class="article-card reveal">
+        <div class="article-thumb">
+            <img src="./autrain_cover.jpg" alt="澳洲设计实务内训">
+        </div>
+        <div class="article-info">
+            <div class="article-tag" data-i18n="article-autrain-tag">内训资料</div>
+            <h2 class="article-title" data-i18n="article-autrain-title">澳洲设计实务内训</h2>
+            <p class="article-desc" data-i18n="article-autrain-desc">面向澳洲项目的内部培训资料包：中英双语，覆盖建筑设计实务、出图规范、图纸编号与门窗标记等交付标准。</p>
+            <div class="article-meta">
+                <span data-i18n="article-autrain-date">2026</span>
+                <span data-i18n="article-autrain-read">登录进入 →</span>
+            </div>
+        </div>
+    </a>
+    <a href="./AC_Tutorial/ci_tools/site/index.html" class="article-card reveal">
+        <div class="article-thumb">
+            <img src="./AC_Tutorial/ci_tools/cover.jpg" alt="Archicad CI Tools 完全指南">
+        </div>
+        <div class="article-info">
+            <div class="article-tag" data-i18n="article-citools-tag">插件手册</div>
+            <h2 class="article-title" data-i18n="article-citools-title">Archicad CI Tools 完全指南</h2>
+            <p class="article-desc" data-i18n="article-citools-desc">16 个效率插件的官方教程全量中文版：357 篇文档、1193 张界面截图，覆盖文字格式、算量、属性管理、橱柜门窗等全部功能细节。</p>
+            <div class="article-meta">
+                <span data-i18n="article-citools-date">2026</span>
+                <span data-i18n="article-citools-read">阅读更多 →</span>
+            </div>
+        </div>
+    </a>
     <a href="./Vibe%20Coding学员实践手册_完整课程版.html" class="article-card reveal">
         <div class="article-thumb">
             <img src="./VBparterner.png" alt="Vibe Coding学员实践手册">
@@ -270,18 +350,32 @@
 // ===== I18N =====
 const I18N = {
   zh: {
-    'nav-works': '作品', 'nav-services': '服务', 'nav-ai': 'AI工具', 'nav-about': '关于', 'nav-contact': '联系', 'nav-portfolio': '作品集', 'nav-other': '资源',
+    'nav-home': '主站', 'nav-works': '作品', 'nav-services': '服务', 'nav-ai': 'AI工具', 'nav-ai-tool': 'AI工具', 'nav-about': '关于', 'nav-contact': '联系', 'nav-portfolio': '作品集', 'nav-other': '资源',
     'page-tag': 'Articles & Tutorials', 'page-title': '资源', 'page-subtitle': '文章、教程与更多探索',
     'article-1-tag': '课件', 'article-1-title': '用魔法创建魔法', 'article-1-desc': '探索如何运用AI工具与参数化设计思维，将创意构想转化为令人惊叹的视觉作品。从概念到实现，用魔法般的创作流程打造属于你的设计魔法。', 'article-1-date': '2024', 'article-1-read': '阅读更多 →',
-    'article-vibe-tag': '课程手册', 'article-vibe-title': 'Vibe Coding 学员实践手册（完整课程版）', 'article-vibe-desc': '面向AI时代开发者的完整实践课程，从基础概念到实战案例，系统化掌握Vibe Coding方法论，助力学员快速成长为AI辅助开发的高效实践者。', 'article-vibe-date': '2024', 'article-vibe-read': '阅读更多 →',
+    'article-vibe-tag': '课程手册', 'article-vibe-title': 'Vibe Coding 学员实践手册（完整课程版）', 'article-vibe-desc': '面向AI时代开发者的完整实践课程，从基础概念到实战案例，系统化掌握Vibe Coding方法论，助力学员快速成长为AI辅助开发的高效实践者。',
+    'nav-ai-architect': '首席图像架构师', 'nav-ai-archiken': '筑审通 ArchiKen', 'nav-ai-archilink': '筑元智联 ArchiLinkAI',
+    'article-autrain-tag': '内训资料', 'article-autrain-title': '澳洲设计实务内训',
+    'article-autrain-desc': '面向澳洲项目的内部培训资料包：中英双语，覆盖建筑设计实务、出图规范、图纸编号与门窗标记等交付标准。',
+    'article-autrain-date': '2026', 'article-autrain-read': '登录进入 →',
+    'article-citools-tag': '插件手册', 'article-citools-title': 'Archicad CI Tools 完全指南',
+    'article-citools-desc': '16 个效率插件的官方教程全量中文版：357 篇文档、1193 张界面截图，覆盖文字格式、算量、属性管理、橱柜门窗等全部功能细节。',
+    'article-citools-date': '2026', 'article-citools-read': '阅读更多 →', 'article-vibe-date': '2024', 'article-vibe-read': '阅读更多 →',
     'slogan-cn': '设计有形 科技无界', 'footer-link-1': '建筑设计作品集', 'footer-link-2': '首席图像架构师', 'footer-link-3': '服务协议',
     'copyright': '© 2024 天津匡形无界智能科技有限公司（KBITAI）. All rights reserved.'
   },
   en: {
-    'nav-works': 'Works', 'nav-services': 'Services', 'nav-ai': 'AI', 'nav-about': 'About', 'nav-contact': 'Contact', 'nav-portfolio': 'Portfolio', 'nav-other': 'Resources',
+    'nav-home': 'Home', 'nav-works': 'Works', 'nav-services': 'Services', 'nav-ai': 'AI', 'nav-ai-tool': 'AI Tools', 'nav-about': 'About', 'nav-contact': 'Contact', 'nav-portfolio': 'Portfolio', 'nav-other': 'Resources',
     'page-tag': 'Articles & Tutorials', 'page-title': 'Resources', 'page-subtitle': 'Articles, tutorials, and more explorations',
     'article-1-tag': 'Tutorial', 'article-1-title': 'Magic to Magic', 'article-1-desc': 'Explore how to use AI tools and parametric design thinking to transform creative concepts into stunning visual works. From concept to realization, create your own design magic with a magical workflow.', 'article-1-date': '2024', 'article-1-read': 'Read more →',
-    'article-vibe-tag': 'Course Handbook', 'article-vibe-title': 'Vibe Coding Practice Handbook (Complete Course Edition)', 'article-vibe-desc': 'A complete practical course for developers in the AI era. From fundamental concepts to real-world cases, systematically master Vibe Coding methodology and grow into an efficient AI-assisted development practitioner.', 'article-vibe-date': '2024', 'article-vibe-read': 'Read more →',
+    'article-vibe-tag': 'Course Handbook', 'article-vibe-title': 'Vibe Coding Practice Handbook (Complete Course Edition)', 'article-vibe-desc': 'A complete practical course for developers in the AI era. From fundamental concepts to real-world cases, systematically master Vibe Coding methodology and grow into an efficient AI-assisted development practitioner.',
+    'nav-ai-architect': 'Chief Image Architect', 'nav-ai-archiken': 'ArchiKen', 'nav-ai-archilink': 'ArchiLinkAI',
+    'article-autrain-tag': 'Training Kit', 'article-autrain-title': 'AU Design Practice Training',
+    'article-autrain-desc': 'Internal training kit for AU projects: bilingual, covering design practice, drawing standards, sheet numbering and door/window tagging.',
+    'article-autrain-date': '2026', 'article-autrain-read': 'Sign in →',
+    'article-citools-tag': 'Plugin Manual', 'article-citools-title': 'Archicad CI Tools Complete Handbook',
+    'article-citools-desc': 'The complete bilingual edition of the official Archicad CI Tools documentation: 357 articles and 1193 interface screenshots covering text formatting, quantity take-off, property management, cabinets, doors and windows.',
+    'article-citools-date': '2026', 'article-citools-read': 'Read More →', 'article-vibe-date': '2024', 'article-vibe-read': 'Read more →',
     'slogan-cn': 'FINITE FORM INFINITE TECH', 'footer-link-1': 'Architectural Portfolio', 'footer-link-2': 'Chief Image Architect', 'footer-link-3': 'Terms of Service',
     'copyright': '© 2024 Tianjin Kbitai Intelligent Technology Co., Ltd. All rights reserved.'
   }
@@ -300,6 +394,22 @@ function setLang(lang) {
   });
   document.title = lang === 'en' ? 'Resources — Kbitai' : '资源 — 匡形无界 Kbitai';
 }
+
+// ===== Nav dropdown (AI 工具) =====
+// PC 端由 CSS :hover 展开；移动端点击切换 .open
+function toggleNavDropdown(e, id) {
+  if (window.innerWidth <= 768) {
+    e.preventDefault();
+    var dd = document.getElementById(id);
+    if (dd) dd.classList.toggle('open');
+  }
+}
+// 点击外部时关闭已展开的下拉
+document.addEventListener('click', function(e) {
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
+    if (!dd.contains(e.target)) dd.classList.remove('open');
+  });
+});
 
 // Init default
 setLang('zh');
