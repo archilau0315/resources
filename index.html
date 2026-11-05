@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-    <style>
+    <link rel="stylesheet" href="../public/sub-topbar.css">
+<style>
         :root {
             --bg: #0a0e17;
             --bg-elevated: #0f172a;
@@ -42,40 +43,6 @@
             -webkit-font-smoothing:antialiased;
         }
 
-        /* ===== Top bar（轻量顶栏，与 Portfolio 子页一致） ===== */
-        .topbar {
-            position:fixed; top:0; left:0; right:0; z-index:100;
-            display:flex; align-items:center; justify-content:space-between; gap:1rem;
-            padding:.85rem 5vw;
-            background:rgba(10,14,23,0.72); backdrop-filter:blur(20px) saturate(180%);
-            -webkit-backdrop-filter:blur(20px) saturate(180%);
-            border-bottom:1px solid var(--border);
-        }
-        .topbar-brand { display:flex; align-items:center; gap:.75rem; text-decoration:none; color:var(--text-primary); }
-        .topbar-brand img { width:34px; height:34px; border-radius:8px; object-fit:contain; }
-        .topbar-brand-text { display:flex; flex-direction:column; line-height:1; }
-        .topbar-brand-en { font-weight:700; letter-spacing:2px; font-size:1.05rem; }
-        .topbar-brand-zh { font-size:.65rem; color:var(--text-secondary); letter-spacing:.3em; margin-top:.2rem; font-weight:400; }
-        .topbar-back {
-            display:inline-flex; align-items:center; gap:.45rem; text-decoration:none;
-            color:var(--text-secondary); font-size:.82rem; padding:.45rem .9rem;
-            border:1px solid var(--border); border-radius:9999px;
-            transition:color .2s, border-color .2s, background .2s;
-        }
-        .topbar-back:hover { color:var(--text-primary); border-color:rgba(99,102,241,.4); background:var(--bg-card); }
-        .topbar-back-arrow { font-size:1rem; line-height:1; }
-        /* 中英切换显隐 */
-        .zh-only { display:inline; }
-        .en-only { display:none; }
-        html[data-lang="en"] .zh-only { display:none; }
-        html[data-lang="en"] .en-only { display:inline; }
-        .topbar-right { display:flex; align-items:center; gap:.75rem; }
-        .lang-toggle {
-            background:rgba(30,30,30,0.55);
-            border:1px solid rgba(255,255,255,0.06); border-radius:24px; padding:4px; display:flex; gap:2px;
-        }
-        .lang-btn { border:none; background:none; color:#777; font-size:.7rem; font-weight:500; letter-spacing:.05em; padding:8px 14px; border-radius:20px; cursor:pointer; transition:all .4s cubic-bezier(.22,1,.36,1); font-family:inherit; }
-        .lang-btn.active { background:rgba(255,255,255,0.12); color:#f0f0f0; }
 
         /* ===== Page Header ===== */
         .page-header {
@@ -174,23 +141,23 @@
 
 <!-- Navigation -->
 <!-- 轻量顶栏：与 Portfolio 子页一致，logo 返主站 + 语言切换 -->
-<div class="topbar">
-    <a href="../" class="topbar-brand">
+<div class="sub-topbar">
+    <a href="../" class="sub-topbar-brand">
         <img src="../public/Com_Logo.png" alt="KBITAI">
-        <span class="topbar-brand-text">
-            <span class="topbar-brand-en">KBITAI</span>
-            <span class="topbar-brand-zh">匡形无界</span>
+        <span class="sub-topbar-brand-text">
+            <span class="sub-topbar-brand-en">KBITAI</span>
+            <span class="sub-topbar-brand-zh">匡形无界</span>
         </span>
     </a>
-    <div class="topbar-right">
-        <a href="../" class="topbar-back">
-            <span class="topbar-back-arrow">←</span>
-            <span class="zh-only" data-i18n="back-home">返回主站</span>
-            <span class="en-only" data-i18n="back-home">Back to Home</span>
+    <div class="sub-topbar-right">
+        <a href="../" class="sub-topbar-back">
+            <span class="sub-topbar-back-arrow">←</span>
+            <span class="sub-zh-only">返回主站</span>
+            <span class="sub-en-only">Back to Home</span>
         </a>
-        <div class="lang-toggle">
-            <button class="lang-btn active" onclick="setLang('zh')" data-lang="zh" id="btn-zh">CN</button>
-            <button class="lang-btn" onclick="setLang('en')" data-lang="en" id="btn-en">EN</button>
+        <div class="sub-lang-toggle">
+            <button class="sub-lang-btn active" onclick="setLang('zh')" data-lang="zh" id="btn-zh">CN</button>
+            <button class="sub-lang-btn" onclick="setLang('en')" data-lang="en" id="btn-en">EN</button>
         </div>
     </div>
 </div>
@@ -323,7 +290,7 @@ function setLang(lang) {
   currentLang = lang;
   document.documentElement.setAttribute('data-lang', lang);
   document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh-CN');
-  document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); });
+  document.querySelectorAll('.sub-lang-btn').forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); });
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (I18N[lang][key]) {
