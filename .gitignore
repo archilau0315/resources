@@ -1,3 +1,7 @@
 
 # playwright 测试产物
 .playwright-cli/
+
+# 工作目录：说明与变更记录入库，会话记忆与临时产物不入库
+_work/memory/
+_work/tmp/
