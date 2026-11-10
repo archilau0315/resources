@@ -124,7 +124,18 @@ CI Tools 是 Central Innovation（新西兰）为 Archicad 开发的效率插件
 ```
 ci_tools/
 ├── readme.md                          本文件
-├── debug_log_1.md                     变更日志
+├── debug_log_1.md                     变更日志（第 1 册，已满）
+├── debug_log_2.md                     变更日志（第 2 册）
+├── site/                              ★在线站点，23 个页面
+│   ├── index.html / all.html …        422 篇文章，18 个工具 + 入门
+│   ├── search.css / search.js         顶部全站搜索条（智能匹配 + 自动补全）
+│   └── search-index.js                搜索索引，自动生成，勿手改
+├── source/                            站点生成器
+│   ├── build_site.py                  clean.json → 多页站点
+│   ├── build_search_index.py          扫描站点，生成 search-index.js
+│   ├── clean_html.py                  官方 Word HTML → Markdown
+│   ├── zh_translations.json           中文译文
+│   └── handbook_main.md               中文主线速查原稿
 ├── docs/
 │   ├── CI_Tools_用户手册_图文版.html    ★推荐阅读，24 章节 + 24 张官方截图
 │   ├── CI_Tools_速查卡_网页版.html      ★推荐阅读，一页纸速查
@@ -173,6 +184,28 @@ python3 tools/localize_images.py docs/CI_Tools_用户手册_图文版.html asset
 
 **中文模式**显示完整中文译文，每篇文章下方有「英文原文对照」折叠区，展开即见官方英文原文与原图。
 **英文模式**界面、导航、标题、正文全部切英文。
+
+### 站内搜索
+
+站点顶部有全站搜索条，随手查命令：
+
+| 操作 | 效果 |
+|---|---|
+| `Ctrl / Cmd + K` 或 `/` | 光标跳到搜索框 |
+| 输入「算量」「镜像」「convert case」 | 按中文口语、工具名、命令路径智能匹配 |
+| `↑ ↓` | 上下选择结果 |
+| `Enter` | 打开对应工具页或文章锚点 |
+| `Esc` | 收起下拉 |
+
+结果按「工具 / 篇章 / 页面」分组标注，命中字符高亮；空输入时显示最近查看与 18 个工具的常用命令。
+
+标题或命令有变动后，重建索引即可（`build_site.py` 会自动调用）：
+
+```bash
+python3 source/build_search_index.py site
+```
+
+`site/search-index.js` 是生成物，不手改。
 
 ### 重新生成站点
 

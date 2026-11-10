@@ -475,6 +475,7 @@ def page(title, body, active="", desc="", extra_head=""):
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.3.0/chinese-simplified-700.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono@5.2.5/index.css">
 <style>{CSS}</style>
+<link rel="stylesheet" href="search.css">
 </head>
 <body>
 <div class="layout">
@@ -495,6 +496,8 @@ def page(title, body, active="", desc="", extra_head=""):
 </main>
 </div>
 <script>{JS}</script>
+<script src="search-index.js"></script>
+<script src="search.js"></script>
 </body>
 </html>"""
 
@@ -615,6 +618,17 @@ def main():
     build_home(out, base, clean, gmap)
     build_all(out, base, gmap)
     build_guide(out, base)
+    build_search_index(out)
+
+
+def build_search_index(out):
+    """生成全站搜索索引（search-index.js）"""
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from build_search_index import build
+        build(out)
+    except Exception as e:
+        print(f"  ! 搜索索引生成失败: {e}")
 
 
 
