@@ -1,6 +1,45 @@
 let autocompleteTimeout;
 const PROGRESS_KEY = "gh_progress";
 const FAV_KEY = "gh_favorites";
+const SEARCH_HISTORY_KEY = "gh_search_history";
+const MAX_HISTORY = 8;
+
+function getHistory() {
+  try { return JSON.parse(localStorage.getItem(SEARCH_HISTORY_KEY) || "[]"); } catch { return []; }
+}
+function saveHistory(history) { localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(history)); }
+function addHistory(query) {
+  if (!query) return;
+  let h = getHistory();
+  h = h.filter(x => x !== query);
+  h.unshift(query);
+  if (h.length > MAX_HISTORY) h = h.slice(0, MAX_HISTORY);
+  saveHistory(h);
+}
+function clearHistory() {
+  saveHistory([]);
+  renderHistory();
+}
+
+function renderHistory() {
+  const box = document.getElementById("recentSearches");
+  if (!box) return;
+  const h = getHistory();
+  const lang = I18N_API.getLang();
+  const title = lang === "zh" ? "最近搜索" : "Recent Searches";
+  const clearLabel = lang === "zh" ? "清空" : "Clear";
+  if (h.length === 0) {
+    box.innerHTML = `<div style="font-size:12px;color:var(--muted);margin-bottom:8px;"><b>${title}</b> <button class="btn-status" style="background:transparent;border:none;color:var(--muted);padding:0;font-size:11px;cursor:pointer;">${clearLabel}</button></div><div style="font-size:12px;color:var(--muted);">无</div>`;
+    return;
+  }
+  let html = `<div style="font-size:12px;color:var(--muted);margin-bottom:8px;"><b>${title}</b> <button class="btn-status" style="background:transparent;border:none;color:var(--muted);padding:0;font-size:11px;cursor:pointer;" onclick="clearHistory()">${clearLabel}</button></div>`;
+  html += `<div class="history-tags">`;
+  h.forEach(q => {
+    html += `<span class="history-tag" onclick="const si=document.getElementById('searchInput'); si.value='${q.replace(/'/g, "\\'")}'; si.dispatchEvent(new Event('input')); document.getElementById('autocomplete').style.display='none';">${q}</span>`;
+  });
+  html += `</div>`;
+  box.innerHTML = html;
+}
 
 function getProgress() {
   try { return JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}"); } catch { return {}; }
@@ -43,6 +82,7 @@ async function init() {
   renderProgressBar();
   renderCourses();
   renderCatalogPreview();
+  renderHistory();
 
   langBtn.addEventListener("click", () => {
     I18N_API.setLang(I18N_API.getLang() === "zh" ? "en" : "zh");
@@ -82,6 +122,7 @@ async function init() {
         searchResults.innerHTML = "";
         return;
       }
+      addHistory(q);
       const { modules, components } = DataAPI.searchAll(q);
       renderAutocomplete(modules, components, q);
       renderSearchResults(modules, components, q);
