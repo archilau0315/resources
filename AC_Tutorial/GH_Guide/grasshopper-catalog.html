@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grasshopper Component Catalog - 啄之堂</title>
+<style>
+:root {
+  --bg: #1a1a2e;
+  --bg-secondary: #16213e;
+  --card: #0f3460;
+  --card-hover: #1a4a7a;
+  --fg: #eaeaea;
+  --muted: #8b9dc3;
+  --accent: #00d4aa;
+  --accent-dim: #00d4aa33;
+  --border: #1e3a5f;
+  --search-bg: #0d1b2a;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --radius: 10px;
+  --transition: 0.2s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+header {
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--bg-secondary), var(--bg));
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--fg);
+}
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--accent), #0099cc);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.logo-text h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px; }
+.logo-text span { font-size: 0.8rem; color: var(--muted); }
+.search-wrapper {
+  flex: 1;
+  max-width: 600px;
+  position: relative;
+}
+#searchInput {
+  width: 100%;
+  padding: 14px 20px 14px 52px;
+  font-size: 1rem;
+  background: var(--search-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+  transition: var(--transition);
+}
+#searchInput:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-dim);
+}
+#searchInput::placeholder { color: var(--muted); }
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+.autocomplete {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-height: 320px;
+  overflow-y: auto;
+  display: none;
+  z-index: 200;
+}
+.autocomplete.open { display: block; }
+.autocomplete-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.autocomplete-item:last-child { border-bottom: none; }
+.autocomplete-item:hover, .autocomplete-item.selected {
+  background: var(--accent-dim);
+}
+.autocomplete-item .ac-name { font-weight: 600; color: var(--fg); }
+.autocomplete-item .ac-category { font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; }
+.autocomplete-item .ac-desc { font-size: 0.8rem; color: var(--muted); margin-left: auto; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stats { display: flex; gap: 24px; color: var(--muted); font-size: 0.85rem; }
+.stats strong { color: var(--accent); font-size: 1.1rem; }
+main { max-width: 1400px; margin: 0 auto; padding: 32px; }
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.section-title::before { content: ''; width: 4px; height: 28px; background: var(--accent); border-radius: 2px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #0099cc);
+  opacity: 0;
+  transition: var(--transition);
+}
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.card:hover::before { opacity: 1; }
+.card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.card-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.card-title { font-size: 1.15rem; font-weight: 700; color: var(--fg); }
+.card-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.7; }
+.card-section { margin-bottom: 16px; }
+.card-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-section-title::before { content: ''; width: 8px; height: 8px; background: var(--accent); border-radius: 2px; }
+.param-table { width: 100%; font-size: 0.8rem; border-collapse: collapse; }
+.param-table th, .param-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.param-table th { color: var(--muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.param-table td { color: var(--fg); }
+.param-table tr:last-child td { border-bottom: none; }
+.param-table .param-name { font-family: 'SF Mono', 'Fira Code', monospace; color: var(--accent); font-weight: 500; }
+.param-table .param-type { color: #ffd700; font-size: 0.75rem; }
+.param-table .param-range { color: var(--muted); font-size: 0.75rem; }
+.example-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  overflow-x: auto;
+  color: #a0c4e8;
+}
+.example-box .kw { color: #ff79c6; }
+.example-box .str { color: #f1fa8c; }
+.example-box .num { color: #bd93f9; }
+.example-box .cmt { color: #6272a4; }
+.hidden { display: none !important; }
+.loading { text-align: center; padding: 60px; color: var(--muted); }
+.loading::after { content: ''; display: inline-block; width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin-left: 12px; vertical-align: middle; }
+@keyframes spin { to { transform: rotate(360deg); } }
+footer { text-align: center; padding: 32px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 40px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+@media (max-width: 768px) {
+  .header-content { flex-direction: column; gap: 16px; }
+  .search-wrapper { width: 100%; }
+  .stats { display: none; }
+  main { padding: 20px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-content">
+    <a href="#" class="logo">
+      <div class="logo-icon">⬢</div>
+      <div class="logo-text">
+        <h1>Grasshopper Catalog</h1>
+        <span>啄之堂 · 组件参考手册</span>
+      </div>
+    </a>
+    <div class="search-wrapper">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="搜索组件、参数、关键词… 支持中英文模糊匹配" autocomplete="off">
+      <div class="autocomplete" id="autocomplete"></div>
+    </div>
+    <div class="stats">
+      <span><strong id="totalCount">0</strong> 组件</span>
+      <span><strong id="totalParams">0</strong> 参数</span>
+      <span><strong id="totalExamples">0</strong> 示例</span>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="section-title">
+    <h2>所有组件</h2>
+  </div>
+  <div class="grid" id="componentGrid"></div>
+  <div class="loading hidden" id="loading">加载中…</div>
+  <div class="loading hidden" id="emptyState">未找到匹配的组件</div>
+</main>
+<footer>
+  基于 Rhino 8 / Grasshopper 官方文档构建 · 由 <a href="#">啄之堂</a> 维护 · <a href="#">GitHub</a> · <a href="#">反馈</a>
+</footer>
+
+<script>
+// ===== 组件数据 =====
+const components = [
+  {
+    id: "battery",
+    name: "Battery Component",
+    nameZh: "电池组件",
+    category: "Power",
+    badge: "core",
+    desc: "模拟电池供电行为，可设定电压、电流限制与充放电模式，输出实时电压/电流/状态。",
+    inputs: [
+      { name: "Voltage (V)", type: "Number", range: "1.0‑48.0 V", default: "12.0 V", desc: "额定电压" },
+      { name: "Current Limit (A)", type: "Number", range: "0.1‑20.0 A", default: "5.0 A", desc: "最大输出电流" },
+      { name: "Mode", type: "Option", range: "Charge / Discharge / Idle", default: "Idle", desc: "工作模式" }
+    ],
+    outputs: [
+      { name: "Voltage Output (V)", type: "Number", desc: "实际输出电压" },
+      { name: "Current Output (A)", type: "Number", desc: "实际输出电流" },
+      { name: "Status", type: "Text", desc: "On / Off" }
+    ],
+    example: `// 创建电池组件
+Battery bat = new Battery();
+bat.Voltage = 12.0;
+bat.CurrentLimit = 5.0;
+bat.Mode = BatteryMode.Discharge;
+// 连接到 Panel 观察输出
+bat.VoltageOutput → Panel;
+bat.CurrentOutput → Panel;`
+  },
+  {
+    id: "power",
+    name: "Power Component",
+    nameZh: "电源组件",
+    category: "Power",
+    badge: "core",
+    desc: "模拟可控电源，支持恒压、恒流、关闭三种模式，适合参数化电气仿真。",
+    inputs: [
+      { name: "Voltage (V)", type: "Number", range: "1.0‑48.0 V", default: "12.0 V", desc: "目标电压" },
+      { name: "Current Limit (A)", type: "Number", range: "0.1‑20.0 A", default: "5.0 A", desc: "电流上限" },
+      { name: "Mode", type: "Option", range: "Constant Voltage / Constant Current / Off", default: "Constant Voltage", desc: "工作模式" }
+    ],
+    outputs: [
+      { name: "Voltage Output (V)", type: "Number", desc: "受限后的实际电压" },
+      { name: "Current Output (A)", type: "Number", desc: "受限后的实际电流" },
+      { name: "Status", type: "Text", desc: "On / Off" }
+    ],
+    example: `PowerSupply ps = new PowerSupply();
+ps.Voltage = 24.0;
+ps.CurrentLimit = 10.0;
+ps.Mode = PowerMode.ConstantVoltage;
+// 恒压模式：电压保持 24V，电流随负载变化
+ps.VoltageOutput → Panel;
+ps.CurrentOutput → Panel;`
+  },
+  {
+    id: "export-render",
+    name: "Export & Render Component",
+    nameZh: "导出与渲染组件",
+    category: "IO",
+    badge: "utility",
+    desc: "将模型导出为 PNG/SVG/PDF 或使用 V-Ray/Cycles 渲染高质量图像，支持自定义路径与分辨率。",
+    inputs: [
+      { name: "Export Type", type: "Option", range: "PNG / SVG / PDF / Render", default: "PNG", desc: "导出格式" },
+      { name: "Resolution (DPI)", type: "Number", range: "50‑300", default: "150", desc: "图像分辨率" },
+      { name: "File Path", type: "Text", range: "有效路径", default: "export.png", desc: "保存路径" },
+      { name: "Render Settings", type: "Option", range: "V-Ray / Cycles / Custom", default: "Custom", desc: "渲染引擎" },
+      { name: "Output Folder", type: "Text", range: "有效路径", default: "项目文件夹", desc: "渲染输出目录" }
+    ],
+    outputs: [
+      { name: "Exported File", type: "Text", desc: "生成文件完整路径" },
+      { name: "Render Image", type: "Text", desc: "渲染图像路径" },
+      { name: "Status", type: "Text", desc: "Success / Failed / Cancelled" }
+    ],
+    example: `ExportRender ex = new ExportRender();
+ex.ExportType = ExportType.PNG;
+ex.Resolution = 300;
+ex.FilePath = @"C:\Projects\House\House.png";
+ex.RenderSettings = RenderEngine.VRay;
+ex.OutputFolder = @"C:\Projects\House\Render";
+ex.GeometryInput → ModelGeometry;
+ex.Run();`
+  },
+  {
+    id: "web-viewer",
+    name: "Web Viewer Component",
+    nameZh: "网页查看器组件",
+    category: "UI",
+    badge: "utility",
+    desc: "在 Grasshopper 面板中嵌入浏览器，加载本地 HTML 或远程 URL，支持自动刷新与自定义尺寸。",
+    inputs: [
+      { name: "URL", type: "Text", range: "file:///... 或 https://...", default: "file:///default.html", desc: "页面地址" },
+      { name: "Width (px)", type: "Number", range: "100‑2000", default: "800", desc: "面板宽度" },
+      { name: "Height (px)", type: "Number", range: "100‑2000", default: "600", desc: "面板高度" },
+      { name: "Refresh", type: "Boolean", range: "True / False", default: "False", desc: "参数变更时自动刷新" }
+    ],
+    outputs: [
+      { name: "HTML Content", type: "Text", desc: "加载后的完整 HTML" },
+      { name: "Panel Handle", type: "Text", desc: "面板唯一标识 ID" }
+    ],
+    example: `WebViewer wv = new WebViewer();
+wv.URL = "file:///C:/Projects/Catalog.html";
+wv.Width = 800;
+wv.Height = 600;
+wv.Refresh = true;
+wv.HTMLContent → Panel;`
+  },
+  {
+    id: "component-browser",
+    name: "Component Browser",
+    nameZh: "组件浏览器",
+    category: "UI",
+    badge: "core",
+    desc: "可视化组件目录，支持搜索、分类筛选、预览、一键拖入画布，集成自动补全与文档跳转。",
+    inputs: [
+      { name: "Search Query", type: "Text", range: "任意关键词", default: "空", desc: "模糊搜索组件名/参数/文档" },
+      { name: "Category Filter", type: "Option", range: "All / Data / Geometry / Utility / Analysis / Power / IO", default: "All", desc: "分类过滤" },
+      { name: "Preview Size", type: "Number", range: "50‑300", default: "150", desc: "缩略图尺寸" },
+      { name: "Auto‑Load", type: "Boolean", range: "True / False", default: "False", desc: "选中即自动创建实例" }
+    ],
+    outputs: [
+      { name: "Component Instance", type: "Text", desc: "画布中实例的唯一 ID" },
+      { name: "Preview URL", type: "Text", desc: "文档/预览图链接" },
+      { name: "Status", type: "Text", desc: "Ready / Loading / Error" }
+    ],
+    example: `ComponentBrowser cb = new ComponentBrowser();
+cb.SearchQuery = "电源";
+cb.CategoryFilter = Category.Power;
+cb.PreviewSize = 150;
+cb.AutoLoad = true;
+cb.ComponentInstance → Canvas;`
+  },
+  {
+    id: "component-launcher",
+    name: "Component Launcher",
+    nameZh: "组件启动器",
+    category: "Utility",
+    badge: "core",
+    desc: "根据预设 JSON 或手动参数，一键实例化组件并可选自动连接端口，实现参数即用。",
+    inputs: [
+      { name: "Component ID", type: "Text", range: "如 M8, M8_1", default: "空", desc: "目标组件唯一标识" },
+      { name: "Preset File", type: "Text", range: "JSON 文件路径", default: "空", desc: "参数预设文件" },
+      { name: "Manual Parameters", type: "Struct", range: "键值对", default: "空", desc: "手动输入参数" },
+      { name: "Launch Mode", type: "Option", range: "Add / Replace / Append", default: "Add", desc: "实例放置方式" },
+      { name: "Auto‑Connect", type: "Boolean", range: "True / False", default: "False", desc: "自动连接最近端口" }
+    ],
+    outputs: [
+      { name: "Component Instance ID", type: "Text", desc: "创建实例的 GUID" },
+      { name: "Status", type: "Text", desc: "Success / Not Found / Invalid Parameter / Error" },
+      { name: "Launch Log", type: "Text", desc: "详细执行日志" }
+    ],
+    example: `ComponentLauncher cl = new ComponentLauncher();
+cl.ComponentID = "M8";
+cl.PresetFile = @"C:\Presets\Power_10A.json";
+cl.LaunchMode = LaunchMode.Add;
+cl.AutoConnect = true;
+cl.ComponentInstanceID → Canvas;`
+  },
+  {
+    id: "preset-manager",
+    name: "Parameter Preset Manager",
+    nameZh: "参数预设管理器",
+    category: "Utility",
+    badge: "utility",
+    desc: "保存、加载、版本管理组件参数预设，支持 Add/Update/Overwrite/Append 多种模式与 Merge 策略。",
+    inputs: [
+      { name: "Preset Name", type: "Text", range: "1‑50 字符", default: "空", desc: "预设名称" },
+      { name: "Preset File", type: "Text", range: "JSON 路径", default: "空", desc: "预设文件路径" },
+      { name: "Component ID", type: "Text", range: "如 M8", default: "空", desc: "适用组件" },
+      { name: "Version", type: "Text", range: "语义化版本", default: "1.0", desc: "版本号" },
+      { name: "Save Mode", type: "Option", range: "Add / Update / Overwrite / Append", default: "Add", desc: "保存模式" },
+      { name: "Load Mode", type: "Option", range: "Replace / Merge / Append", default: "Replace", desc: "加载模式" },
+      { name: "Confirm", type: "Boolean", range: "True / False", default: "False", desc: "操作前确认" }
+    ],
+    outputs: [
+      { name: "Preset ID", type: "Text", desc: "唯一 GUID" },
+      { name: "Status", type: "Text", desc: "Success / Exists / Invalid Path / Corrupt / Error" },
+      { name: "Log", type: "Text", desc: "执行日志" }
+    ],
+    example: `PresetManager pm = new PresetManager();
+pm.PresetName = "Power_10A";
+pm.ComponentID = "M8";
+pm.Version = "1.0";
+pm.SaveMode = SaveMode.Add;
+pm.Confirm = true;
+pm.ManualParameters = new {
+  Voltage = 24,
+  CurrentLimit = 10,
+  Mode = "Constant Voltage"
+};
+pm.Save();`
+  },
+  {
+    id: "testing-validation",
+    name: "Testing & Validation",
+    nameZh: "测试与验证",
+    category: "Analysis",
+    badge: "utility",
+    desc: "自动化单元/集成/性能测试，参数校验，输出通过率、性能指标与详细日志。",
+    inputs: [
+      { name: "Test Suite", type: "Text", range: "脚本路径/文件夹", default: "空", desc: "测试脚本集合" },
+      { name: "Component ID", type: "Text", range: "如 M8", default: "空", desc: "被测组件" },
+      { name: "Parameter Set", type: "Struct", range: "参数键值对", default: "空", desc: "测试时固定参数" },
+      { name: "Run Mode", type: "Option", range: "Unit / Integration / Performance", default: "Unit", desc: "测试范围" },
+      { name: "Timeout (s)", type: "Number", range: "1‑3600", default: "60", desc: "超时时间" },
+      { name: "Output Report", type: "Text", range: "报告路径", default: "test_report_<ts>.json", desc: "报告输出" },
+      { name: "Verbose", type: "Boolean", range: "True / False", default: "False", desc: "详细日志" }
+    ],
+    outputs: [
+      { name: "Test Result", type: "Struct", desc: "每用例通过/失败/耗时/错误" },
+      { name: "Pass Rate", type: "Number", range: "0‑1", desc: "通过率" },
+      { name: "Performance Metrics", type: "Struct", desc: "CPU/内存/I/O" },
+      { name: "Log", type: "Text", desc: "详细日志" },
+      { name: "Status", type: "Text", desc: "Success / Failed / Timeout / Skipped" }
+    ],
+    example: `TestingValidation tv = new TestingValidation();
+tv.TestSuite = @"C:\Tests\Component_M8_Test.js";
+tv.ComponentID = "M8";
+tv.RunMode = TestMode.Unit;
+tv.Timeout = 30;
+tv.Verbose = true;
+tv.OutputReport = @"C:\Tests\report_M8.json";
+tv.Run();`
+  },
+  {
+    id: "packaging",
+    name: "Packaging & Distribution",
+    nameZh: "打包与分发",
+    category: "IO",
+    badge: "utility",
+    desc: "将教程、组件库、资源打包为 ZIP/TAR.GZ/NSIS/GitHub Release，支持版本号、压缩等级、发布说明。",
+    inputs: [
+      { name: "Package Type", type: "Option", range: "ZIP / TAR.GZ / NSIS / GitHub Release", default: "ZIP", desc: "打包格式" },
+      { name: "Source Directory", type: "Text", range: "项目根目录", default: "当前目录", desc: "源码目录" },
+      { name: "Version", type: "Text", range: "语义化版本", default: "当前版本", desc: "版本标识" },
+      { name: "Include Docs", type: "Boolean", range: "True / False", default: "True", desc: "包含文档" },
+      { name: "Include Assets", type: "Boolean", range: "True / False", default: "True", desc: "包含资源" },
+      { name: "Compression Level", type: "Number", range: "1‑9", default: "6", desc: "压缩强度" },
+      { name: "Release Notes", type: "Text", range: "任意文本", default: "空", desc: "发布说明" }
+    ],
+    outputs: [
+      { name: "Package File", type: "Text", desc: "生成包完整路径" },
+      { name: "Status", type: "Text", desc: "Success / Failed / Invalid Path" },
+      { name: "Log", type: "Text", desc: "打包日志" },
+      { name: "Package ID", type: "Text", desc: "唯一包标识" }
+    ],
+    example: `Packaging pkg = new Packaging();
+pkg.PackageType = PackageType.ZIP;
+pkg.SourceDirectory = @"E:\GH_Tutorial";
+pkg.Version = "1.0.0";
+pkg.IncludeDocs = true;
+pkg.IncludeAssets = true;
+pkg.CompressionLevel = 6;
+pkg.ReleaseNotes = "首次正式发布";
+pkg.Build();`
+  },
+  {
+    id: "version-control",
+    name: "Version Control & Release Management",
+    nameZh: "版本控制与发布管理",
+    category: "Utility",
+    badge: "core",
+    desc: "Git 分支管理、PR 工作流、CI/CD 触发、自动化版本递增与 Release 发布，支持 GitHub/GitLab。",
+    inputs: [
+      { name: "Git Repository", type: "Text", range: "HTTPS/SSH/本地路径", default: "空", desc: "目标仓库" },
+      { name: "Branch Name", type: "Text", range: "分支名", default: "develop", desc: "工作分支" },
+      { name: "Branch Protection", type: "Option", range: "Enabled / Disabled", default: "Enabled", desc: "分支保护" },
+      { name: "CI/CD Trigger", type: "Option", range: "Push / Pull Request / Schedule / Manual", default: "Push", desc: "触发事件" },
+      { name: "CI Pipeline", type: "Text", range: "工作流文件路径", default: "空", desc: "CI 配置" },
+      { name: "Release Type", type: "Option", range: "Patch / Minor / Major", default: "Patch", desc: "版本增量" },
+      { name: "Release Notes", type: "Text", range: "任意文本", default: "空", desc: "发布说明" },
+      { name: "Artifact Path", type: "Text", range: "打包文件路径", default: "空", desc: "发布制品" }
+    ],
+    outputs: [
+      { name: "Commit SHA", type: "Text", desc: "提交标识" },
+      { name: "Branch", type: "Text", desc: "当前分支" },
+      { name: "Status", type: "Text", desc: "Success / Failed / Skipped / Error" },
+      { name: "Log", type: "Text", desc: "执行日志" },
+      { name: "Release URL", type: "Text", desc: "发布链接" }
+    ],
+    example: `VersionControl vc = new VersionControl();
+vc.GitRepository = "https://github.com/org/repo.git";
+vc.BranchName = "develop";
+vc.BranchProtection = true;
+vc.CICDTrigger = Trigger.Push;
+vc.CIPipeline = ".github/workflows/ci.yml";
+vc.ReleaseType = ReleaseType.Minor;
+vc.ReleaseNotes = "Add Kangaroo support";
+vc.ArtifactPath = "./dist/pkg.zip";
+vc.Release();`
+  },
+  {
+    id: "doc-gen",
+    name: "Documentation Generation",
+    nameZh: "文档生成",
+    category: "IO",
+    badge: "utility",
+    desc: "Markdown 批量转 PDF/HTML，支持自定义模板、变量替换、详细日志，适合手册批量生成。",
+    inputs: [
+      { name: "Source Files", type: "Text[]", range: "*.md 路径列表", default: "空", desc: "源文件（支持通配符）" },
+      { name: "Output Format", type: "Option", range: "PDF / HTML / PDF+HTML", default: "PDF", desc: "输出格式" },
+      { name: "Template", type: "Text", range: "HTML 模板路径", default: "内置模板", desc: "自定义模板" },
+      { name: "Output Directory", type: "Text", range: "目标目录", default: "当前目录", desc: "输出目录" },
+      { name: "Template Variables", type: "Text", range: "JSON 键值对", default: "空", desc: "模板变量" },
+      { name: "Verbose", type: "Boolean", range: "True / False", default: "False", desc: "详细日志" }
+    ],
+    outputs: [
+      { name: "Output File", type: "Text", desc: "生成文档路径" },
+      { name: "Status", type: "Text", desc: "Success / Failed / Invalid Input" },
+      { name: "Log", type: "Text", desc: "转换日志" },
+      { name: "Output File List", type: "Text[]", desc: "所有生成文件" }
+    ],
+    example: `DocGenerator dg = new DocGenerator();
+dg.SourceFiles = new[] { "docs/*.md" };
+dg.OutputFormat = OutputFormat.PDF;
+dg.OutputDirectory = @"C:\Docs\Output";
+dg.Verbose = true;
+dg.Generate();`
+  },
+  {
+    id: "deployment",
+    name: "Deployment Automation",
+    nameZh: "部署自动化",
+    category: "IO",
+    badge: "utility",
+    desc: "一键打包并发布到 GitHub/GitLab Release 或本地，集成 CI 工作流、分支切换、制品上传。",
+    inputs: [
+      { name: "Deploy Type", type: "Option", range: "ZIP / GitHub Release / GitLab Release / Package", default: "ZIP", desc: "部署方式" },
+      { name: "Source Directory", type: "Text", range: "项目根目录", default: "当前目录", desc: "源码目录" },
+      { name: "Version", type: "Text", range: "语义化版本", default: "当前版本", desc: "发布版本" },
+      { name: "Git Repository", type: "Text", range: "仓库地址", default: "空", desc: "目标仓库" },
+      { name: "Branch Name", type: "Text", range: "发布分支", default: "release/1.0.0", desc: "分支名" },
+      { name: "CI/CD Trigger", type: "Option", range: "Push / Pull Request / Schedule / Manual", default: "Push", desc: "触发事件" },
+      { name: "CI/CD Pipeline", type: "Text", range: "工作流路径", default: "空", desc: "CI 配置" },
+      { name: "Artifact Path", type: "Text", range: "打包文件路径", default: "空", desc: "制品路径" },
+      { name: "Release Notes", type: "Text", range: "任意文本", default: "空", desc: "发布说明" }
+    ],
+    outputs: [
+      { name: "Package File", type: "Text", desc: "打包文件路径" },
+      { name: "Status", type: "Text", desc: "Success / Failed / Invalid Path" },
+      { name: "Log", type: "Text", desc: "部署日志" },
+      { name: "Release URL", type: "Text", desc: "发布链接" },
+      { name: "Package ID", type: "Text", desc: "包标识" }
+    ],
+    example: `Deployment dp = new Deployment();
+dp.DeployType = DeployType.GitHubRelease;
+dp.SourceDirectory = @"E:\GH_Tutorial";
+dp.Version = "1.0.0";
+dp.GitRepository = "https://github.com/org/repo.git";
+dp.BranchName = "release/1.0.0";
+dp.CICDTrigger = Trigger.Push;
+dp.CICDPipeline = ".github/workflows/ci.yml";
+dp.ArtifactPath = "./dist/tutorial.zip";
+dp.ReleaseNotes = "完整教程首发";
+dp.Deploy();`
+  },
+  {
+    id: "cicd",
+    name: "CI/CD Pipeline Automation",
+    nameZh: "CI/CD 流水线自动化",
+    category: "Utility",
+    badge: "core",
+    desc: "完整流水线定义、触发器、并行编排、缓存制品、部署门禁、通知渠道，支持 GitHub Actions/GitLab CI 语法。",
+    inputs: [
+      { name: "Pipeline Definition", type: "Text", range: "YAML 路径/内容", default: ".github/workflows/ci.yml", desc: "流水线定义" },
+      { name: "Trigger Events", type: "Option[]", range: "push / pull_request / schedule / workflow_dispatch / release", default: "push", desc: "触发事件" },
+      { name: "Environment Variables", type: "Struct", range: "键值对", default: "空", desc: "环境变量" },
+      { name: "Secrets", type: "Struct", range: "键值对", default: "空", desc: "敏感信息" },
+      { name: "Cache Paths", type: "Text[]", range: "相对路径列表", default: "空", desc: "缓存目录" },
+      { name: "Artifact Paths", type: "Text[]", range: "相对路径列表", default: "空", desc: "制品路径" },
+      { name: "Deployment Gates", type: "Struct", range: "门禁规则", default: "空", desc: "部署前条件" },
+      { name: "Parallelism", type: "Number", range: "1‑50", default: "5", desc: "最大并行数" },
+      { name: "Timeout (min)", type: "Number", range: "1‑1440", default: "60", desc: "超时分钟" },
+      { name: "Notify Channels", type: "Option[]", range: "Email / Slack / Webhook / DingTalk", default: "空", desc: "通知渠道" }
+    ],
+    outputs: [
+      { name: "Run ID", type: "Text", desc: "运行标识" },
+      { name: "Status", type: "Text", desc: "Success / Failed / Cancelled / Timed Out / Pending Approval" },
+      { name: "Logs", type: "Text", desc: "完整执行日志" },
+      { name: "Artifacts", type: "Text[]", desc: "制品下载链接" },
+      { name: "Metrics", type: "Struct", desc: "耗时/缓存命中/通过率" },
+      { name: "Deploy URL", type: "Text", desc: "部署访问地址" }
+    ],
+    example: `// .github/workflows/ci.yml
+name: Grasshopper CI/CD
+on:
+  push: { branches: [main, develop] }
+  pull_request: { branches: [main] }
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install -r requirements.txt
+      - run: pytest --tb=short -q
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m mkdocs build --site-dir site
+      - uses: actions/upload-artifact@v4
+        with: { name: docs, path: site/ }
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: \${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site`
+  }
+];
+
+// ===== 工具函数 =====
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({'&':'&','<':'<','>':'>','"':'"',"'":'''}[c]));
+}
+function highlightTerm(text, term) {
+  if (!term) return escapeHtml(text);
+  const escaped = escapeHtml(text);
+  const regex = new RegExp(`(${escapeHtml(term).replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')})`, 'gi');
+  return escaped.replace(regex, '<mark style="background:var(--accent-dim);color:var(--accent);padding:0 2px;border-radius:2px;">$1</mark>');
+}
+function renderParamTable(params, term) {
+  if (!params.length) return '<p style="color:var(--muted);font-size:.8rem;">无</p>';
+  return `<table class="param-table"><thead><tr><th>名称</th><th>类型</th><th>范围/默认</th><th>说明</th></tr></thead><tbody>` +
+    params.map(p => `<tr>
+      <td><span class="param-name">${highlightTerm(p.name, term)}</span></td>
+      <td><span class="param-type">${highlightTerm(p.type, term)}</span></td>
+      <td><span class="param-range">${highlightTerm(p.range, term)} <span style="color:#6272a4;">(默认: ${highlightTerm(p.default, term)})</span></span></td>
+      <td>${highlightTerm(p.desc, term)}</td>
+    </tr>`).join('') + '</tbody></table>';
+}
+function renderExample(code, term) {
+  return `<div class="example-box">${highlightTerm(code, term)
+    .replace(/\b(const|let|var|function|return|if|else|for|while|new|class|extends|super|this|import|export|from|as|default|true|false|null|undefined)\b/g, '<span class="kw">$&</span>')
+    .replace(/"([^"]*)"/g, '<span class="str">"$1"</span>')
+    .replace(/'([^']*)'/g, '<span class="str">\'$1\'</span>')
+    .replace(/\b(\d+\.?\d*)\b/g, '<span class="num">$1</span>')
+    .replace(/\/\/.*$/gm, '<span class="cmt">$&</span>')
+  }</div>`;
+}
+function createCard(comp, term) {
+  const card = document.createElement('article');
+  card.className = 'card';
+  card.dataset.id = comp.id;
+  card.innerHTML = `
+    <div class="card-header">
+      <h3 class="card-title">${highlightTerm(comp.nameZh + ' / ' + comp.name, term)}</h3>
+      <span class="card-badge">${comp.category}</span>
+    </div>
+    <p class="card-desc">${highlightTerm(comp.desc, term)}</p>
+    <div class="card-section">
+      <div class="card-section-title">输入参数</div>
+      ${renderParamTable(comp.inputs, term)}
+    </div>
+    <div class="card-section">
+      <div class="card-section-title">输出参数</div>
+      ${renderParamTable(comp.outputs, term)}
+    </div>
+    <div class="card-section">
+      <div class="card-section-title">示例</div>
+      ${renderExample(comp.example, term)}
+    </div>
+  `;
+  return card;
+}
+
+// ===== 搜索与渲染 =====
+const grid = document.getElementById('componentGrid');
+const searchInput = document.getElementById('searchInput');
+const autocomplete = document.getElementById('autocomplete');
+const loading = document.getElementById('loading');
+const emptyState = document.getElementById('emptyState');
+const totalCount = document.getElementById('totalCount');
+const totalParams = document.getElementById('totalParams');
+const totalExamples = document.getElementById('totalExamples');
+
+let selectedIndex = -1;
+let currentTerm = '';
+
+function updateStats(list) {
+  totalCount.textContent = list.length;
+  totalParams.textContent = list.reduce((sum, c) => sum + c.inputs.length + c.outputs.length, 0);
+  totalExamples.textContent = list.length;
+}
+
+function renderGrid(list, term) {
+  grid.innerHTML = '';
+  if (list.length === 0) {
+    emptyState.classList.remove('hidden');
+    return;
+  }
+  emptyState.classList.add('hidden');
+  list.forEach(comp => grid.appendChild(createCard(comp, term)));
+  updateStats(list);
+}
+
+function filterComponents(term) {
+  currentTerm = term.trim().toLowerCase();
+  if (!currentTerm) return components;
+  return components.filter(c => {
+    const hay = `${c.id} ${c.name} ${c.nameZh} ${c.category} ${c.desc} ${c.inputs.map(i=>i.name+i.type+i.desc).join(' ')} ${c.outputs.map(o=>o.name+o.type+o.desc).join(' ')} ${c.example}`.toLowerCase();
+    return hay.includes(currentTerm);
+  });
+}
+
+function showAutocomplete(term) {
+  if (!term.trim()) { autocomplete.classList.remove('open'); return; }
+  const matches = components.filter(c => {
+    const hay = `${c.name} ${c.nameZh} ${c.category} ${c.desc}`.toLowerCase();
+    return hay.includes(term.toLowerCase());
+  }).slice(0, 10);
+  if (!matches.length) { autocomplete.classList.remove('open'); return; }
+  autocomplete.innerHTML = matches.map((c, i) => `
+    <div class="autocomplete-item" data-index="${i}" data-id="${c.id}">
+      <span class="ac-name">${highlightTerm(c.nameZh + ' / ' + c.name, term)}</span>
+      <span class="ac-category">${c.category}</span>
+      <span class="ac-desc">${highlightTerm(c.desc.slice(0,60), term)}…</span>
+    </div>
+  `).join('');
+  autocomplete.classList.add('open');
+  selectedIndex = -1;
+}
+
+function selectAutocomplete(index) {
+  const items = autocomplete.querySelectorAll('.autocomplete-item');
+  items.forEach((el, i) => el.classList.toggle('selected', i === index));
+  if (index >= 0 && items[index]) {
+    const id = items[index].dataset.id;
+    searchInput.value = components.find(c => c.id === id).nameZh;
+    currentTerm = searchInput.value.toLowerCase();
+    renderGrid(filterComponents(currentTerm), currentTerm);
+    autocomplete.classList.remove('open');
+    const card = grid.querySelector(`[data-id="${id}"]`);
+    if (card) card.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+}
+
+// ===== 事件绑定 =====
+searchInput.addEventListener('input', e => {
+  const term = e.target.value;
+  showAutocomplete(term);
+  renderGrid(filterComponents(term), term.toLowerCase());
+});
+searchInput.addEventListener('keydown', e => {
+  const items = autocomplete.querySelectorAll('.autocomplete-item');
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+    selectAutocomplete(selectedIndex);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    selectedIndex = Math.max(selectedIndex - 1, -1);
+    selectAutocomplete(selectedIndex);
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    if (selectedIndex >= 0) selectAutocomplete(selectedIndex);
+    else autocomplete.classList.remove('open');
+  } else if (e.key === 'Escape') {
+    autocomplete.classList.remove('open');
+  }
+});
+autocomplete.addEventListener('click', e => {
+  const item = e.target.closest('.autocomplete-item');
+  if (item) selectAutocomplete(parseInt(item.dataset.index));
+});
+document.addEventListener('click', e => {
+  if (!searchInput.contains(e.target) && !autocomplete.contains(e.target)) {
+    autocomplete.classList.remove('open');
+  }
+});
+
+// 初始渲染
+renderGrid(components, '');
+</script>
+</body>
+</html>
