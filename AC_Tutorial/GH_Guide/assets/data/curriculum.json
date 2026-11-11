@@ -2,7 +2,7 @@
   "meta": {
     "title": "GH Guide | GH 指南",
     "subtitle": "Rhino 8 / Grasshopper 用户手册与组件速查",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "updated": "2026-11-11",
     "author": "Kbitai"
   },
@@ -16,7 +16,11 @@
     { "id": "component", "zh": "组件详解", "en": "Component Reference", "color": "#ec4899", "emoji": "🧩" },
     { "id": "workflow", "zh": "工作流与发布", "en": "Workflow & Release", "color": "#14b8a6", "emoji": "🚀" },
     { "id": "physics", "zh": "物理模拟", "en": "Physics Simulation", "color": "#f97316", "emoji": "🎯" },
-    { "id": "development", "zh": "插件开发", "en": "Plugin Development", "color": "#8b5cf6", "emoji": "💻" }
+    { "id": "development", "zh": "插件开发", "en": "Plugin Development", "color": "#8b5cf6", "emoji": "💻" },
+    { "id": "visualization", "zh": "数据可视化", "en": "Data Visualization", "color": "#10b981", "emoji": "📈" },
+    { "id": "structure", "zh": "结构分析", "en": "Structural Analysis", "color": "#f59e0b", "emoji": "🏗️" },
+    { "id": "generative", "zh": "生成式设计", "en": "Generative Design", "color": "#8b5cf6", "emoji": "🧬" },
+    { "id": "rhino8_new", "zh": "Rhino 8 新特性", "en": "Rhino 8 New Features", "color": "#06b6d4", "emoji": "🆕" }
   ],
   "modules": [
     {
@@ -355,6 +359,71 @@
       "difficulty": "中级",
       "time": "25 分钟",
       "prerequisites": ["M16", "M22", "M23"],
+      "keyComponents": [".gha", "ZIP", "GitHub Release", "Food4Rhino", "License"]
+    },
+    {
+      "id": "M26",
+      "title": { "zh": "数据可视化", "en": "Data Visualization" },
+      "category": "visualization",
+      "desc": { "zh": "在 Grasshopper 中进行数据可视化，包括数值图表、颜色映射、高度场、热力图、并行坐标图等。", "en": "Data visualization in Grasshopper including value charts, color mapping, height fields, heatmaps, parallel coordinate plots." },
+      "file": "modules/M26_Data_Visualization.md",
+      "color": "#10b981",
+      "emoji": "📈",
+      "difficulty": "中级",
+      "time": "30 分钟",
+      "prerequisites": ["M4", "M24"],
+      "keyComponents": ["Color Mapping", "Custom Preview", "Mesh", "Graph Mapper"]
+    },
+    {
+      "id": "M27",
+      "title": { "zh": "结构分析", "en": "Structural Analysis" },
+      "category": "structure",
+      "desc": { "zh": "在 Grasshopper 中进行基础结构受力分析，包括梁、板、桁架的应力、位移、变形计算。", "en": "Basic structural analysis in Grasshopper including stress, displacement, deformation calculation for beams, plates and trusses." },
+      "file": "modules/M27_Structural_Analysis.md",
+      "color": "#f59e0b",
+      "emoji": "🏗️",
+      "difficulty": "高级",
+      "time": "35 分钟",
+      "prerequisites": ["M4", "M6"],
+      "keyComponents": ["Stress", "Displacement", "Support", "Load", "Safety Factor"]
+    },
+    {
+      "id": "M28",
+      "title": { "zh": "生成式设计", "en": "Generative Design" },
+      "category": "generative",
+      "desc": { "zh": "在 Grasshopper 中进行生成式设计，包括参数空间定义、目标函数构建、进化优化与结果筛选。", "en": "Generative design in Grasshopper including parameter space definition, objective function construction, evolutionary optimization and result filtering." },
+      "file": "modules/M28_Generative_Design.md",
+      "color": "#8b5cf6",
+      "emoji": "🧬",
+      "difficulty": "高级",
+      "time": "40 分钟",
+      "prerequisites": ["M4", "M24"],
+      "keyComponents": ["Galapagos", "Objective Function", "Design Variables", "Pareto Front"]
+    },
+    {
+      "id": "M29",
+      "title": { "zh": "Rhino 8 新特性", "en": "Rhino 8 New Features" },
+      "category": "rhino8_new",
+      "desc": { "zh": "Rhino 8 中的新建模功能及其在 Grasshopper 中的应用，包括 SubD 曲面、Selhybrid 选择、PushPull 拉推等。", "en": "New modeling features in Rhino 8 and their Grasshopper applications, including SubD surfaces, Selhybrid selection, PushPull." },
+      "file": "modules/M29_Rhino8_New_Features.md",
+      "color": "#06b6d4",
+      "emoji": "🆕",
+      "difficulty": "中级",
+      "time": "30 分钟",
+      "prerequisites": ["M1", "M4"],
+      "keyComponents": ["SubD", "PushPull", "Clipping Plane", "Nurbs Conversion"]
+    },
+    {
+      "id": "M30",
+      "title": { "zh": "插件发布实战", "en": "Plugin Publishing Practice" },
+      "category": "workflow",
+      "desc": { "zh": "将开发好的 Grasshopper 插件完整打包并发布到 Food4Rhino、GitHub Release 或私有仓库的全流程。", "en": "Full process of packaging and publishing Grasshopper plugins to Food4Rhino, GitHub Release or private repos." },
+      "file": "modules/M30_Plugin_Publishing_Practice.md",
+      "color": "#14b8a6",
+      "emoji": "📦",
+      "difficulty": "中级",
+      "time": "30 分钟",
+      "prerequisites": ["M22", "M23", "M16"],
       "keyComponents": [".gha", "ZIP", "GitHub Release", "Food4Rhino", "License"]
     }
   ]
