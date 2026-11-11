@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">GH 指南 | GH Guide — Rhino 8 / Grasshopper 用户手册</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="container">
+    <a href="#" class="brand" id="brandLink">GH <span>指南</span></a>
+    <nav class="nav">
+      <a href="#course" class="nav-link" id="navCourse">课程地图</a>
+      <a href="#catalog" class="nav-link" id="navCatalog">组件目录</a>
+    </nav>
+    <div class="lang-switch" id="langSwitch">EN</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1 id="heroTitle">系统学习 Grasshopper，从环境到 CI/CD</h1>
+    <p id="heroSub">19+ 个学习模块 · 817 个原生组件目录 · 中英双语 · 图文并茂</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" id="btnStart">开始学习</button>
+      <button class="btn btn-outline" id="btnCatalog">浏览组件</button>
+    </div>
+  </div>
+</section>
+
+<section class="search-section">
+  <div class="container">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="搜索课程、组件或关键词..." autocomplete="off">
+      <div id="autocomplete" class="autocomplete"></div>
+    </div>
+    <div id="searchResults" style="margin-top:16px;"></div>
+  </div>
+</section>
+
+<section class="course-section" id="course">
+  <div class="container">
+    <div class="section-title">
+      <span class="emoji">🗺️</span>
+      <span id="courseTitle">课程地图</span>
+    </div>
+    <p class="section-sub" id="courseSub">按学习路径顺序浏览所有模块</p>
+    <div class="course-grid" id="courseGrid"></div>
+  </div>
+</section>
+
+<section class="catalog-section" id="catalog">
+  <div class="container">
+    <div class="section-title">
+      <span class="emoji">🧩</span>
+      <span id="catalogTitle">组件目录</span>
+    </div>
+    <p class="section-sub" id="catalogSub">817 个 Rhino 8 原生组件，智能搜索与自动补全</p>
+    <div class="catalog-grid" id="catalogGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p id="footerText">© 2026 Kbitai GH Guide · 中英双语</p>
+  </div>
+</footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
