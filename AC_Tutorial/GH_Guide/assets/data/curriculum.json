@@ -2,7 +2,7 @@
   "meta": {
     "title": "GH Guide | GH 指南",
     "subtitle": "Rhino 8 / Grasshopper 用户手册与组件速查",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "updated": "2026-11-11",
     "author": "Kbitai"
   },
@@ -14,7 +14,9 @@
     { "id": "ui", "zh": "UI/UX 设计", "en": "UI/UX Design", "color": "#10b981", "emoji": "🎨" },
     { "id": "project", "zh": "实战项目", "en": "Tutorial Project", "color": "#ef4444", "emoji": "🏗️" },
     { "id": "component", "zh": "组件详解", "en": "Component Reference", "color": "#ec4899", "emoji": "🧩" },
-    { "id": "workflow", "zh": "工作流与发布", "en": "Workflow & Release", "color": "#14b8a6", "emoji": "🚀" }
+    { "id": "workflow", "zh": "工作流与发布", "en": "Workflow & Release", "color": "#14b8a6", "emoji": "🚀" },
+    { "id": "physics", "zh": "物理模拟", "en": "Physics Simulation", "color": "#f97316", "emoji": "🎯" },
+    { "id": "development", "zh": "插件开发", "en": "Plugin Development", "color": "#8b5cf6", "emoji": "💻" }
   ],
   "modules": [
     {
@@ -276,6 +278,84 @@
       "time": "35 分钟",
       "prerequisites": ["M18"],
       "keyComponents": ["Pipeline Definition", "Trigger Events", "Parallelism", "Deployment Gates"]
+    },
+    {
+      "id": "M20",
+      "title": { "zh": "监控与可观测性", "en": "Monitoring & Observability" },
+      "category": "workflow",
+      "desc": { "zh": "运行时监控与可观测性，包括数据流追踪、执行耗时、内存占用、异常告警与仪表盘。", "en": "Runtime monitoring & observability including data flow tracing, execution time, memory usage, exception alerting and dashboard." },
+      "file": "modules/M20_Monitoring_Observability.md",
+      "color": "#14b8a6",
+      "emoji": "📊",
+      "difficulty": "高级",
+      "time": "30 分钟",
+      "prerequisites": ["M15", "M18"],
+      "keyComponents": ["Dashboard", "Metrics", "Alerts", "Logs"]
+    },
+    {
+      "id": "M21",
+      "title": { "zh": "Kangaroo 物理模拟", "en": "Kangaroo Physics Simulation" },
+      "category": "physics",
+      "desc": { "zh": "集成 Kangaroo 物理引擎，支持弹簧、重力、碰撞、折纸与气压模拟，实现形态生成与结构优化。", "en": "Integrates Kangaroo physics engine, supporting spring, gravity, collision, origami and air pressure simulations for form-finding and structural optimization." },
+      "file": "modules/M21_Kangaroo_Physics.md",
+      "color": "#f97316",
+      "emoji": "🎯",
+      "difficulty": "中级",
+      "time": "35 分钟",
+      "prerequisites": ["M4", "M6"],
+      "keyComponents": ["Spring", "Gravity", "Collision", "Anchor", "Solver"]
+    },
+    {
+      "id": "M22",
+      "title": { "zh": "C# 插件开发模板", "en": "C# Plugin Development Template" },
+      "category": "development",
+      "desc": { "zh": "使用 C# 与 Visual Studio 开发自定义 Grasshopper 插件，包括项目结构、GH_Component 继承、参数定义、SolveInstance 实现与打包。", "en": "Develop custom Grasshopper plugins using C# and Visual Studio, including project structure, GH_Component inheritance, parameter definition, SolveInstance implementation and packaging." },
+      "file": "modules/M22_CSharp_Plugin_Template.md",
+      "color": "#8b5cf6",
+      "emoji": "💻",
+      "difficulty": "高级",
+      "time": "45 分钟",
+      "prerequisites": ["M4"],
+      "keyComponents": ["GH_Component", "IGH_Param", "SolveInstance", "GUID", ".gha"]
+    },
+    {
+      "id": "M23",
+      "title": { "zh": "GhPython 脚本库", "en": "GhPython Script Library" },
+      "category": "development",
+      "desc": { "zh": "GhPython 脚本开发指南与常用脚本库，包括 RhinoCommon API 调用、数据树操作、自定义类封装与多脚本模块化管理。", "en": "GhPython script development guide and common script library, including RhinoCommon API calls, data tree operations, custom class encapsulation and multi-script modular management." },
+      "file": "modules/M23_GhPython_Script_Library.md",
+      "color": "#8b5cf6",
+      "emoji": "🐍",
+      "difficulty": "中级",
+      "time": "30 分钟",
+      "prerequisites": ["M4"],
+      "keyComponents": ["GhPython Component", "rhinoscriptsyntax", "Rhino.Geometry", "ghpythonlib"]
+    },
+    {
+      "id": "M24",
+      "title": { "zh": "数据树高级与性能优化", "en": "Advanced Data Trees & Performance Optimization" },
+      "category": "params",
+      "desc": { "zh": "深入讲解数据树结构，包括 Graft、Flatten、Simplify、TrimTree、Path Mapper 等树操作，以及组件级与定义级性能优化。", "en": "Deep dive into data tree structures including Graft, Flatten, Simplify, TrimTree, Path Mapper, plus component-level and definition-level performance optimization." },
+      "file": "modules/M24_DataTree_Performance.md",
+      "color": "#f59e0b",
+      "emoji": "🌳",
+      "difficulty": "中级",
+      "time": "30 分钟",
+      "prerequisites": ["M4"],
+      "keyComponents": ["Graft", "Flatten", "Simplify", "Path Mapper", "TrimTree"]
+    },
+    {
+      "id": "M25",
+      "title": { "zh": "发布与社区分享", "en": "Publishing & Community Sharing" },
+      "category": "workflow",
+      "desc": { "zh": "将开发好的 Grasshopper 定义、自定义组件与插件发布到社区、Food4Rhino、GitHub 或私有仓库，包括打包、版本管理与许可证选择。", "en": "Publish developed Grasshopper definitions, custom components and plugins to community, Food4Rhino, GitHub or private repos, including packaging, version management and license selection." },
+      "file": "modules/M25_Publishing_Sharing.md",
+      "color": "#14b8a6",
+      "emoji": "🌍",
+      "difficulty": "中级",
+      "time": "25 分钟",
+      "prerequisites": ["M16", "M22", "M23"],
+      "keyComponents": [".gha", "ZIP", "GitHub Release", "Food4Rhino", "License"]
     }
   ]
 }
