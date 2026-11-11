@@ -1,4 +1,31 @@
 let autocompleteTimeout;
+const PROGRESS_KEY = "gh_progress";
+const FAV_KEY = "gh_favorites";
+
+function getProgress() {
+  try { return JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}"); } catch { return {}; }
+}
+function saveProgress(p) { localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); }
+function isDone(id) { return !!getProgress()[id]; }
+function toggleDone(id) {
+  const p = getProgress();
+  if (p[id]) delete p[id]; else p[id] = true;
+  saveProgress(p);
+  renderCourses();
+  renderProgressBar();
+}
+function getFavs() {
+  try { return JSON.parse(localStorage.getItem(FAV_KEY) || "[]"); } catch { return []; }
+}
+function isFav(id) { return getFavs().includes(id); }
+function toggleFav(id) {
+  const f = getFavs();
+  const i = f.indexOf(id);
+  if (i >= 0) f.splice(i, 1); else f.push(id);
+  localStorage.setItem(FAV_KEY, JSON.stringify(f));
+  renderCourses();
+  renderProgressBar();
+}
 
 async function init() {
   await DataAPI.loadCurriculum();
@@ -13,6 +40,7 @@ async function init() {
   const navLinks = document.querySelectorAll(".nav-link");
 
   updatePageText();
+  renderProgressBar();
   renderCourses();
   renderCatalogPreview();
 
@@ -20,6 +48,7 @@ async function init() {
     I18N_API.setLang(I18N_API.getLang() === "zh" ? "en" : "zh");
     langBtn.textContent = I18N_API.t("langLabel");
     updatePageText();
+    renderProgressBar();
     renderCourses();
     renderCatalogPreview();
   });
@@ -101,6 +130,31 @@ function difficultyTag(lang, diff) {
   return `<span class="course-tag ${map[lang][diff]}">${diff}</span>`;
 }
 
+function renderProgressBar() {
+  const bar = document.getElementById("progressBar");
+  const text = document.getElementById("progressText");
+  if (!bar || !text) return;
+  const modules = DataAPI.getModules();
+  const done = modules.filter(m => isDone(m.id)).length;
+  const total = modules.length;
+  const pct = total ? Math.round(done / total * 100) : 0;
+  bar.style.width = pct + "%";
+  const t = I18N_API.getLang();
+  const doneLabel = t === "zh" ? "已完成" : "Completed";
+  text.textContent = doneLabel + ": " + done + " / " + total;
+}
+
+function statusBtns(lang, id) {
+  const done = isDone(id) ? " done" : "";
+  const faved = isFav(id) ? " faved" : "";
+  const doneLabel = lang === "zh" ? (isDone(id) ? "已完成" : "标记完成") : (isDone(id) ? "Done" : "Mark Done");
+  const favLabel = lang === "zh" ? (isFav(id) ? "已收藏" : "收藏") : (isFav(id) ? "Favorited" : "Favorite");
+  return `<div class="status-row">
+    <button class="btn-status btn-done${done}" onclick="event.stopPropagation(); toggleDone('${id}')">${doneLabel}</button>
+    <button class="btn-status btn-fav${faved}" onclick="event.stopPropagation(); toggleFav('${id}')">${favLabel}</button>
+  </div>`;
+}
+
 function renderCourses() {
   const grid = document.getElementById("courseGrid");
   const lang = I18N_API.getLang();
@@ -110,6 +164,7 @@ function renderCourses() {
     const title = m.title[lang];
     const desc = m.desc[lang];
     const tag = difficultyTag(lang, m.difficulty);
+    const btns = statusBtns(lang, m.id);
     return `
       <div class="course-card" onclick="location.href='pages/module.html?id=${m.id}&lang=${lang}'">
         <div class="course-header">
@@ -120,8 +175,9 @@ function renderCourses() {
         <div class="course-desc">${desc}</div>
         <div class="course-footer">
           ${tag}
-          <span class="course-time">${m.time} · ${m.prerequisites.length ? t("prerequisites") + ": " + m.prerequisites.join(", ") : t("prerequisites") + ": 无"}</span>
+          <span class="course-time">${m.time}</span>
         </div>
+        ${btns}
       </div>
     `;
   }).join("");
@@ -184,7 +240,7 @@ function renderSearchResults(modules, components, q) {
     box.innerHTML = `<div class="empty"><div class="emoji">🔍</div><p>${I18N_API.t("noResults")}</p></div>`;
     return;
   }
-  let html = `<div style="font-size:13px;color:${'var(--muted)'};margin-bottom:8px;">${total} ${I18N_API.t("resultsCount")}</div>`;
+  let html = `<div style="font-size:13px;color:var(--muted);margin-bottom:8px;">${total} ${I18N_API.t("resultsCount")}</div>`;
   modules.slice(0, 8).forEach(m => {
     const cat = DataAPI.getCategoryStyle(m.category);
     html += `<a class="ac-item" style="display:block" href="pages/module.html?id=${m.id}&lang=${lang}">

@@ -144,6 +144,10 @@ html, body {
   padding: 32px 0;
   border-bottom: 1px solid var(--border);
 }
+.progress-section {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
 .search-wrap {
   position: relative;
   max-width: 700px;
@@ -352,6 +356,73 @@ footer {
 .ac-emoji { font-size: 18px; flex-shrink: 0; }
 .ac-name { flex: 1; font-weight: 700; color: var(--text); font-size: 14px; }
 .ac-meta { font-size: 12px; color: var(--muted); flex-shrink: 0; }
+
+/* ---------- 进度跟踪 ---------- */
+.progress-wrap {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.progress-bar {
+  flex: 1;
+  min-width: 200px;
+  height: 8px;
+  background: #334155;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width var(--transition);
+}
+.progress-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 90px;
+  text-align: right;
+}
+.course-card .status-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  justify-content: space-between;
+}
+.btn-status {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.btn-done {
+  background: #16653a;
+  color: #bbf7d0;
+}
+.btn-done.done {
+  background: #15803d;
+}
+.btn-fav {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.btn-fav.faved {
+  color: #ef4444;
+  border-color: #ef4444;
+  background: #fef2f2;
+}
 
 /* ---------- 响应式 ---------- */
 @media (max-width: 768px) {

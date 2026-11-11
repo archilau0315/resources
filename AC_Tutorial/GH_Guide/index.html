@@ -26,6 +26,9 @@
       <button class="btn btn-primary" id="btnStart">开始学习</button>
       <button class="btn btn-outline" id="btnCatalog">浏览组件</button>
     </div>
+    <div class="offline-note" style="margin-top:24px; font-size:14px; color:var(--muted);">
+      💡 <span id="offlineText">纯前端离线运行：下载整个文件夹，用浏览器打开 index.html 即可，无需安装、无依赖。</span>
+    </div>
   </div>
 </section>
 
@@ -37,6 +40,15 @@
       <div id="autocomplete" class="autocomplete"></div>
     </div>
     <div id="searchResults" style="margin-top:16px;"></div>
+  </div>
+</section>
+
+<section class="progress-section">
+  <div class="container">
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressBar"></div></div>
+      <div class="progress-text" id="progressText">-- / --</div>
+    </div>
   </div>
 </section>
 
