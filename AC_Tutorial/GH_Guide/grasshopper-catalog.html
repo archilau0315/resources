@@ -216,6 +216,7 @@ main { max-width: 1400px; margin: 0 auto; padding: 32px; }
   line-height: 1.7;
   overflow-x: auto;
   color: #a0c4e8;
+  white-space: pre-wrap;
 }
 .example-box .kw { color: #ff79c6; }
 .example-box .str { color: #f1fa8c; }
@@ -689,8 +690,9 @@ jobs:
 ];
 
 // ===== 工具函数 =====
+const HTML_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g, c => ({'&':'&','<':'<','>':'>','"':'"',"'":'''}[c]));
+  return String(str).replace(/[&<>"']/g, c => HTML_ESCAPES[c]);
 }
 function highlightTerm(text, term) {
   if (!term) return escapeHtml(text);
@@ -710,9 +712,9 @@ function renderParamTable(params, term) {
 }
 function renderExample(code, term) {
   return `<div class="example-box">${highlightTerm(code, term)
+    .replace(/&lt;br&gt;/g, '<br>')
     .replace(/\b(const|let|var|function|return|if|else|for|while|new|class|extends|super|this|import|export|from|as|default|true|false|null|undefined)\b/g, '<span class="kw">$&</span>')
-    .replace(/"([^"]*)"/g, '<span class="str">"$1"</span>')
-    .replace(/'([^']*)'/g, '<span class="str">\'$1\'</span>')
+    .replace(/&quot;([^&]*)&quot;/g, '<span class="str">&quot;$1&quot;</span>')
     .replace(/\b(\d+\.?\d*)\b/g, '<span class="num">$1</span>')
     .replace(/\/\/.*$/gm, '<span class="cmt">$&</span>')
   }</div>`;
