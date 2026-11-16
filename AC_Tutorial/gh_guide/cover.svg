@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="Grasshopper 2 组件速查手册">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b6e80"/>
+      <stop offset="0.55" stop-color="#0c8599"/>
+      <stop offset="1" stop-color="#0d1117"/>
+    </linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.2" fill="#ffffff" opacity="0.10"/>
+    </pattern>
+  </defs>
+
+  <rect width="300" height="300" fill="url(#bg)"/>
+  <rect width="300" height="300" fill="url(#dots)"/>
+
+  <!-- 参数化连线 -->
+  <g stroke="#ffffff" stroke-opacity="0.22" stroke-width="2" fill="none">
+    <path d="M18 62 H74 Q86 62 86 74 V120"/>
+    <path d="M18 238 H74 Q86 238 86 226 V180"/>
+    <path d="M214 120 V180"/>
+    <path d="M214 150 H282"/>
+  </g>
+
+  <!-- 组件节点 -->
+  <g fill="#ffffff" fill-opacity="0.10" stroke="#ffffff" stroke-opacity="0.38" stroke-width="1.6">
+    <rect x="62" y="34" width="48" height="34" rx="7"/>
+    <rect x="62" y="232" width="48" height="34" rx="7"/>
+    <rect x="190" y="120" width="48" height="60" rx="7"/>
+  </g>
+  <g fill="#7fe3f5">
+    <circle cx="74" cy="46" r="2.6"/>
+    <circle cx="74" cy="56" r="2.6"/>
+    <circle cx="226" cy="134" r="2.6"/>
+    <circle cx="226" cy="166" r="2.6"/>
+  </g>
+
+  <!-- 主标题 -->
+  <text x="150" y="152" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif"
+        font-size="58" font-weight="800" fill="#ffffff" letter-spacing="-2">GH²</text>
+  <text x="150" y="180" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif"
+        font-size="14" font-weight="600" fill="#d7f6fd" letter-spacing="3">GRASSHOPPER 2</text>
+
+  <line x1="108" y1="198" x2="192" y2="198" stroke="#ffffff" stroke-opacity="0.25" stroke-width="1"/>
+
+  <text x="150" y="220" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif"
+        font-size="12.5" fill="#ffffff" fill-opacity="0.78">组件速查手册</text>
+  <text x="150" y="238" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif"
+        font-size="10.5" fill="#ffffff" fill-opacity="0.5" letter-spacing="1">1416 COMPONENTS · RHINO 9</text>
+</svg>
