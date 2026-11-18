@@ -9,7 +9,7 @@
   }
 
   // 图标：矢量 SVG，任意缩放清晰；失败由调用方回退 PNG
-  var ICON_V = '?v=20261118g';
+  var ICON_V = '?v=20261118j';
   function iconSrc(id) { return '../assets/icons/svg/' + id + '.svg' + ICON_V; }
   function iconFallback(id, size) { return '../assets/icons/' + (size || 48) + '/' + id + '.png'; }
 
@@ -153,9 +153,8 @@
     html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
     html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-    html = html.replace(/\[\[([^\]]+)\]\]/g, function (_, name) {
-      return '<span class="doc-chip" onclick="window._hb.openByName(\'' + name.replace(/'/g, "\\'") + '\')">' + name + '</span>';
-    });
+    // [[组件名]] 不再渲染成徽章，直接显示为纯文本——组件图标和跳转只在组件速查页出现
+    html = html.replace(/\[\[([^\]]+)\]\]/g, '$1');
     return html;
   }
 

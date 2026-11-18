@@ -11,7 +11,7 @@
    1 个画布单位≈0.39 显示像素，阶梯远小于像素；
 5. 轮廓阈值取 50% alpha，不外扩，避免图标发胖、边缘呈水泡状；
 6. 描摹后把距离小于 6 的近似填充色合并并吸附回主色板，去掉肉眼不可分的薄层，
-   同时保留真实色阶，使色块交界干净、渐变过渡自然。
+   同时保留真实色阶，使色块交界干净、渐变过渡自然；
 
 用法：
     python tools/vectorize_icons.py            # 全部
@@ -92,7 +92,7 @@ def snap_fills(text, colors):
 
 
 def finalize(path, size, colors):
-    """吸附近似色并补 viewBox，保证任意尺寸缩放都按矢量重绘。"""
+    """吸附近似色、补 viewBox，保证任意尺寸缩放都按矢量重绘。"""
     with open(path, encoding='utf-8') as f:
         s = snap_fills(f.read(), colors)
     if 'viewBox' not in s:

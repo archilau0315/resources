@@ -177,3 +177,19 @@
 - **参数对比**（8 个代表图标，渲染 24/48/112 与 24px 原图比对）：32 色/阈值 12 组合颜色误差 8.41；32 色/6 为 8.32；48 色/6 为 7.26；64 色/6 为 6.96 但半透明占比升到 11.16、体积 19.8KB（best 平衡点取 48 色/6）；16 倍放大与 spline 模式均更差（IoU 降至 0.962、体积增至 63KB），弃用。
 - **多尺寸验证**（429 个全量，与 24px 原图 LANCZOS 对比）：24px IoU 0.965 / 48px 0.978 / 96px 0.984 / 112px 0.981 / 224px 0.981；颜色误差 12.28 / 8.87 / 8.68 / 8.67 / 8.98；半透明像素占比 45.2% / 33.7% / 14.6% / 12.7% / 4.1%（小尺寸下为正常抗锯齿）。唯一填充色平均 24.8、最大 47；平均 22.7KB、最大 60.1KB、0 失败。
 - **备注**：图标 URL 版本号升 `?v=20261118g`；临时脚本 `_fine_probe.py`、`_size_check.py` 与 `_probe_out/` 用后删除。
+
+### 17. 组件速查模块重设计 + 描边修复方案撤回
+
+- **时间**：2026-11-18 15:20
+- **模块**：site/style.css、site/util.js、site/index.html、tools/vectorize_icons.py、assets/icons/svg/*（429）
+- **背景**：
+  1. 用户反馈「教程页里的组件徽章长得都一样、点哪个都不变」→ 排查发现 `inline()` 把 `[[HB Room]]` 渲染成统一风格的 `.doc-chip` 徽章，1163 处散布在 26 篇教程 md 中，每篇都有，所以看起来都一样。
+  2. 用户随后反馈「图标描边断断续续」→ 尝试给 vtracer 每个 path 补同色 `stroke-width=0.8` 消接缝，但验证显示 **IoU 从 0.967 掉到 0.952、体积从 22.7KB 涨到 30.9KB**，且接缝并未减少（因为 cutout 模式下缝隙比 stroke 宽度大），方案证伪。
+  3. 同时组件速查卡片 CSS 有硬编码尺寸：`.card-icon img` 强制 76% + `max-width: 112px`，`.modal-icon img` 硬编码 72px——SVG 是矢量却被按像素锁死，卡片变大时图标不会跟着放大，比例失调。
+- **变更**：
+  1. `inline()` 里 `[[组件名]]` 改为直接输出纯文本，不再渲染徽章——组件图标和跳转只在组件速查页出现（`openByName` 函数保留）。
+  2. 从 `vectorize_icons.py` 删除 `close_seams()` 与描边逻辑，回到 48 色/阈值 6 的干净 SVG；全量重生成 429 个，平均 22.7KB、IoU 0.967。
+  3. 组件速查卡片 CSS 重写：`.card-icon img` 改为 `width/height: 100%; object-fit: contain`（随容器等比缩放，移除 76% 和 max 限制）；`.card-icon` 加 `padding: 10px` 让图标有呼吸空间；`.grid` 最小从 192px 调到 200px；`.modal-icon` 从 88px 增到 96px，内部 img 也改为 100% 自适应。
+  4. 版本号统一升 `?v=20261118j`（iconSrc、style.css、util.js）。
+- **验证**：429 SVG 全量渲染 IoU 0.967、平均 22.7KB、0 失败；hb-room.svg 确认无 stroke 残留、231 paths、231 fills。
+- **备注**：临时脚本 `_stroke_probe.py`、`_ascii_check.py`、`_seam_probe.py`、`_seam_probe2.py`、`_stroke_fix.py`、`_final_check.py` 与 `_probe_out/` 用后删除。
