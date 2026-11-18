@@ -18,7 +18,7 @@
 | 组件速查 | 429 条，按 4 个标签页、23 个子分类组织，支持中英名、昵称、端口、说明全文搜索 | 429 entries across 4 tabs and 23 sub-categories, full-text search over names, nicknames, ports and descriptions |
 | 矢量图标 | `.ghuser` 内嵌图标经 VTracer 转为 SVG（96×96 画布 + viewBox），任意分辨率与缩放均清晰；PNG 保留作回退 | Icons embedded in `.ghuser` traced to SVG (96×96 canvas with viewBox) — crisp at any DPI and zoom; PNG kept as fallback |
 | 中英切换 | 顶栏「中 / EN」，默认中文，界面文案、侧栏、计数、弹窗、端口说明全部实时切换并记住选择 | 中 / EN in the header, Chinese by default; chrome, sidebar, counts, modal and ports switch instantly and persist |
-| 端口表 | 中英端口名、类型、是否必填、中文要点（单位/默认值/范围）+ 可展开英文原文 | Bilingual port names, types, required flags, Chinese key points (unit / default / range) and collapsible English source |
+| 端口表 | 中英端口名、类型、是否必填、中文要点（单位/默认值/范围）+ 可展开的「中文说明 + 英文原文」 | Bilingual port names, types, required flags, Chinese key points (unit / default / range) and a collapsible Chinese explanation with the English source |
 | 系统教程 | 入门 → 气象 → 建模 → 能量 → 采光 → 实战，共 26 篇 + 4 个附录，正文可独立切换中英 | 26 chapters from fundamentals to daylight and energy, plus 4 appendices; article language switchable |
 | 术语表 | 117 条中英对照，覆盖 EPW、构造、采光指标等 | 117 bilingual terms covering EPW, constructions, daylight metrics and more |
 | 明暗主题 | 跟随系统记忆，支持打印与移动端 | Dark / light theme, print-friendly, responsive |
@@ -58,6 +58,7 @@ honeybee/
 ├── site/                     静态站（index.html / app.js / util.js / i18n.js / style.css）
 ├── assets/icons/svg/         429 个矢量图标（主用）
 ├── assets/icons/{24,48,96}/  429 × 3 张原厂 PNG（回退）
+├── assets/brand/             原厂蜜蜂 SVG + 180/32 PNG（站标与 favicon）
 ├── data/
 │   ├── components.json       429 条组件（端口、中英说明）
 │   ├── categories.json       4 标签页 / 23 子分类
@@ -82,6 +83,7 @@ honeybee/
 ```bash
 python tools/extract_icons.py     # .ghuser -> 24/48/96 PNG
 python tools/vectorize_icons.py   # PNG -> assets/icons/svg/*.svg（VTracer）
+python tools/build_brand.py       # 原厂蜜蜂 PNG -> assets/brand/honeybee.svg + 180/32 PNG
 python tools/parse_components.py  # .ghuser + src/*.py -> raw_components.json
 python tools/build_data.py        # 叠加中文译名 -> components.json
 python tools/build_port_i18n.py   # 端口中文名 -> port_i18n.json
@@ -101,9 +103,9 @@ python tools/check_data.py        # 图标、字段、端口译名、链接、�
 
 ## 图标与双语实现 · Icons & i18n
 
-**中文** — 图标：原厂图标只有 24×24 PNG，放大必然模糊。现用 VTracer 将 96×96 输入描摹为 SVG（`tools/vectorize_icons.py`），统一补 `viewBox="0 0 96 96"`，页面用 `<img>` 直接引用，CSS 只给尺寸不给 `image-rendering: pixelated`；加载失败时 `onerror` 自动回退到 48/96 PNG。双语：`site/i18n.js` 存界面字典，`site/app.js` 维护 `state.lang`（`localStorage` 持久化，默认 `zh`），切换时重渲染并按 `port_i18n.json` 取端口中文名；中文模式端口显示「中文名 + 类型 + 中文要点 + 可展开英文原文」，英文模式显示「英文原名 + 中文名副标题 + 英文说明 + 中文要点」。
+**中文** — 图标：原厂图标只有 24×24 PNG，放大必然模糊。现用 VTracer 将 96×96 输入描摹为 SVG（`tools/vectorize_icons.py`），统一补 `viewBox="0 0 96 96"`，页面用 `<img>` 直接引用，CSS 只给尺寸不给 `image-rendering: pixelated`；加载失败时 `onerror` 自动回退到 48/96 PNG。站标用 Ladybug Tools 原厂蜜蜂图（`assets/brand/honeybee.svg`，由 `tools/build_brand.py` 描摹），同时作为 favicon 与 apple-touch-icon。双语：`site/i18n.js` 存界面字典，`site/app.js` 维护 `state.lang`（`localStorage` 持久化，默认 `zh`），切换时重渲染并按 `port_i18n.json` 取端口中文名；端口「详细说明」折叠块始终给出中文说明（类型、涉及对象、默认值、单位、范围、枚举、开关、None 语义等，由 `site/util.js` 的 `portFacts` / `portZhDetail` 从英文原文抽取），中文模式下再附英文原文，英文模式下也保留这份中文说明。
 
-**English** — Icons: the native assets are 24×24 PNGs that blur when scaled. They are now traced to SVG from a 96×96 source (`tools/vectorize_icons.py`), each with `viewBox="0 0 96 96"`, referenced by `<img>` with size-only CSS and no `image-rendering: pixelated`; an `onerror` fallback loads the 48/96 PNG. i18n: `site/i18n.js` holds UI strings, `site/app.js` keeps `state.lang` (persisted, default `zh`) and re-renders on switch, pulling Chinese port names from `port_i18n.json`. Chinese mode shows Chinese name + type + key points + collapsible English source; English mode shows the original name + Chinese subtitle + English notes + Chinese key points.
+**English** — Icons: the native assets are 24×24 PNGs that blur when scaled. They are now traced to SVG from a 96×96 source (`tools/vectorize_icons.py`), each with `viewBox="0 0 96 96"`, referenced by `<img>` with size-only CSS and no `image-rendering: pixelated`; an `onerror` fallback loads the 48/96 PNG. The site mark uses the official Ladybug Tools honeybee artwork (`assets/brand/honeybee.svg`, traced by `tools/build_brand.py`) and doubles as favicon and apple-touch-icon. i18n: `site/i18n.js` holds UI strings, `site/app.js` keeps `state.lang` (persisted, default `zh`) and re-renders on switch, pulling Chinese port names from `port_i18n.json`. Every port's collapsible details block always carries a Chinese explanation (type, related object, default, unit, range, enum values, boolean behaviour, None semantics — extracted from the English source by `portFacts` / `portZhDetail` in `site/util.js`); Chinese mode adds the English original, and English mode keeps the Chinese notes.
 
 ---
 

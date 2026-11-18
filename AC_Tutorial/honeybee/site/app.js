@@ -334,25 +334,25 @@
       '</div>');
   }
 
+  function portDetailHtml(p, zh) {
+    if (!p.d) return '';
+    var lab = function (k) { return '<span class="port-d-label">' + esc(T(k)) + '</span>'; };
+    var zhHtml = '<div class="port-d-zh">' + lab('zhNotes') +
+      esc(window.HBU.portZhDetail(p.d, { type: p.t || '数值', req: !!p.r })) + '</div>';
+    var enHtml = '<div class="port-d-en">' + lab('enOriginal') + esc(p.d) + '</div>';
+    return '<details class="port-d"><summary>' + esc(T('portDetail')) + '</summary><div class="port-d-body">' +
+      (zh ? zhHtml + enHtml : zhHtml) + '</div></details>';
+  }
+
   function portHtml(p, dir) {
-    var zh = state.lang === 'zh';
-    var zhName = state.portZh[p.n] || p.n;
+    var zh = state.lang === 'zh', zhName = state.portZh[p.n] || p.n;
     var type = zh ? (p.t || '') : (window.HB_I18N.typeEn[p.t] || p.t || '');
-    var name, sub, info;
-    if (zh) {
-      name = zhName;
-      sub = p.n + (type ? ' · ' + type : '');
-      var note = window.HBU.portNote(p.d, 'zh');
-      info = (note ? '<div class="port-info">' + esc(note) + '</div>' : '') +
-        (p.d ? '<details class="port-d"><summary>' + esc(T('enOriginal')) + '</summary>' +
-          '<div class="port-d-body">' + esc(p.d) + '</div></details>' : '');
-    } else {
-      name = p.n;
-      sub = zhName + (type ? ' · ' + type : '');
-      var zhNote = window.HBU.portNote(p.d, 'zh');
-      info = (p.d ? '<div class="port-info">' + esc(p.d) + '</div>' : '') +
-        (zhNote ? '<div class="port-note-zh">' + esc(zhNote) + '</div>' : '');
-    }
+    var name = zh ? zhName : p.n, sub = (zh ? p.n : zhName) + (type ? ' · ' + type : '');
+    var note = window.HBU.portNote(p.d, 'zh');
+    var info = zh
+      ? (note ? '<div class="port-info">' + esc(note) + '</div>' : '') + portDetailHtml(p, true)
+      : (p.d ? '<div class="port-info">' + esc(p.d) + '</div>' : '') +
+        (note ? '<div class="port-note-zh">' + esc(note) + '</div>' : '') + portDetailHtml(p, false);
     return '<div class="port-row ' + dir + '">' +
       (p.r ? '<span class="port-required">' + esc(T('required')) + '</span>' : '') +
       '<div class="port-main"><div class="port-name">' + esc(name) +

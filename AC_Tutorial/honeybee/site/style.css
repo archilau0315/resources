@@ -54,10 +54,12 @@ body {
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
 .brand-mark {
   width: 40px; height: 40px; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--accent), var(--accent-dim));
-  color: #fff; font-weight: 800; font-size: 15px; border-radius: var(--radius);
-  display: flex; align-items: center; justify-content: center;
+  background: #fdf8ee; border: 1px solid var(--border); border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
+.brand-mark img { width: 34px; height: 34px; display: block; object-fit: contain; }
+.brand:hover .brand-mark { border-color: var(--accent); }
+[data-theme="dark"] .brand-mark { background: #f6efdf; border-color: #4a3a1a; }
 .brand-text b { font-size: 15px; display: block; }
 .brand-text small { color: var(--text-mute); font-size: 11px; }
 .view-nav { display: flex; gap: 4px; background: var(--surface-2); padding: 3px; border-radius: var(--radius); }
@@ -227,8 +229,11 @@ body {
 .port-d summary:hover { color: var(--accent); }
 .port-d-body {
   margin-top: 4px; font-size: 11.5px; line-height: 1.6; color: var(--text-mute);
-  white-space: pre-line; max-height: 160px; overflow: auto;
+  white-space: pre-line; max-height: 220px; overflow: auto;
 }
+.port-d-zh, .port-d-en { margin-top: 6px; }
+.port-d-zh { color: var(--text-dim); }
+.port-d-label { display: block; font-weight: 600; color: var(--text-dim); }
 .port-note-zh { margin-top: 3px; font-size: 11px; color: var(--text-mute); }
 
 /* ====== 教程 ====== */

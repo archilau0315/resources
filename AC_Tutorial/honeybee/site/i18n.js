@@ -25,7 +25,8 @@
     tutorialTitle: '系统教程',
     thEn: '英文', thZh: '中文', thNote: '说明',
     close: '关闭', footer: '图标与英文说明 © Ladybug Tools · AGPL-3.0 ｜ 中文整理与站点 CC BY-NC 4.0 ｜ KBIT AI',
-    enOriginal: 'English original', zhOriginal: '中文原名'
+    enOriginal: 'English original', zhOriginal: '中文原名',
+    portDetail: '详细说明（中文 + 英文原文）', zhNotes: '中文说明：'
   };
 
   var en = {
@@ -51,7 +52,8 @@
     tutorialTitle: 'Tutorials',
     thEn: 'English', thZh: 'Chinese', thNote: 'Note (Chinese)',
     close: 'Close', footer: 'Icons and English descriptions © Ladybug Tools · AGPL-3.0 ｜ Chinese notes and site CC BY-NC 4.0 ｜ KBIT AI',
-    enOriginal: 'English original', zhOriginal: 'Chinese original'
+    enOriginal: 'English original', zhOriginal: 'Chinese original',
+    portDetail: 'Details · 中文说明', zhNotes: 'Chinese notes: '
   };
 
   // 端口类型：数据里是中文，英文模式映射回英文

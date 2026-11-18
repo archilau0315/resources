@@ -82,3 +82,15 @@
   4. 新增 `tools/build_port_i18n.py` 生成 `data/port_i18n.json`：整名覆盖表 + token 词典，覆盖全部 1504 个端口名；`chapters.json` 补 `partEn` 英文篇名。
   5. `index.html` 顶栏加入「中 / EN」切换（默认中文，`localStorage` 记忆），静态文案改用 `data-i18n` 挂钩；教程正文按界面语言自动选择中/英文件。
 - **备注**：端口中文要点由前端从英文原文抽取单位/默认值/范围，无法抽取则不显示，避免出现半句英文；无头浏览器实测 429 卡片渲染、80 张首批 SVG、中英切换、弹窗端口与教程正文均正常；`check_data.py` 0 错误。静态资源统一加 `?v=20261118`，避免浏览器命中旧缓存。
+
+### 10. 原厂蜜蜂品牌图标 + 端口详细说明补中文
+
+- **时间**：2026-11-18 12:10
+- **模块**：assets/brand/*、tools/build_brand.py、site/{index.html,style.css,app.js,util.js,i18n.js}、readme.md
+- **变更**：
+  1. 下载 Ladybug Tools 官方蜜蜂图标（`https://www.ladybug.tools/assets/img/honeybee.png`，203×203），新增 `tools/build_brand.py`：VTracer 描摹为 `assets/brand/honeybee.svg`（补 `viewBox=\"0 0 203 203\"`），并用 resvg-py 渲染 `honeybee-180.png` / `honeybee-32.png`。
+  2. `index.html` 顶栏 `HB` 文字块换成蜜蜂矢量图标，`<head>` 增加 SVG favicon、32px PNG 与 apple-touch-icon（均带 `?v=20261118`）；`style.css` 的 `.brand-mark` 改为浅底描边容器 + `img` 等比填充，暗色主题单独配色。
+  3. 端口“详细说明”折叠块升级：始终包含「中文说明」段，中文模式下再附「English original」原文；英文模式折叠块保留中文说明（`Details · 中文说明`）。
+  4. `site/util.js` 新增 `portFacts` / `portZhDetail`：抽取默认值、单位、范围、括号区间、枚举、布尔开关、None 语义、库内标识符、Rhino 单位、列表数据、涉及对象（Room/Face/Construction/Schedule/Sky 等），统一生成中文；`portNote` 复用同一解析结果。
+  5. `site/i18n.js` 增加 `portDetail`、`zhNotes` 中英文案；`style.css` 补 `.port-d-zh / .port-d-en / .port-d-label` 样式，折叠区高度放宽到 220px。
+- **备注**：全量 2553 条端口说明 100% 生成中文说明，平均 34 字；无头浏览器实测品牌蜜蜂图标加载（naturalWidth 203）、中文模式与 EN 模式下折叠块均含中文说明与英文原文；临时校验脚本已删除。
