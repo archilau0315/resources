@@ -94,3 +94,16 @@
   4. `site/util.js` 新增 `portFacts` / `portZhDetail`：抽取默认值、单位、范围、括号区间、枚举、布尔开关、None 语义、库内标识符、Rhino 单位、列表数据、涉及对象（Room/Face/Construction/Schedule/Sky 等），统一生成中文；`portNote` 复用同一解析结果。
   5. `site/i18n.js` 增加 `portDetail`、`zhNotes` 中英文案；`style.css` 补 `.port-d-zh / .port-d-en / .port-d-label` 样式，折叠区高度放宽到 220px。
 - **备注**：全量 2553 条端口说明 100% 生成中文说明，平均 34 字；无头浏览器实测品牌蜜蜂图标加载（naturalWidth 203）、中文模式与 EN 模式下折叠块均含中文说明与英文原文；临时校验脚本已删除。
+
+### 11. 图标二次矢量化：消除 4px 阶梯
+
+- **时间**：2026-11-18 15:40
+- **模块**：tools/vectorize_icons.py、assets/icons/svg/*、site/util.js、readme.md
+- **问题**：上一版直接把 24px 图 4 倍 NEAREST 放大后描摹，矢量里保留了 4px 一个台阶的原始像素轮廓，放大到 112px 仍是锯齿。
+- **变更**：
+  1. 重写 `tools/vectorize_icons.py` 流水线：24px → 6 倍 LANCZOS 放大到 144×144 → 用原图调色板量化还原颜色（去除插值杂色）→ 透明边界按 alpha>110 取轮廓 → VTracer 描摹（filter_speckle 8、color_precision 5、layer_difference 24、corner 60、path_precision 1）→ 补 `viewBox="0 0 144 144"`。
+  2. 429 个 SVG 全部重生成：平均 17.5KB、最大 52KB，零失败；1 个画布单位≈0.6 屏幕像素，阶梯降为亚像素。
+  3. `site/util.js` 的 `iconSrc` 加 `?v=20261118b`，强制浏览器丢弃旧 SVG 缓存。
+  4. readme 的图标章节与能力表同步更新为 144 画布 + 调色板还原流程。
+- **验证**：脚本校验 429 个 SVG 均含 `viewBox="0 0 144 144"` 与路径；浏览器把 6 个图标渲染到 224px，边缘像素呈 88→255、32→159→255 的渐变抗锯齿，无 0/255 突变，无裁切。
+- **备注**：临时参数对比脚本与预览页已删除；PNG 回退仍保留 24/48/96 三档。

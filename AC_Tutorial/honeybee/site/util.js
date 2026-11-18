@@ -9,7 +9,8 @@
   }
 
   // 图标：矢量 SVG，任意缩放清晰；失败由调用方回退 PNG
-  function iconSrc(id) { return '../assets/icons/svg/' + id + '.svg'; }
+  var ICON_V = '?v=20261118b';
+  function iconSrc(id) { return '../assets/icons/svg/' + id + '.svg' + ICON_V; }
   function iconFallback(id, size) { return '../assets/icons/' + (size || 48) + '/' + id + '.png'; }
 
   // 常见对象名词 → 中文，用于“涉及对象”提示
