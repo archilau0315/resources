@@ -40,3 +40,10 @@
 - **模块**：`tools/check_data.py`、浏览器实测
 - **变更**：自检 0 错误；本地 8099 端口实测：卡片与图标渲染、详情端口表、教程渲染与中英切换全部通过。
 - **备注**：服务器部署时需同步 `resources/AC_Tutorial/honeybee/` 与 `resources/index.html`。
+
+### 6. 上线部署
+
+- **模块**：服务器 `47.93.210.248`
+- **变更**：打包 `site/ data/ assets/ doc/ tools/ reports/ cover.svg readme.md debug_log_1.md` 上传至 `/www/wwwroot/kbitai.com.cn/resources/AC_Tutorial/honeybee/`（替换前已备份至 `/tmp/honeybee-backup.tar.gz`）；同步更新 `/www/wwwroot/kbitai.com.cn/resources/index.html`（旧版备份 `/tmp/resources-index-backup.html`）。
+- **备注**：线上抽查 5 个 URL 均 200；浏览器实测首页 412 组件、HB Room 详情端口表、教程页渲染全部通过。
+
