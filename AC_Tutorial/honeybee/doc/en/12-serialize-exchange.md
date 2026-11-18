@@ -2,6 +2,8 @@
 
 > Save, reload and share without losing properties.
 
+![Component wiring: the model travels between components as an Object data stream](../assets/shots/03-rhino-interface.png)
+
 ## What This Chapter Solves
 
 A model should not live only inside the current Grasshopper file. This chapter covers three tasks: splitting a model into the parts you need, writing objects to disk and reading them back, and exchanging with OpenStudio, EnergyPlus and gbXML. The rule: serialization keeps properties, manual rebuilding does not.

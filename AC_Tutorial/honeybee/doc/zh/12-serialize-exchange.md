@@ -2,6 +2,8 @@
 
 > 存盘、传阅、跨软件，模型不丢属性。
 
+![组件连线：模型通过 Object 类型数据流在组件之间传递，拆分重组不丢属性](../assets/shots/03-rhino-interface.png)
+
 ## 本章解决什么
 
 模型不能只活在当前的 Grasshopper 里。本章讲三件事：把模型拆开只取需要的部分；把对象存成文件再读回来；和 OpenStudio、EnergyPlus、gbXML 这些外部工具交换。关键点是：序列化（serialize）会保留属性，手工重建会丢。

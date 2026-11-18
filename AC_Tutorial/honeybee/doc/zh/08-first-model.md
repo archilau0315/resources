@@ -2,6 +2,8 @@
 
 > 从 Rhino 实体到可校验的 Honeybee 模型。
 
+![Grasshopper 画布：几何输入 → HB Room from Solid → HB Add Subface → HB Model 的真实连线](../assets/shots/02-grasshopper.png)
+
 ## 本章解决什么
 
 Rhino 里的盒子只是几何，Ladybug Tools 看不懂。本章把封闭实体变成 Honeybee 的层级对象：模型（Model）→ 房间（Room）→ 面（Face）→ 窗（Aperture）/ 门（Door），并跑通第一次校验。做完你会得到一个能继续加材料、加负荷的标准模型。

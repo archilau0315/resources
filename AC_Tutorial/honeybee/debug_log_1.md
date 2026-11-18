@@ -51,7 +51,8 @@
 ### 7. 对齐 Pollination 随附的 Ladybug Tools 1.10
 
 - **时间**：2026-11-18 10:48
-- **模块**：组件安装、	ools/parse_components.py、	ools/extract_icons.py、data/*.json、eadme.md
+- **模块**：组件安装、	ools/parse_components.py、	ools/extract_icons.py、data/*.json、
+eadme.md
 - **变更**：
   1. 确认 Pollination 已把 Ladybug Tools 库与引擎装在 `C:\Program Files\ladybug_tools`（python / openstudio / radiance / resources / grasshopper），但 Grasshopper 的 UserObjects 中没有组件。
   2. 把 `C:\Program Files\ladybug_tools\grasshopper\{ladybug_grasshopper,honeybee_grasshopper_{core,energy,radiance}}\user_objects\*.ghuser` 复制到 `%APPDATA%\Grasshopper\UserObjects\<包名>\user_objects\`，共 429 个组件。
@@ -193,3 +194,21 @@
   4. 版本号统一升 `?v=20261118j`（iconSrc、style.css、util.js）。
 - **验证**：429 SVG 全量渲染 IoU 0.967、平均 22.7KB、0 失败；hb-room.svg 确认无 stroke 残留、231 paths、231 fills。
 - **备注**：临时脚本 `_stroke_probe.py`、`_ascii_check.py`、`_seam_probe.py`、`_seam_probe2.py`、`_stroke_fix.py`、`_final_check.py` 与 `_probe_out/` 用后删除。
+
+### 18. 教程配图改用真实画布截图，弃用自绘连线示意图
+
+- **时间**：2026-11-19 09:10
+- **模块**：doc/zh/{08-first-model,12-serialize-exchange,16-simulation}.md、doc/en 同名三篇、assets/flows（删除）、tools/build_flow.py（删除）
+- **背景**：为补「组件连接」配图，先按真实数据流自绘了 SVG 连线示意图（`tools/build_flow.py`，图标内联、10 节点、渲染校验通过），用户反馈「不够真实，应该用实际电池组件连接的图片」，明确要求官方真实截图。
+- **官方素材调研结论**：
+  1. `docs.ladybug.tools/ladybug-tools-academy`（39 页，llms.txt 全量索引）全部为 YouTube 嵌入，**零图片**；
+  2. `honeybee-primer`、`hb-energy-primer`、`hb-radiance-primer` 只有单个组件的输入输出说明图（1000×800 RGBA），无画布连线；
+  3. `lbt-grasshopper-samples` 仓库只有 `.gh` 文件，无任何截图；
+  4. `ladybug-primer/.gitbook/assets` 仅 24 张旧版组件图；
+  5. **Food4Rhino 官方插件页是唯一直连可下的真实截图来源**，共 10 张，其中 3 张为画布连线图。
+- **变更**：把 3 张真实连线图补进此前缺图的核心章节（中英各 3 处，共 6 处）：
+  - `02-grasshopper.png`（完整画布）→ 08 建出第一个模型；
+  - `03-rhino-interface.png`（组件连线）→ 12 拆分重组与交换；
+  - `21-case-overview.png`（全流程）→ 16 模拟设置与运行。
+  同时删除自绘示意图、6 张视频候选帧、接触表与全部临时脚本，清理 `tmp/`（227MB 视频）。
+- **备注**：后续若需更多真实连线图，只能走视频抽帧（本机 yt-dlp + opencv 可用，无 ffmpeg，需整段下载后抽帧；OpenCV 在中文路径下 `imwrite` 静默失败，须用 `imencode().tofile()`）。

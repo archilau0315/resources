@@ -2,6 +2,8 @@
 
 > Settings control accuracy; the run produces files.
 
+![Full energy simulation workflow: weather, model and settings feed the run component](../assets/shots/21-case-overview.png)
+
 ## What This Chapter Solves
 
 A complete simulation needs the model, the weather file and the settings. This chapter assembles run period, timestep, shadow algorithm and outputs into one parameter object, then runs **OpenStudio / EnergyPlus** through OSM, IDF or OSW. OSM is an OpenStudio model, IDF is native EnergyPlus input, OSW is a workflow of Measures. Daily work needs only OSM. The run yields `sql` results, `zsz` design-day loads, `rdd` output names and `html` reports.

@@ -2,6 +2,8 @@
 
 > From Rhino solids to a validated Honeybee model.
 
+![Grasshopper canvas: geometry → HB Room from Solid → HB Add Subface → HB Model wiring](../assets/shots/02-grasshopper.png)
+
 ## What This Chapter Solves
 
 A Rhino box is just geometry; Ladybug Tools cannot read intent from it. This chapter turns closed solids into Honeybee's hierarchy — Model → Room → Face → Aperture / Door — and runs the first validation. The result is a model ready for constructions and loads.
