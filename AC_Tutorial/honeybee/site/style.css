@@ -159,10 +159,9 @@ body {
   width: 100%; aspect-ratio: 1;
   background: var(--surface-2); border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center; overflow: hidden;
-  padding: 10px;
 }
 .card-icon img {
-  width: 100%; height: 100%; object-fit: contain; display: block;
+  width: 64%; height: 64%; object-fit: contain; display: block;
 }
 .card-name { font-size: 13px; font-weight: 600; line-height: 1.35; padding: 0 2px; }
 .card-name small { display: block; color: var(--text-mute); font-weight: 400; font-size: 11px; margin-top: 2px; }
@@ -196,11 +195,10 @@ body {
 .modal-body { padding: 28px; }
 .modal-header { display: flex; gap: 20px; margin-bottom: 22px; padding-right: 36px; }
 .modal-icon {
-  width: 96px; height: 96px; flex-shrink: 0; background: var(--surface-2);
+  width: 80px; height: 80px; flex-shrink: 0; background: var(--surface-2);
   border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
-  padding: 12px;
 }
-.modal-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.modal-icon img { width: 64px; height: 64px; object-fit: contain; display: block; }
 .modal-title-block h2 { font-size: 19px; margin-bottom: 4px; }
 .modal-title-block h2 small { color: var(--text-mute); font-weight: 400; font-size: 13px; }
 .modal-breadcrumb { font-size: 12px; color: var(--text-mute); margin-bottom: 6px; }
