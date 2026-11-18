@@ -59,3 +59,14 @@
   4. 数据流水线改为读取新路径，重跑 extract_icons / parse_components / build_data / gen_appendix；补 17 个新增组件的中文名与说明。
   5. 统计由 412（120/70/139/83）更新为 429（122/70/143/94），术语 117 条，readme 同步。
 - **备注**：删除了一度误装的 `%USERPROFILE%\ladybug_tools`（pip 安装的 1.10.6 旧副本），避免与 Pollination 自带库版本冲突；现只保留一套 1.10.x。新增组件 17 个：LB Apply Metadata、LB Contour Mesh、HB Exhaust Air 系列 4 个、HB 灯具/采光标准 11 个。
+
+### 8. 插入界面截图并统一 1.10 口径
+
+- **时间**：2026-11-18 11:20
+- **模块**：site/app.js、site/style.css、site/index.html、cover.svg、doc/zh/02-03-21-c-hbjson、doc/en/02-03-c-hbjson、开发计划.md
+- **变更**：
+  1. `mdToHtml` 新增块级图片语法 `![alt](src)`，输出 `<figure><img loading="lazy"><figcaption>`；`style.css` 补 figure/img/figcaption 样式（圆角、边框、图注居中）。
+  2. 中文 02 章插入 `02-grasshopper.png`，03 章插入 `01-rhino.png`；英文 02/03 章插入同名图片与英文图注。
+  3. 全部章节与站点头部的版本口径统一为 1.10.x / 429 组件；`cover.svg` 改为「429 组件速查 · 26 篇教程」。
+  4. 开发计划.md 的 412 计数、1.9 版本号同步到 429 / 1.10.58。
+- **备注**：截图由 `tools/gh_shot.ps1` 以 PrintWindow(PW_RENDERFULLCONTENT) 抓取，窗口级渲染，不含桌面悬浮窗；`python tools/check_data.py` 自检 0 错误。

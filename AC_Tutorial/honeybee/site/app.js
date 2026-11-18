@@ -389,6 +389,12 @@
         out.push('<pre><code>' + esc(code.join('\n')) + '</code></pre>');
         continue;
       }
+      if (/^\s*!\[([^\]]*)\]\(([^)]+)\)\s*$/.test(line)) {
+        var img = line.match(/^\s*!\[([^\]]*)\]\(([^)]+)\)\s*$/);
+        out.push('<figure><img loading="lazy" src="' + esc(img[2]) + '" alt="' + esc(img[1]) + '">' +
+          (img[1] ? '<figcaption>' + esc(img[1]) + '</figcaption>' : '') + '</figure>');
+        i++; continue;
+      }
       if (/^\s*\|/.test(line) && i + 1 < lines.length && /^\s*\|[\s:|-]+\|?\s*$/.test(lines[i + 1])) {
         var rows = [];
         while (i < lines.length && /^\s*\|/.test(lines[i])) { rows.push(lines[i]); i++; }

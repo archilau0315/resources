@@ -1,30 +1,30 @@
 # D · Versions and License
 
-> This tutorial targets Ladybug Tools 1.9.x. The four Grasshopper packages ship independently, and the number on a battery is neither of those versions — this page aligns all three numbering systems and states how the icons and text may be used.
+> This tutorial targets Ladybug Tools 1.10.x. The four Grasshopper packages ship independently, and the number on a battery is neither of those versions — this page aligns all three numbering systems and states how the icons and text may be used.
 
 ## Package Versions
 
 | Package (PyPI name) | Version here | Components | Scope |
 |---|---:|---:|---|
-| `ladybug-grasshopper` | 1.69.1 | 120 | Weather, sun, data analysis, charts, comfort |
-| `honeybee-grasshopper-core` | 1.43.1 | 70 | Modelling, display, organisation, serialisation |
-| `honeybee-grasshopper-energy` | 1.59.6 | 139 | Constructions, schedules, loads, HVAC, results |
-| `honeybee-grasshopper-radiance` | 1.35.3 | 83 | Radiance materials, skies, grids, recipes |
-| `lbt-grasshopper` | 1.9.18 | — | Meta-package: dependencies and engine install |
+| `ladybug-grasshopper` | Ships with 1.10.58 | 122 | Weather, sun, data analysis, charts, comfort |
+| `honeybee-grasshopper-core` | Ships with 1.10.58 | 70 | Modelling, display, organisation, serialisation |
+| `honeybee-grasshopper-energy` | Ships with 1.10.58 | 143 | Constructions, schedules, loads, HVAC, results |
+| `honeybee-grasshopper-radiance` | Ships with 1.10.58 | 94 | Radiance materials, skies, grids, recipes |
+| `lbt-grasshopper` | 1.10.58 | — | Meta-package: dependencies and engine install |
 
-Together they account for the 412 components in this project's library.
+Together they account for the 429 components in this project's library. The exact tab-package versions are pinned by the meta-package; [[HB Check Versions]] reports them.
 
 ## What the Battery Shows
 
-The `Message` in a battery title bar is the **core library** version, not the package version. Measured locally: most read `1.9.0`; a few read `1.9.1` such as [[HB Room]], [[HB Room from Solid]], [[HB Sensor Grid from Rooms]], [[HB Spatial Daylight Autonomy]] and [[LB SunPath]]; `HB Model to OSM` reads `1.9.4`.
+The `Message` in a battery title bar is the **core library** version, not the package version. Measured locally: most read `1.10.0`; a few read `1.10.1` through `1.10.4`, such as [[HB Room]], [[HB Model to OSM]] and [[LB SunPath]].
 
-So: **1.9.18** is the bundle you installed; **1.69.1 / 1.43.1 / 1.59.6 / 1.35.3** are the four tab packages; **1.9.0** is the honeybee/ladybug core the battery calls. Three different numbers are normal — what matters is that [[HB Check Versions]] returns all five entries.
+So: **1.10.58** is the bundle you installed; the four tab packages carry their own pinned versions; **1.10.0** is the honeybee/ladybug core the battery calls. Three different numbers are normal — what matters is that [[HB Check Versions]] returns all five entries.
 
 ## Rhino Compatibility
 
 | Host | Status | Note |
 |---|---|---|
-| Rhino 7 | Supported | Runs 1.9.x; older UI |
+| Rhino 7 | Supported | Runs 1.10.x; older UI |
 | Rhino 8 | Recommended | Baseline for this tutorial; the first run unpacks engines |
 | Rhino 9 | Test it yourself | Development build; use the newest lbt-grasshopper and back up first |
 

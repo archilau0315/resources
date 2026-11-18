@@ -40,7 +40,7 @@ Model
 ```json
 {
   "type": "Model", "identifier": "Office_Case",
-  "units": "Meters", "version": "1.9.0",
+  "units": "Meters", "version": "1.10.0",
   "rooms": [{
     "type": "Room", "identifier": "Office_01",
     "display_name": "南向办公室",

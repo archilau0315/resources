@@ -4,7 +4,7 @@
 
 ## What This Chapter Solves
 
-Installing Ladybug Tools also installs the Python libraries, OpenStudio, EnergyPlus and Radiance that the batteries call. Miss one and the components still appear and still turn green — until you press run. This chapter gives the order: install, inspect, then prove it with a minimal example. Version: components 1.9.x (1.9.0 / 1.9.1 on the ribbon), Rhino 7 and 8, Windows and macOS.
+Installing Ladybug Tools also installs the Python libraries, OpenStudio, EnergyPlus and Radiance that the batteries call. Miss one and the components still appear and still turn green — until you press run. This chapter gives the order: install, inspect, then prove it with a minimal example. Version: components 1.10.x (1.10.0 / 1.10.1 on the ribbon), Rhino 7 and 8, Windows and macOS.
 
 | Route | How | For whom |
 |---|---|---|
@@ -12,6 +12,8 @@ Installing Ladybug Tools also installs the Python libraries, OpenStudio, EnergyP
 | Manual pip | Install `lbt-grasshopper` and the four packages into Rhino 8 Python | Pinning versions or offline deployment |
 
 The installer places components, core libraries, all three engines and the standard datasets. Manual installs leave Python and engine paths to you and fail far more often.
+
+![Grasshopper after installation: the Ladybug, Honeybee, HB-Energy and HB-Radiance tabs on the ribbon](../assets/shots/02-grasshopper.png)
 
 ## Components Used
 
@@ -32,14 +34,14 @@ The installer places components, core libraries, all three engines and the stand
 4. Drop [[HB Check Versions]]; all five outputs should carry versions. In [[HB Config]], check that `python_exe`, `rad_install`, `os_install` and `ep_install` exist and contain no spaces or non-English characters.
 5. Smoke test one: feed a .epw into [[LB Import EPW]] and panel `location`; it should name a city.
 6. Smoke test two: pass `location` into `_location` of [[LB SunPath]] with `_scale` = 1; a sun path and compass should appear.
-7. To update or pin a version, set `_update` on [[LB Versioner]] to True, or fill `version_` with something like `1.9.0`. For outdated batteries in an old file, run [[LB Sync Grasshopper File]] with `_sync` True.
+7. To update or pin a version, set `_update` on [[LB Versioner]] to True, or fill `version_` with something like `1.10.0`. For outdated batteries in an old file, run [[LB Sync Grasshopper File]] with `_sync` True.
 
 ## Key Inputs
 
 | Input | What to give it |
 |---|---|
 | `_update` (LB Versioner) | True to actually update; needs internet |
-| `version_` (LB Versioner) | Optional, e.g. `1.9.0`; empty means latest dev build |
+| `version_` (LB Versioner) | Optional, e.g. `1.10.0`; empty means latest dev build |
 | `_sync` (LB Sync Grasshopper File) | True; save the file first, the swap cannot be undone |
 | `_scale` (LB SunPath) | 1 means a 100 m radius; scale up for large models |
 | `_epw_file` | Plain English path, e.g. `D:\weather\Beijing.epw` |

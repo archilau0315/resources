@@ -13,7 +13,7 @@ Ladybug Tools is a set of free Grasshopper plugins that turns Rhino massing into
 | HB-Energy | Energy, loads, HVAC, hot water | OpenStudio → EnergyPlus |
 | HB-Radiance | Daylight, sun, radiation | Radiance |
 
-Version 1.9.x ships 412 components, split 120 / 70 / 139 / 83 across those tabs. Dragonfly handles urban blocks and is out of scope; Pollination is both the official installer and a cloud platform. Old 0.x tutorials no longer apply: 1.x unifies versions and one installer, and Honeybee exports HBJSON (a JSON model file) before translating to an OpenStudio OSM. Trust the `LB` / `HB` prefix, not the screenshots.
+Version 1.10.x ships 429 components, split 122 / 70 / 143 / 94 across those tabs. Dragonfly handles urban blocks and is out of scope; Pollination is both the official installer and a cloud platform. Old 0.x tutorials no longer apply: 1.x unifies versions and one installer, and Honeybee exports HBJSON (a JSON model file) before translating to an OpenStudio OSM. Trust the `LB` / `HB` prefix, not the screenshots.
 
 ## Components Used
 

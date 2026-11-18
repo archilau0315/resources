@@ -15,7 +15,7 @@ Ladybug Tools 是一组免费的 Grasshopper 插件，把 Rhino 里的体量变�
 | HB-Energy | 能耗、负荷、空调、生活热水 | OpenStudio → EnergyPlus |
 | HB-Radiance | 采光、日照、辐射 | Radiance |
 
-1.9.x 共 412 个组件，四页分别是 120 / 70 / 139 / 83 个。同门的 Dragonfly（蜻蜓）做城市街区尺度，本教程不涉及；Pollination 既是官方一键安装器，也是云端模拟平台，安装那一步会用到。
+1.10.x 共 429 个组件，四页分别是 122 / 70 / 143 / 94 个。同门的 Dragonfly（蜻蜓）做城市街区尺度，本教程不涉及；Pollination 既是官方一键安装器，也是云端模拟平台，安装那一步会用到。
 
 与 0.x 老教程的区别：0.x 时代 Ladybug 和 Honeybee 分开安装、各带版本号，Honeybee 直接拼 EnergyPlus 的 idf 文本；1.x 统一了版本与安装器，Honeybee 先把模型写成 HBJSON（一种 JSON 格式的模型文件），再翻译成 OpenStudio 的 OSM，最后交给 EnergyPlus。网上大量 0.x 接线图在 1.x 里已经对不上，认准组件名前的 `LB` / `HB` 前缀最稳。
 

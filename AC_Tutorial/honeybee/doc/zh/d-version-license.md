@@ -1,28 +1,28 @@
 # D · 版本对照与许可
 
-> 本教程以 Ladybug Tools 1.9.x 为准。四个 Grasshopper 包各自独立发版，面板上显示的数字又与包版本不同——这一页把三套编号对齐，并说明图标与正文的使用许可。
+> 本教程以 Ladybug Tools 1.10.x 为准。四个 Grasshopper 包各自独立发版，面板上显示的数字又与包版本不同——这一页把三套编号对齐，并说明图标与正文的使用许可。
 
 ## 包版本对照
 
 | 包（PyPI 名） | 本教程版本 | 组件数 | 负责范围 |
 |---|---:|---:|---|
-| `ladybug-grasshopper` | 1.69.1 | 120 | 气象、太阳、数据分析、图表、舒适度 |
-| `honeybee-grasshopper-core` | 1.43.1 | 70 | 建模、显示、整理、序列化 |
-| `honeybee-grasshopper-energy` | 1.59.6 | 139 | 构造、运行计划、负荷、HVAC、模拟、结果 |
-| `honeybee-grasshopper-radiance` | 1.35.3 | 83 | Radiance 材质、天空、网格、采光配方 |
-| `lbt-grasshopper` | 1.9.18 | — | 元包：统一依赖、引擎安装与版本管理 |
+| `ladybug-grasshopper` | 随 1.10.58 发布 | 122 | 气象、太阳、数据分析、图表、舒适度 |
+| `honeybee-grasshopper-core` | 随 1.10.58 发布 | 70 | 建模、显示、整理、序列化 |
+| `honeybee-grasshopper-energy` | 随 1.10.58 发布 | 143 | 构造、运行计划、负荷、HVAC、模拟、结果 |
+| `honeybee-grasshopper-radiance` | 随 1.10.58 发布 | 94 | Radiance 材质、天空、网格、采光配方 |
+| `lbt-grasshopper` | 1.10.58 | — | 元包：统一依赖、引擎安装与版本管理 |
 
-四个包合计 412 个组件，与本项目的组件库一一对应。
+四个包合计 429 个组件，与本项目的组件库一一对应。四个标签页包的具体版本号由元包锁定，用 [[HB Check Versions]] 可读出实际值。
 
 ## 组件面板上的数字
 
-电池标题栏的 `Message` 显示的是**核心库版本**，不是包版本。本机实测：绝大多数为 `1.9.0`；少数为 `1.9.1`（如 [[HB Room]]、[[HB Room from Solid]]、[[HB Sensor Grid from Rooms]]、[[HB Spatial Daylight Autonomy]]、[[LB SunPath]]）；`HB Model to OSM` 为 `1.9.4`。
+电池标题栏的 `Message` 显示的是**核心库版本**，不是包版本。本机实测：绝大多数为 `1.10.0`；少数组件为 `1.10.1` 到 `1.10.4`（如 [[HB Room]]、[[HB Model to OSM]]、[[LB SunPath]]）。
 
 三套编号的关系：
 
-- **1.9.18**（lbt-grasshopper）＝ 你安装的那一整套；
-- **1.69.1 / 1.43.1 / 1.59.6 / 1.35.3** ＝ 四个标签页各自的包版本，互不同步；
-- **1.9.0** ＝ 组件调用的 honeybee / ladybug 核心库版本。
+- **1.10.58**（lbt-grasshopper）＝ 你安装的那一整套；
+- **四个标签页包各自的版本** ＝ 由元包锁定，互不同步；
+- **1.10.0** ＝ 组件调用的 honeybee / ladybug 核心库版本。
 
 看到三个不同的数字不必惊慌，用 [[HB Check Versions]] 确认五项齐全即可。
 
@@ -30,7 +30,7 @@
 
 | 环境 | 状态 | 说明 |
 |---|---|---|
-| Rhino 7 | 支持 | 1.9.x 可正常运行，界面略旧 |
+| Rhino 7 | 支持 | 1.10.x 可正常运行，界面略旧 |
 | Rhino 8 | 推荐 | 本教程的基准环境；首次运行会解压引擎，稍慢 |
 | Rhino 9 | 需自测 | 开发版，需配最新 lbt-grasshopper；升级前先备份工程 |
 

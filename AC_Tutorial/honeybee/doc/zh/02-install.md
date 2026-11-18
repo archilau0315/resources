@@ -6,7 +6,7 @@
 
 装 Ladybug Tools 不只是装几个 Grasshopper 电池，还要装它背后调用的 Python 库、OpenStudio、EnergyPlus、Radiance。少装一样，组件能拖出来、能变绿，一运行就报错。本章给出顺序：先装、再看、最后用最小例子验一遍。
 
-版本口径：组件 1.9.x（工具条里常见 1.9.0 / 1.9.1），支持 Rhino 7 和 Rhino 8，Windows 与 macOS 都可以。
+版本口径：组件 1.10.x（工具条里常见 1.10.0 / 1.10.1），支持 Rhino 7 和 Rhino 8，Windows 与 macOS 都可以。
 
 两条安装路线：
 
@@ -16,6 +16,8 @@
 | 手动 pip 安装 | 在 Rhino 8 的 Python 里装 `lbt-grasshopper` 与四个组件包 | 需要锁定版本、离线部署的人 |
 
 一键安装器会把组件、核心库、三个引擎和一批标准数据一起放到位；手动安装要自己管 Python 环境和引擎路径，出问题概率高得多。
+
+![装好后的 Grasshopper：顶部出现 Ladybug、Honeybee、HB-Energy、HB-Radiance 四个标签页](../assets/shots/02-grasshopper.png)
 
 ## 需要的组件
 
@@ -37,7 +39,7 @@
 5. 拖出 [[HB Config]]，逐个看 `python_exe`、`rad_install`、`os_install`、`ep_install` 四个路径是否存在；路径里出现中文或空格时，建议重装到纯英文路径。
 6. 冒烟测试一：[[LB Import EPW]] 接一个 .epw，看 `location` 是否显示城市与经纬度。
 7. 冒烟测试二：`location` 接 [[LB SunPath]] 的 `_location`，`_scale` 填 1，画布上应出现一圈太阳轨迹与指北针。
-8. 需要更新或回滚时，[[LB Versioner]] 的 `_update` 设 True 即拉到最新；想锁定版本就把 `version_` 填成 `1.9.0` 这样的三段数字再运行。
+8. 需要更新或回滚时，[[LB Versioner]] 的 `_update` 设 True 即拉到最新；想锁定版本就把 `version_` 填成 `1.10.0` 这样的三段数字再运行。
 9. 老文件里的组件显示为旧版时，用 [[LB Sync Grasshopper File]]，`_sync` 设 True，它会按工具条版本整片替换。
 
 ## 参数怎么填
@@ -45,7 +47,7 @@
 | 参数 | 填什么 |
 |---|---|
 | `_update`（LB Versioner） | True 才会执行更新；更新需要联网 |
-| `version_`（LB Versioner） | 可选，如 `1.9.0`；不填则取最新开发版 |
+| `version_`（LB Versioner） | 可选，如 `1.10.0`；不填则取最新开发版 |
 | `_sync`（LB Sync Grasshopper File） | True，执行前先保存文件，替换不可撤销 |
 | `_scale`（LB SunPath） | 1 对应半径 100 米，模型尺度大就调大 |
 | `_epw_file` | 纯英文路径，例如 `D:\weather\Beijing.epw` |

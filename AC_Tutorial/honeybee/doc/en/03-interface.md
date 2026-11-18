@@ -4,7 +4,9 @@
 
 ## What This Chapter Solves
 
-There are 412 components, but only one main line: weather → geometry → rooms → model → properties → simulation settings → run → results → charts. Everything else branches off that line. This chapter covers how the ribbon is grouped, what shape each piece of data has, and where a wire belongs. The number on a component icon is its subcategory index.
+There are 429 components, but only one main line: weather → geometry → rooms → model → properties → simulation settings → run → results → charts. Everything else branches off that line. This chapter covers how the ribbon is grouped, what shape each piece of data has, and where a wire belongs. The number on a component icon is its subcategory index.
+
+![Rhino 8 main window: toolbars on the left, layer panel on the right, four standard views](../assets/shots/01-rhino.png)
 
 | Tab | Subcategories |
 |---|---|
