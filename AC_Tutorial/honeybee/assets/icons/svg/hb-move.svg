@@ -20,7 +20,7 @@
 <path d="M0,0 L2,0 L3,6 L0,11 L-7,14 L-15,15 L-16,12 L-5,8 L-1,4 Z " fill="#D0181F" transform="translate(190,171)"/>
 <path d="M0,0 L4,2 L5,7 L1,13 L-5,12 L-5,4 L0,4 Z " fill="#FB1E27" transform="translate(139,133)"/>
 <path d="M0,0 L5,1 L5,11 L-1,12 L-3,9 L-2,2 Z " fill="#000000" transform="translate(100,110)"/>
-<path d="M0,0 L5,1 L10,5 L11,10 L7,11 L2,6 L0,3 Z " fill="#FB1E27" transform="translate(129,127)"/>
-<path d="M0,0 L5,0 L7,2 L6,7 L2,7 L-1,3 Z " fill="#FB1E27" transform="translate(229,41)"/>
-<path d="M0,0 L5,1 L5,3 L0,2 Z " fill="#FB1E27" transform="translate(48,219)"/>
+<path d="M0,0 L5,1 L10,5 L11,10 L7,11 L2,6 L0,3 Z " fill="#FF212B" transform="translate(129,127)"/>
+<path d="M0,0 L5,0 L7,2 L6,7 L2,7 L-1,3 Z " fill="#FF212B" transform="translate(229,41)"/>
+<path d="M0,0 L5,1 L5,3 L0,2 Z " fill="#FF212B" transform="translate(48,219)"/>
 </svg>
