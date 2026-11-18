@@ -6,8 +6,10 @@
 
 1. 先把 RGBA 预乘 alpha 再放大，避免透明黑渗进颜色；
 2. 调色板只从 alpha>200 的实色像素提取，颜色保持纯净；
-3. 以 12 倍（288×288）二值轮廓做 polygon 描摹，边缘全为直线段、无曲线外鼓，
-   1 个画布单位≈0.39 显示像素，阶梯远小于像素。
+3. 32 色 + 6 级层次差，保留原厂图标的渐变与高光，不被压成大片平色；
+4. 以 12 倍（288×288）二值轮廓做 polygon 描摹，边缘全为直线段、无曲线外鼓，
+   1 个画布单位≈0.39 显示像素，阶梯远小于像素；
+5. 轮廓阈值取 50% alpha，不外扩，避免图标发胖、边缘呈水泡状。
 
 用法：
     python tools/vectorize_icons.py            # 全部
@@ -25,14 +27,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'assets', 'icons', '24')
 DST = os.path.join(ROOT, 'assets', 'icons', 'svg')
 SCALE = 12       # 24 -> 288
-PALETTE = 12     # 实色区域保留的配色数
-ALPHA_CUT = 128  # 轮廓阈值（0.5 覆盖率）
-ALPHA_GAMMA = 0.85  # 轻推阈值外扩，保住原图细线的墨量，避免细线发灰
+PALETTE = 32     # 实色区域保留的配色数（原厂图标最多 22 色）
+ALPHA_CUT = 128  # 轮廓阈值（50% 覆盖率，不内缩也不外扩）
 
 # vtracer 只接受位置参数：
 # colormode, hierarchical, mode, filter_speckle, color_precision, layer_difference,
 # corner_threshold, length_threshold, max_iterations, splice_threshold, path_precision
-ARGS = ('color', 'cutout', 'polygon', 6, 8, 16, 60, 2.0, 10, 45, 2)
+ARGS = ('color', 'cutout', 'polygon', 2, 8, 6, 60, 2.0, 10, 45, 2)
 
 
 def _resize_f(arr, size):
@@ -59,8 +60,7 @@ def prepare(src_path):
     solid = src_px[src_px[..., 3] > 200][:, :3]
     pal = Image.fromarray(solid.reshape(-1, 1, 3), 'RGB').quantize(colors=PALETTE)
     q = big.convert('RGB').quantize(palette=pal, dither=Image.Dither.NONE).convert('RGB')
-    mask = big.getchannel('A').point(lambda v: int(255 * ((v / 255.0) ** ALPHA_GAMMA)))
-    q.putalpha(mask.point(lambda v: 255 if v > ALPHA_CUT else 0))
+    q.putalpha(big.getchannel('A').point(lambda v: 255 if v > ALPHA_CUT else 0))
     return q
 
 
