@@ -107,3 +107,18 @@
   4. readme 的图标章节与能力表同步更新为 144 画布 + 调色板还原流程。
 - **验证**：脚本校验 429 个 SVG 均含 `viewBox="0 0 144 144"` 与路径；浏览器把 6 个图标渲染到 224px，边缘像素呈 88→255、32→159→255 的渐变抗锯齿，无 0/255 突变，无裁切。
 - **备注**：临时参数对比脚本与预览页已删除；PNG 回退仍保留 24/48/96 三档。
+
+
+### 12. 资源页卡片改用原厂蜜蜂 + 文字，品牌图回归 PNG
+
+- **时间**：2026-11-18 16:30
+- **模块**：tools/build_cover.py、tools/build_brand.py、cover.svg、assets/brand/*、site/index.html、resources/index.html、readme.md
+- **问题**：资源页 Honeybee 卡片缩略图只是渐变底 + 文字；品牌蜜蜂此前用 VTracer 描摹成 SVG，透明底被描成实心块，显示为黑底方块。
+- **变更**：
+  1. 重写 `tools/build_cover.py`：读取官方 `assets/brand/honeybee.png`（203×203 RGBA），base64 内嵌到 300×300 `cover.svg` 的白色圆盘（r=78，描边 #f2b33d）中央，尺寸 118×118；下方三行文字 HONEYBEE、组件速查 · 系统教程、Ladybug Tools 1.10 · 429 components · 26 tutorials，右下 KBIT AI 角标。SVG 内嵌 base64 是因为 cover 以 `<img>` 加载，外链 SVG 会被浏览器拦截。
+  2. 重写 `tools/build_brand.py`：不再描摹 SVG，仅用官方 PNG 经 LANCZOS 导出 `honeybee.png`（203）、`honeybee-180.png`、`honeybee-32.png`，透明底保持正确。
+  3. `site/index.html` 顶栏品牌图、favicon、apple-touch-icon 全部切到 PNG（`?v=20261118c`）。
+  4. `resources/index.html` 卡片缩略图加 `?v=20261118c` 破缓存；描述文案由 1.9 / 412 / 22 更新为 1.10 / 429 / 26（中英各一处，共三处）。
+  5. readme 的目录树、流水线、图标章节同步改为 PNG 品牌图 + `build_cover.py`。
+- **验证**：resvg 渲染 cover.svg 到 300px PNG 后采样——logo 区 dark=0.255 / light=0.40 / amber=0.218（透明底未变黑块），标题行与中文行均有亮色文字；`honeybee.png` 26692B、`-180` 33628B、`-32` 3026B。
+- **备注**：临时校验脚本 `_cover_check.py` 与 `_cover.png` 已删除。

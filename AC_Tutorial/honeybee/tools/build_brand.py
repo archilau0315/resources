@@ -1,25 +1,31 @@
-import io
+"""品牌图标：直接用 Ladybug Tools 官方蜜蜂 PNG，导出站标与 favicon。
+
+官方图 203×203 RGBA（黑 + 琥珀 + 近白 + 透明底），本身足够清晰；
+描摹成 SVG 反而会把透明底变成实心块，所以这里只做高质量缩放。
+
+输出：
+    assets/brand/honeybee.png       203×203（页面站标）
+    assets/brand/honeybee-180.png   180×180（apple-touch-icon）
+    assets/brand/honeybee-32.png    32×32（favicon）
+"""
 import os
 
-import resvg_py
-import vtracer
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, 'assets', 'brand', 'honeybee-src.png')
-DST = os.path.join(ROOT, 'assets', 'brand', 'honeybee.svg')
+BRAND = os.path.join(ROOT, 'assets', 'brand')
+SRC = os.path.join(BRAND, 'honeybee-src.png')
 
-im = Image.open(SRC).convert('RGBA')
-w, h = im.size
-vtracer.convert_image_to_svg_py(SRC, DST, 'color', 'stacked', 'spline', 4, 8, 16, 60, 1.0, 10, 45, 1)
-s = io.open(DST, encoding='utf-8').read()
-if 'viewBox' not in s:
-    s = s.replace('<svg ', '<svg viewBox="0 0 %d %d" ' % (w, h), 1)
-    io.open(DST, 'w', encoding='utf-8').write(s)
-print('svg KB', round(os.path.getsize(DST) / 1024, 1), 'viewBox', 'viewBox' in s)
 
-for size in (180, 32):
-    png = resvg_py.svg_to_bytes(svg_path=DST, width=size, height=size)
-    out = os.path.join(ROOT, 'assets', 'brand', 'honeybee-%d.png' % size)
-    io.open(out, 'wb').write(bytes(png))
-    print(out, os.path.getsize(out))
+def main():
+    im = Image.open(SRC).convert('RGBA')
+    im.save(os.path.join(BRAND, 'honeybee.png'), optimize=True)
+    for size in (180, 32):
+        im.resize((size, size), Image.LANCZOS).save(
+            os.path.join(BRAND, 'honeybee-%d.png' % size), optimize=True)
+    for name in ('honeybee.png', 'honeybee-180.png', 'honeybee-32.png'):
+        print(name, os.path.getsize(os.path.join(BRAND, name)))
+
+
+if __name__ == '__main__':
+    main()
