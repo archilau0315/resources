@@ -1,0 +1,164 @@
+[
+ {
+  "tab": "Ladybug",
+  "subs": [
+   {
+    "key": "Analyze Data",
+    "zh": "数据分析",
+    "count": 34,
+    "chapter": 6
+   },
+   {
+    "key": "Analyze Geometry",
+    "zh": "几何分析",
+    "count": 15,
+    "chapter": 5
+   },
+   {
+    "key": "Extra",
+    "zh": "扩展工具",
+    "count": 42,
+    "chapter": 7
+   },
+   {
+    "key": "Import",
+    "zh": "导入",
+    "count": 11,
+    "chapter": 4
+   },
+   {
+    "key": "Version",
+    "zh": "版本管理",
+    "count": 4,
+    "chapter": 2
+   },
+   {
+    "key": "Visualize Data",
+    "zh": "数据可视化",
+    "count": 14,
+    "chapter": 6
+   }
+  ],
+  "count": 120
+ },
+ {
+  "tab": "Honeybee",
+  "subs": [
+   {
+    "key": "Create",
+    "zh": "创建",
+    "count": 38,
+    "chapter": 8
+   },
+   {
+    "key": "Organize",
+    "zh": "组织与筛选",
+    "count": 6,
+    "chapter": 9
+   },
+   {
+    "key": "Serialize",
+    "zh": "序列化与交换",
+    "count": 10,
+    "chapter": 12
+   },
+   {
+    "key": "Visualize",
+    "zh": "显示与检查",
+    "count": 16,
+    "chapter": 11
+   }
+  ],
+  "count": 70
+ },
+ {
+  "tab": "HB-Energy",
+  "subs": [
+   {
+    "key": "Basic Properties",
+    "zh": "基础属性",
+    "count": 22,
+    "chapter": 13
+   },
+   {
+    "key": "Constructions",
+    "zh": "材料与构造",
+    "count": 25,
+    "chapter": 13
+   },
+   {
+    "key": "HVAC",
+    "zh": "暖通系统",
+    "count": 14,
+    "chapter": 15
+   },
+   {
+    "key": "Loads",
+    "zh": "负荷与内扰",
+    "count": 26,
+    "chapter": 14
+   },
+   {
+    "key": "Result",
+    "zh": "结果读取",
+    "count": 18,
+    "chapter": 17
+   },
+   {
+    "key": "Schedules",
+    "zh": "运行计划",
+    "count": 11,
+    "chapter": 14
+   },
+   {
+    "key": "Simulate",
+    "zh": "模拟运行",
+    "count": 17,
+    "chapter": 16
+   },
+   {
+    "key": "Thermal Map",
+    "zh": "热力图",
+    "count": 6,
+    "chapter": 17
+   }
+  ],
+  "count": 139
+ },
+ {
+  "tab": "HB-Radiance",
+  "subs": [
+   {
+    "key": "Basic Properties",
+    "zh": "基础属性",
+    "count": 19,
+    "chapter": 19
+   },
+   {
+    "key": "Light Sources",
+    "zh": "光源与天空",
+    "count": 10,
+    "chapter": 18
+   },
+   {
+    "key": "Modifiers",
+    "zh": "材质",
+    "count": 25,
+    "chapter": 18
+   },
+   {
+    "key": "Recipes",
+    "zh": "模拟配方",
+    "count": 12,
+    "chapter": 20
+   },
+   {
+    "key": "Results",
+    "zh": "结果处理",
+    "count": 17,
+    "chapter": 20
+   }
+  ],
+  "count": 83
+ }
+]
