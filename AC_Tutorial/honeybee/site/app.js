@@ -116,15 +116,22 @@
     document.querySelectorAll('#view-nav button').forEach(function (b) {
       b.classList.toggle('active', b.dataset.view === state.view);
     });
-    var isRef = state.view === 'ref';
-    $('grid').hidden = !isRef || !!state.docSlug;
-    $('doc-view').hidden = state.view !== 'doc';
-    $('terms-view').hidden = state.view !== 'terms';
+    var isRef = state.view === 'ref' && !state.docSlug;
+    var isDoc = state.view === 'doc';
+    var isTerms = state.view === 'terms';
+    $('grid').hidden = !isRef;
+    $('doc-view').hidden = !isDoc;
+    $('terms-view').hidden = !isTerms;
     $('empty').hidden = true;
 
+    // 清空非当前 view 的容器，避免残留的组件卡片/教程/术语表同时显示
+    if (!isRef) $('grid').innerHTML = '';
+    if (!isDoc) $('doc-view').innerHTML = '';
+    if (!isTerms) $('terms-view').innerHTML = '';
+
     renderSidebar();
-    if (state.view === 'ref') renderGrid();
-    else if (state.view === 'doc') renderDoc();
+    if (isRef) renderGrid();
+    else if (isDoc) renderDoc();
     else renderTerms();
   }
 
