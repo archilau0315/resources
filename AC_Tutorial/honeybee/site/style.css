@@ -47,7 +47,7 @@ body {
 
 /* ====== 顶部栏 ====== */
 .topbar {
-  display: flex; align-items: center; gap: 16px; height: 56px; padding: 0 24px;
+  display: flex; align-items: center; gap: 16px; height: 56px; padding: 0 18px;
   background: var(--surface); border-bottom: 1px solid var(--border);
   position: sticky; top: 0; z-index: 100;
 }
@@ -97,10 +97,10 @@ body {
 /* ====== 布局 ====== */
 .layout {
   display: flex; height: calc(100vh - 56px); overflow: hidden;
-  max-width: 1400px; margin: 0 auto; padding: 0 24px; width: 100%;
+  max-width: 1760px; margin: 0 auto; padding: 0 16px; width: 100%;
 }
 .sidebar {
-  width: 220px; flex-shrink: 0; background: var(--surface);
+  width: 216px; flex-shrink: 0; background: var(--surface);
   border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden;
 }
 .sidebar-header {
@@ -142,13 +142,13 @@ body {
 .sidebar-social a:hover { background: var(--accent); color: #fff; }
 
 /* ====== 内容区 ====== */
-.content { flex: 1; overflow-y: auto; padding: 28px 24px; min-width: 0; }
-.content-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
+.content { flex: 1; overflow-y: auto; padding: 22px 20px 36px; min-width: 0; }
+.content-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
 .content-header h1 { font-size: 20px; font-weight: 600; }
 .content-count { font-size: 13px; color: var(--text-mute); }
 
 /* ====== 组件卡片 ====== */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); gap: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(192px, 1fr)); gap: 16px; }
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 14px; cursor: pointer; display: flex; flex-direction: column; gap: 8px;
