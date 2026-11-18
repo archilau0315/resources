@@ -1,6 +1,8 @@
 # 01 · Ladybug Tools 是什么
 
 > 一套跑在 Grasshopper 里、能算能耗与采光的免费建筑性能工具集。
+![Ladybug Tools 分析工具总览：天气导入、太阳分析、舒适度与辐射评估的完整 Grasshopper 画布](../assets/shots/02-grasshopper.png)
+
 
 ## 本章解决什么
 

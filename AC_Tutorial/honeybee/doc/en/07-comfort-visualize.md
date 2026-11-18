@@ -1,6 +1,8 @@
 # 07 · Comfort and Visualization
 
 > Decide whether people feel comfortable, then draw it well enough to print.
+![Psychrometric chart: dry-bulb temperature, relative humidity and comfort zone overlay for thermal comfort evaluation](../assets/shots/07-comfort-psychrometric.png)
+
 
 ## What This Chapter Solves
 

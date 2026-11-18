@@ -1,6 +1,8 @@
 # 01 · What Ladybug Tools Is
 
 > A free toolbox inside Grasshopper for energy and daylight.
+![Ladybug Tools analysis tools: complete Grasshopper canvas with weather import, sun analysis, comfort and radiation workflows](../assets/shots/02-grasshopper.png)
+
 
 ## What This Chapter Solves
 

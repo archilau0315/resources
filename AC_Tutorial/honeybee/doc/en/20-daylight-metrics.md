@@ -1,6 +1,8 @@
 # 20 · Daylight Metrics and Simulation
 
 > DF for the worst case, sDA for the year, ASE for glare.
+![Annual glare potential: visualization of direct glare risk at all times of the year](../assets/shots/20-glare-daylight.png)
+
 
 ## What This Chapter Solves
 

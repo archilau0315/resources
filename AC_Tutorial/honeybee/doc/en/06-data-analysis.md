@@ -1,6 +1,8 @@
 # 06 · Data Analysis and Charts
 
 > Turn 8760 numbers into monthly curves, a psychrometric chart and a wind rose.
+![Radiation rose: comparison of solar radiation by orientation, with surrounding building context](../assets/shots/06-data-analysis.png)
+
 
 ## What This Chapter Solves
 

@@ -1,6 +1,8 @@
 # 03 · 界面与数据流
 
 > 四个标签页、一条主线，看懂线往哪走就不会乱接。
+![Grasshopper 画布与组件连线：左侧 Ladybug 标签页、中间画布、右侧输入 Panel](../assets/shots/03-rhino-interface.png)
+
 
 ## 本章解决什么
 

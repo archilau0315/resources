@@ -1,6 +1,8 @@
 # 04 · Weather Data and Sites
 
 > Find the nearest site and get its epw, stat and ddy files.
+![Wind vertical profile and EPW data: workflow from weather file import to wind speed distribution by height](../assets/shots/04-weather-epw.png)
+
 
 ## What This Chapter Solves
 

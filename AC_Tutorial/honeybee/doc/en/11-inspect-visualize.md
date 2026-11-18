@@ -1,6 +1,8 @@
 # 11 · Inspection and Display
 
 > Draw the model's properties, not just its shape.
+![Color library component: automatic color scheme assignment by type, batch colorization of the model](../assets/shots/11-color-library.png)
+
 
 ## What This Chapter Solves
 

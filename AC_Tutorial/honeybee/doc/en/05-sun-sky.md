@@ -1,6 +1,8 @@
 # 05 · Sun, Sky and Shadows
 
 > Turn a location into a sun path, then see who is shaded.
+![Annual weather data mapped to sun path: visualization of all 8760 annual hours on the celestial sphere](../assets/shots/05-sun-sky.png)
+
 
 ## What This Chapter Solves
 

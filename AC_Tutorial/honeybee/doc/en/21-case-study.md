@@ -1,6 +1,8 @@
 # 21 · Case Study: Office Daylight and Energy
 
 > One 96 m² south-facing office, from an EPW file to sDA/ASE and an EUI number. Each step lists only the components, the inputs that matter, and what comes out; chained in order they form a reproducible workflow.
+![Complete case study workflow overview: EPW → model → apertures → constructions → energy → daylight → results](../assets/shots/21-case-overview.png)
+
 
 ## Setup
 

@@ -1,6 +1,8 @@
 # 03 · Interface and Data Flow
 
 > Four tabs, one main line. Follow the wire and wiring stops being guesswork.
+![Grasshopper canvas with connected components: Ladybug tab on the left, canvas in the middle, Panel inputs on the right](../assets/shots/03-rhino-interface.png)
+
 
 ## What This Chapter Solves
 
