@@ -1,126 +1,491 @@
 {
- "_note": "Ladybug 标签页 120 个组件的中文名与中文说明；键为官方英文名",
- "LB Import EPW": ["导入 EPW 气象文件", "读取 EnergyPlus 格式的 epw 气象文件，输出逐时干球温度、湿度、风速、太阳辐射等数据集合，是后续所有气象分析的数据源。"],
- "LB Import STAT": ["导入 STAT 统计文件", "读取与 epw 同名的 stat 文件，提供设计条件、月平均干球温度、极值温度等统计信息，用于被动式策略与暖通设计。"],
- "LB Import DDY": ["导入 DDY 设计日", "读取 ddy 文件中的设计日（Design Day）参数，输出可直接用于冷热负荷计算的设计日对象。"],
- "LB Import Design Day": ["导入设计日", "从 ddy 文件中按名称挑选单个设计日，供负荷与设备选型使用。"],
- "LB Deconstruct Design Day": ["拆解设计日", "把设计日对象拆成干球温度、湿球温度、风速、太阳辐射等数值曲线，便于核对与自定义修改。"],
- "LB Import Location": ["导入地理位置", "从 epw / stat 文件读取站点经纬度、时区与海拔，输出 Location 对象与 Rhino 用的站点信息。"],
- "LB Construct Location": ["构建地理位置", "用经纬度、时区、海拔手动构造 Location 对象，适用于没有气象文件的快速太阳几何分析。"],
- "LB Deconstruct Location": ["拆解地理位置", "把 Location 对象拆成纬度、经度、时区、海拔等独立数值。"],
- "LB Download Weather": ["下载气象文件", "按经纬度从在线数据库（OneBuilding / EPWmap）下载最近的 epw 与 ddy 文件到本地。"],
- "LB EPWmap": ["EPW 气象地图", "打开在线地图，可视化选择全球气象站并下载 epw 文件。"],
- "LB EPW to DDY": ["EPW 转 DDY", "由 epw 中的极值月份自动生成设计日，输出 ddy 文件，省去手工查找设计条件。"],
- "LB SunPath": ["太阳轨迹", "按 Location 与分析时段生成全年太阳轨迹线与代表日太阳位置，可输出太阳矢量、日照时数和高程角方位角。"],
- "LB Sky Dome": ["天空穹顶", "生成半球形天空网格，用于辐射穹顶、天空遮罩与视角类分析的可视化载体。"],
- "LB Day Solar Information": ["每日太阳信息", "按日输出太阳高度角、方位角、日出日落时刻与日照时长，用于逐日太阳几何分析。"],
- "LB Compass": ["指北针", "在 Rhino 视图中绘制指北针，用于图面表达与方向校对。"],
- "LB Set Rhino Sun": ["设置 Rhino 太阳", "把 Ladybug 的太阳位置写入 Rhino 的太阳设置，使渲染与阴影和时间段一致。"],
- "LB View From Sun": ["从太阳方向查看", "把 Rhino 相机移动到指定时刻的太阳位置并朝向模型，用于快速检查遮挡。"],
- "LB Solar Envelope": ["太阳包络", "按分析时段与障碍物计算允许的最大建筑体量包络，用于前期体量控制与日照权保障。"],
- "LB Sky Mask": ["天空遮罩", "把周边遮挡物投影到天空穹顶，输出被遮挡的天空网格，用于辐射与采光折减。"],
- "LB Magnetic to True North": ["磁北转真北", "把以磁北为准的模型角度换算为真北角度，修正磁偏角带来的方向误差。"],
- "LB Analysis Period": ["分析时段", "定义起止月份、日期与小时，是几乎所有 Ladybug 分析的时间过滤器。"],
- "LB Apply Analysis Period": ["应用分析时段", "把分析时段应用到数据集合，裁剪出指定时间范围内的数值。"],
- "LB Construct Data": ["构建数据集合", "把数值列表和时间信息组合成 Ladybug Data Collection（带时间标签的数据序列）。"],
- "LB Construct Data Type": ["构建数据类型", "为数据集合指定单位与数据类型（温度、辐射、风速等），保证后续计算单位正确。"],
- "LB Construct Header": ["构建数据头", "手工构造数据头（Header），定义数据类型、单位与分析时段。"],
- "LB Deconstruct Data": ["拆解数据集合", "把 Data Collection 拆成数值列表、数据头与分析时段三部分。"],
- "LB Deconstruct Header": ["拆解数据头", "读取数据头中的数据类型、单位与分析时段。"],
- "LB Data DateTimes": ["数据日期时间", "输出数据集合中每个数值对应的日期时间，用于自定义绘图或导出。"],
- "LB Calculate HOY": ["计算 HOY", "把月、日、小时换算为全年小时序号（1–8760），便于按 HOY 索引取值。"],
- "LB HOY to DateTime": ["HOY 转日期时间", "把全年小时序号还原为具体的月、日、小时。"],
- "LB Time Aggregate": ["时间聚合", "按日、月、季或自定义时段对数据集合做求和、平均、极值等聚合。"],
- "LB Time Interval Operation": ["时间区间运算", "按指定的时间区间对数据集合执行相加、相减、相乘等运算。"],
- "LB Time Rate of Change": ["时间变化率", "计算相邻时间步之间的变化量或变化率，用于找突变点。"],
- "LB Convert to Timestep": ["转换时间步", "把逐时数据插值或汇总为更细/更粗的时间步，如 15 分钟或日均。"],
- "LB Arithmetic Operation": ["算术运算", "对单个数据集合做加减乘除、取反、取绝对值等一元运算。"],
- "LB Mass Arithmetic Operation": ["批量算术运算", "对多个数据集合逐时做加减乘除，用于负荷叠加或差值计算。"],
- "LB Apply Conditional Statement": ["应用条件语句", "按条件（大于、小于、区间）替换或筛选数据集合中的数值。"],
- "LB Apply Pattern": ["应用数据模式", "把重复出现的数值模式（如作息）套用到指定时段，生成完整数据集合。"],
- "LB Filter by Normal": ["按法线筛选", "按网格面法线朝向筛选天空或表面网格，只保留指定朝向的部分。"],
- "LB Generate Point Grid": ["生成测点网格", "在平面上按间距生成网格测点，用于辐射、日照与舒适度分析。"],
- "LB Mesh Threshold Selector": ["网格阈值选择器", "按数值阈值挑出网格中高于或低于阈值的面，用于结果分级显示。"],
- "LB Mesh to Hatch": ["网格转填充", "把彩色分析网格转换为 Rhino 填充（Hatch），便于出图与打印。"],
- "LB Color Range": ["色阶", "定义分析结果的配色区间、颜色与图例分段，是可视化表达的核心参数。"],
- "LB Create Legend": ["创建图例", "按色阶生成二维图例，可放置在图面任意位置，支持自定义标题与单位。"],
- "LB Legend Parameters": ["图例参数", "设置图例的数值范围、分段数、颜色、朝向与字体大小。"],
- "LB Legend Parameters Categorized": ["分类图例参数", "为分类型结果（如朝向、构造类型）设置一一对应的颜色与标签。"],
- "LB Legend 2D Parameters": ["二维图例参数", "定义二维图例的尺寸、位置、边框与文字样式。"],
- "LB Spatial Heatmap": ["空间热力图", "把网格或测点结果渲染为彩色热力图，支持图例与透明度控制。"],
- "LB Preview VisualizationSet": ["预览可视化集", "在 Rhino 视图中直接预览 VisualizationSet 中的图例、标签与几何。"],
- "LB Dump VisualizationSet": ["导出可视化集", "把可视化集序列化为 JSON，便于存档或在其他软件中复现图面。"],
- "LB Deconstruct VisualizationSet": ["拆解可视化集", "把 VisualizationSet 拆成几何、图例、标签等独立部件。"],
- "LB Hourly Plot": ["逐时曲线", "绘制全年 8760 小时的折线图，支持多数据集合叠加与时间区间缩放。"],
- "LB Monthly Chart": ["月度图表", "按月份绘制柱状图或折线图，快速比较各月平均、极值与累积量。"],
- "LB Psychrometric Chart": ["焓湿图", "绘制焓湿图并叠加气象数据点、舒适区与被动式策略区域。"],
- "LB Adaptive Chart": ["自适应舒适图表", "绘制自适应舒适模型下的室内外温度关系图，标出可接受温度区间。"],
- "LB PMV Polygon": ["PMV 多边形", "在焓湿图上绘制 PMV 舒适区多边形，用于判断温湿度组合是否舒适。"],
- "LB UTCI Polygon": ["UTCI 多边形", "在焓湿图上绘制 UTCI 舒适区多边形，适用于室外热舒适评价。"],
- "LB Radiation Rose": ["辐射玫瑰图", "按方位角统计各朝向的太阳辐射强度，用花瓣长度表示辐射量。"],
- "LB Radiation Dome": ["辐射穹顶", "在半球天空网格上着色显示各方向辐射强度，直观看出辐射来源。"],
- "LB Wind Rose": ["风玫瑰图", "按风向与风速分级统计全年风频，是自然通风与防风设计的常用图。"],
- "LB Wind Profile": ["风速剖面", "绘制风速随高度变化的剖面曲线，用于高层与屋面风环境判断。"],
- "LB View Rose": ["视野玫瑰图", "统计各水平方向的可视天空或景观比例，用于视野质量评估。"],
- "LB Sky Dome": ["天空穹顶", "生成半球形天空网格，用于辐射穹顶、天空遮罩与视角类分析的可视化载体。"],
- "LB Cumulative Sky Matrix": ["累积天空矩阵", "由全年太阳辐射生成累积天空矩阵（Sky Matrix），是辐射与采光计算的基础数据。"],
- "LB Benefit Sky Matrix": ["天空遮蔽收益矩阵", "计算遮阳构件对各方向天空的遮挡收益，用于优化遮阳与采光平衡。"],
- "LB Direct Sun Hours": ["直接日照小时数", "统计测点全年或指定时段内被太阳直射的小时数，用于日照合规与遮阳评估。"],
- "LB Incident Radiation": ["入射辐射", "计算网格或测点接收到的太阳辐射总量（含直射与散射），支持遮阳遮挡计算。"],
- "LB Real Time Incident Radiation": ["实时入射辐射", "按当前时刻的太阳位置快速计算表面瞬时辐射强度。"],
- "LB Directional Solar Irradiance": ["方向太阳辐照", "按指定方向统计太阳辐照强度，用于朝向优化与光伏布置。"],
- "LB Solar MRT from Solar Components": ["由太阳分量算 MRT", "用直射与散射辐射分量计算平均辐射温度（MRT），可分别统计各朝向。"],
- "LB Indoor Solar MRT": ["室内太阳平均辐射温度", "计算太阳透过窗洞后在室内形成的平均辐射温度增量。"],
- "LB Outdoor Solar MRT": ["室外太阳平均辐射温度", "计算室外人体受到的太阳辐射等效平均辐射温度。"],
- "LB Thermal Indices": ["热指数", "由气温、湿度、风速与辐射计算体感温度、热指数等综合指标。"],
- "LB Humidity Metrics": ["湿度指标", "计算相对湿度、绝对湿度、露点温度与焓值等湿度相关指标。"],
- "LB Relative Humidity from Dew Point": ["露点算相对湿度", "由干球温度与露点温度反算相对湿度，便于补齐缺失数据。"],
- "LB Wind Speed": ["风速", "从气象数据中提取指定高度或时段的风速序列。"],
- "LB Degree Days": ["度日数", "计算采暖度日数（HDD）与制冷度日数（CDD），用于估算全年能耗量级。"],
- "LB Comfort Statistics": ["舒适度统计", "统计舒适小时数、不舒适小时数与占比，输出可用于图表的统计数据。"],
- "LB PMV Comfort": ["PMV 舒适度", "按 ISO 7730 的 PMV/PPD 模型计算室内热舒适，输出逐时 PMV、PPD 与舒适状态。"],
- "LB PMV Comfort Parameters": ["PMV 舒适参数", "设置代谢率、服装热阻、空气流速与平均辐射温度等 PMV 计算输入。"],
- "LB Adaptive Comfort": ["自适应舒适度", "按 ASHRAE 55 自适应模型评价自然通风建筑的热舒适，输出可接受温度范围与舒适小时数。"],
- "LB Adaptive Comfort Parameters": ["自适应舒适参数", "设置自适应模型的风速修正、窗可开启比例等计算条件。"],
- "LB UTCI Comfort": ["UTCI 舒适度", "计算通用热气候指数（UTCI），评价室外热环境，输出逐时 UTCI 与冷热应激等级。"],
- "LB UTCI Comfort Parameters": ["UTCI 舒适参数", "设置 UTCI 计算所需的服装、代谢率与太阳辐射修正参数。"],
- "LB PET Comfort": ["PET 舒适度", "计算生理等效温度（PET），用于室外热舒适的中欧标准评价。"],
- "LB PET Body Parameters": ["PET 人体参数", "设置 PET 计算的人体身高、体重、服装与代谢率。"],
- "LB Solar Body Parameters": ["太阳人体参数", "设置人体在太阳辐射下的朝向、姿态与吸收系数。"],
- "LB Thermal Shade Benefit": ["热遮阳收益", "综合辐射与温度计算遮阳构件带来的热舒适改善量。"],
- "LB Shade Benefit": ["遮阳收益", "计算遮阳物对辐射、日照或采光的削减比例，用于遮阳方案比较。"],
- "LB Human to Sky Relation": ["人体与天空关系", "计算人体各部位可见的天空比例，用于室外辐射与舒适度修正。"],
- "LB View Factors": ["视角系数", "计算表面或测点对各方向天空/表面的视角系数，是辐射计算的核心量。"],
- "LB View Percent": ["视野占比", "统计视野内天空、建筑、植被等对象的面积占比。"],
- "LB Visibility Percent": ["可见度百分比", "计算目标对象在视野中的可见比例，用于景观与视线分析。"],
- "LB Surface Ray Tracing": ["表面光线追踪", "从测点向周边发射光线检测遮挡，输出可见性与遮挡面。"],
- "LB Passive Strategies": ["被动式策略列表", "提供可勾选的被动式设计策略（自然通风、蒸发冷却、蓄热等）供焓湿图分析使用。"],
- "LB Passive Strategy Parameters": ["被动式策略参数", "设置各被动式策略的适用条件与强度上限。"],
- "LB Clothing by Temperature": ["按温度取服装热阻", "按室外温度自动选择对应季节的服装热阻值。"],
- "LB Clothing List": ["服装热阻列表", "提供常见着装组合的服装热阻（clo）可选值列表。"],
- "LB Activities Met List": ["活动代谢率列表", "提供坐、站、走、跑等活动的代谢率（met）可选值列表。"],
- "LB Ankle Draft": ["脚踝吹风感", "按风速与湍流度计算脚踝处吹风感不满意率（DR）。"],
- "LB Radiant Asymmetry": ["辐射不对称度", "计算人体上下、左右方向的辐射温度差，评价局部不舒适。"],
- "LB Set View": ["设置视图", "把 Rhino 相机切换到指定的标准视图或自定义视角。"],
- "LB Capture View": ["捕获视图", "把当前视图截图并输出为图片文件，用于报告与图面归档。"],
- "LB Orient to Camera": ["朝向相机", "把物体旋转到始终面向当前相机，常用于文字与图例。"],
- "LB Screen Oriented Text": ["屏幕朝向文字", "生成始终面向屏幕的文字标注，缩放视图时保持可读。"],
- "LB Open File": ["打开文件", "在系统中用默认程序打开指定文件。"],
- "LB Open Directory": ["打开文件夹", "在资源管理器中打开指定目录。"],
- "LB To SI": ["转 SI 单位", "把英制或其他单位的数据换算为国际单位制。"],
- "LB To IP": ["转 IP 单位", "把国际单位制数据换算为英制（IP）单位。"],
- "LB To Unit": ["转换为指定单位", "按目标单位把数据集合换算为任意兼容单位。"],
- "LB Unit Converter": ["单位换算器", "对单个数值执行单位换算，支持长度、面积、温度、能量等。"],
- "LB Versioner": ["版本管理器", "检查并更新 Ladybug Tools 组件版本，可安装指定版本或回滚。"],
- "LB Export UserObject": ["导出 UserObject", "把当前组件导出为 .ghuser 文件，便于分发给其他机器。"],
- "LB Legacy Updater": ["旧版组件升级", "把 0.x 旧版 Ladybug 组件替换为 1.x 新版组件。"],
- "LB Sync Grasshopper File": ["同步 GH 文件", "把当前 GH 文件与服务器或本地目录同步，便于团队协作。"],
- "LB Load Data": ["读取数据", "从 JSON 或文本文件读取 Ladybug 数据集合。"],
- "LB Dump Data": ["导出数据", "把数据集合序列化为 JSON 文件，便于交换与存档。"],
- "LB Deconstruct Matrix": ["拆解矩阵", "把矩阵拆成数值列表、行列数与元数据。"],
- "LB Construct Matrix": ["构建矩阵", "由数值列表和行列数构建矩阵对象，供辐射与采光计算使用。"],
- "LB Area Aggregate": ["面积汇总", "按标签或分组汇总网格面积与对应数值的加权平均。"],
- "LB Area Normalize": ["面积归一化", "把总量按面积摊平，得到单位面积指标，便于不同规模比较。"],
- "LB Wind Speed": ["风速", "从气象数据中提取指定高度或时段的风速序列。"],
- "LB Compass": ["指北针", "在 Rhino 视图中绘制指北针，用于图面表达与方向校对。"]
+ "_note": "Ladybug 标签页 122 个组件的中文名与中文说明；键为官方英文名",
+ "LB Import EPW": [
+  "导入 EPW 气象文件",
+  "读取 EnergyPlus 格式的 epw 气象文件，输出逐时干球温度、湿度、风速、太阳辐射等数据集合，是后续所有气象分析的数据源。"
+ ],
+ "LB Import STAT": [
+  "导入 STAT 统计文件",
+  "读取与 epw 同名的 stat 文件，提供设计条件、月平均干球温度、极值温度等统计信息，用于被动式策略与暖通设计。"
+ ],
+ "LB Import DDY": [
+  "导入 DDY 设计日",
+  "读取 ddy 文件中的设计日（Design Day）参数，输出可直接用于冷热负荷计算的设计日对象。"
+ ],
+ "LB Import Design Day": [
+  "导入设计日",
+  "从 ddy 文件中按名称挑选单个设计日，供负荷与设备选型使用。"
+ ],
+ "LB Deconstruct Design Day": [
+  "拆解设计日",
+  "把设计日对象拆成干球温度、湿球温度、风速、太阳辐射等数值曲线，便于核对与自定义修改。"
+ ],
+ "LB Import Location": [
+  "导入地理位置",
+  "从 epw / stat 文件读取站点经纬度、时区与海拔，输出 Location 对象与 Rhino 用的站点信息。"
+ ],
+ "LB Construct Location": [
+  "构建地理位置",
+  "用经纬度、时区、海拔手动构造 Location 对象，适用于没有气象文件的快速太阳几何分析。"
+ ],
+ "LB Deconstruct Location": [
+  "拆解地理位置",
+  "把 Location 对象拆成纬度、经度、时区、海拔等独立数值。"
+ ],
+ "LB Download Weather": [
+  "下载气象文件",
+  "按经纬度从在线数据库（OneBuilding / EPWmap）下载最近的 epw 与 ddy 文件到本地。"
+ ],
+ "LB EPWmap": [
+  "EPW 气象地图",
+  "打开在线地图，可视化选择全球气象站并下载 epw 文件。"
+ ],
+ "LB EPW to DDY": [
+  "EPW 转 DDY",
+  "由 epw 中的极值月份自动生成设计日，输出 ddy 文件，省去手工查找设计条件。"
+ ],
+ "LB SunPath": [
+  "太阳轨迹",
+  "按 Location 与分析时段生成全年太阳轨迹线与代表日太阳位置，可输出太阳矢量、日照时数和高程角方位角。"
+ ],
+ "LB Sky Dome": [
+  "天空穹顶",
+  "生成半球形天空网格，用于辐射穹顶、天空遮罩与视角类分析的可视化载体。"
+ ],
+ "LB Day Solar Information": [
+  "每日太阳信息",
+  "按日输出太阳高度角、方位角、日出日落时刻与日照时长，用于逐日太阳几何分析。"
+ ],
+ "LB Compass": [
+  "指北针",
+  "在 Rhino 视图中绘制指北针，用于图面表达与方向校对。"
+ ],
+ "LB Set Rhino Sun": [
+  "设置 Rhino 太阳",
+  "把 Ladybug 的太阳位置写入 Rhino 的太阳设置，使渲染与阴影和时间段一致。"
+ ],
+ "LB View From Sun": [
+  "从太阳方向查看",
+  "把 Rhino 相机移动到指定时刻的太阳位置并朝向模型，用于快速检查遮挡。"
+ ],
+ "LB Solar Envelope": [
+  "太阳包络",
+  "按分析时段与障碍物计算允许的最大建筑体量包络，用于前期体量控制与日照权保障。"
+ ],
+ "LB Sky Mask": [
+  "天空遮罩",
+  "把周边遮挡物投影到天空穹顶，输出被遮挡的天空网格，用于辐射与采光折减。"
+ ],
+ "LB Magnetic to True North": [
+  "磁北转真北",
+  "把以磁北为准的模型角度换算为真北角度，修正磁偏角带来的方向误差。"
+ ],
+ "LB Analysis Period": [
+  "分析时段",
+  "定义起止月份、日期与小时，是几乎所有 Ladybug 分析的时间过滤器。"
+ ],
+ "LB Apply Analysis Period": [
+  "应用分析时段",
+  "把分析时段应用到数据集合，裁剪出指定时间范围内的数值。"
+ ],
+ "LB Construct Data": [
+  "构建数据集合",
+  "把数值列表和时间信息组合成 Ladybug Data Collection（带时间标签的数据序列）。"
+ ],
+ "LB Construct Data Type": [
+  "构建数据类型",
+  "为数据集合指定单位与数据类型（温度、辐射、风速等），保证后续计算单位正确。"
+ ],
+ "LB Construct Header": [
+  "构建数据头",
+  "手工构造数据头（Header），定义数据类型、单位与分析时段。"
+ ],
+ "LB Deconstruct Data": [
+  "拆解数据集合",
+  "把 Data Collection 拆成数值列表、数据头与分析时段三部分。"
+ ],
+ "LB Deconstruct Header": [
+  "拆解数据头",
+  "读取数据头中的数据类型、单位与分析时段。"
+ ],
+ "LB Data DateTimes": [
+  "数据日期时间",
+  "输出数据集合中每个数值对应的日期时间，用于自定义绘图或导出。"
+ ],
+ "LB Calculate HOY": [
+  "计算 HOY",
+  "把月、日、小时换算为全年小时序号（1–8760），便于按 HOY 索引取值。"
+ ],
+ "LB HOY to DateTime": [
+  "HOY 转日期时间",
+  "把全年小时序号还原为具体的月、日、小时。"
+ ],
+ "LB Time Aggregate": [
+  "时间聚合",
+  "按日、月、季或自定义时段对数据集合做求和、平均、极值等聚合。"
+ ],
+ "LB Time Interval Operation": [
+  "时间区间运算",
+  "按指定的时间区间对数据集合执行相加、相减、相乘等运算。"
+ ],
+ "LB Time Rate of Change": [
+  "时间变化率",
+  "计算相邻时间步之间的变化量或变化率，用于找突变点。"
+ ],
+ "LB Convert to Timestep": [
+  "转换时间步",
+  "把逐时数据插值或汇总为更细/更粗的时间步，如 15 分钟或日均。"
+ ],
+ "LB Arithmetic Operation": [
+  "算术运算",
+  "对单个数据集合做加减乘除、取反、取绝对值等一元运算。"
+ ],
+ "LB Mass Arithmetic Operation": [
+  "批量算术运算",
+  "对多个数据集合逐时做加减乘除，用于负荷叠加或差值计算。"
+ ],
+ "LB Apply Conditional Statement": [
+  "应用条件语句",
+  "按条件（大于、小于、区间）替换或筛选数据集合中的数值。"
+ ],
+ "LB Apply Pattern": [
+  "应用数据模式",
+  "把重复出现的数值模式（如作息）套用到指定时段，生成完整数据集合。"
+ ],
+ "LB Filter by Normal": [
+  "按法线筛选",
+  "按网格面法线朝向筛选天空或表面网格，只保留指定朝向的部分。"
+ ],
+ "LB Generate Point Grid": [
+  "生成测点网格",
+  "在平面上按间距生成网格测点，用于辐射、日照与舒适度分析。"
+ ],
+ "LB Mesh Threshold Selector": [
+  "网格阈值选择器",
+  "按数值阈值挑出网格中高于或低于阈值的面，用于结果分级显示。"
+ ],
+ "LB Mesh to Hatch": [
+  "网格转填充",
+  "把彩色分析网格转换为 Rhino 填充（Hatch），便于出图与打印。"
+ ],
+ "LB Color Range": [
+  "色阶",
+  "定义分析结果的配色区间、颜色与图例分段，是可视化表达的核心参数。"
+ ],
+ "LB Create Legend": [
+  "创建图例",
+  "按色阶生成二维图例，可放置在图面任意位置，支持自定义标题与单位。"
+ ],
+ "LB Legend Parameters": [
+  "图例参数",
+  "设置图例的数值范围、分段数、颜色、朝向与字体大小。"
+ ],
+ "LB Legend Parameters Categorized": [
+  "分类图例参数",
+  "为分类型结果（如朝向、构造类型）设置一一对应的颜色与标签。"
+ ],
+ "LB Legend 2D Parameters": [
+  "二维图例参数",
+  "定义二维图例的尺寸、位置、边框与文字样式。"
+ ],
+ "LB Spatial Heatmap": [
+  "空间热力图",
+  "把网格或测点结果渲染为彩色热力图，支持图例与透明度控制。"
+ ],
+ "LB Preview VisualizationSet": [
+  "预览可视化集",
+  "在 Rhino 视图中直接预览 VisualizationSet 中的图例、标签与几何。"
+ ],
+ "LB Dump VisualizationSet": [
+  "导出可视化集",
+  "把可视化集序列化为 JSON，便于存档或在其他软件中复现图面。"
+ ],
+ "LB Deconstruct VisualizationSet": [
+  "拆解可视化集",
+  "把 VisualizationSet 拆成几何、图例、标签等独立部件。"
+ ],
+ "LB Hourly Plot": [
+  "逐时曲线",
+  "绘制全年 8760 小时的折线图，支持多数据集合叠加与时间区间缩放。"
+ ],
+ "LB Monthly Chart": [
+  "月度图表",
+  "按月份绘制柱状图或折线图，快速比较各月平均、极值与累积量。"
+ ],
+ "LB Psychrometric Chart": [
+  "焓湿图",
+  "绘制焓湿图并叠加气象数据点、舒适区与被动式策略区域。"
+ ],
+ "LB Adaptive Chart": [
+  "自适应舒适图表",
+  "绘制自适应舒适模型下的室内外温度关系图，标出可接受温度区间。"
+ ],
+ "LB PMV Polygon": [
+  "PMV 多边形",
+  "在焓湿图上绘制 PMV 舒适区多边形，用于判断温湿度组合是否舒适。"
+ ],
+ "LB UTCI Polygon": [
+  "UTCI 多边形",
+  "在焓湿图上绘制 UTCI 舒适区多边形，适用于室外热舒适评价。"
+ ],
+ "LB Radiation Rose": [
+  "辐射玫瑰图",
+  "按方位角统计各朝向的太阳辐射强度，用花瓣长度表示辐射量。"
+ ],
+ "LB Radiation Dome": [
+  "辐射穹顶",
+  "在半球天空网格上着色显示各方向辐射强度，直观看出辐射来源。"
+ ],
+ "LB Wind Rose": [
+  "风玫瑰图",
+  "按风向与风速分级统计全年风频，是自然通风与防风设计的常用图。"
+ ],
+ "LB Wind Profile": [
+  "风速剖面",
+  "绘制风速随高度变化的剖面曲线，用于高层与屋面风环境判断。"
+ ],
+ "LB View Rose": [
+  "视野玫瑰图",
+  "统计各水平方向的可视天空或景观比例，用于视野质量评估。"
+ ],
+ "LB Cumulative Sky Matrix": [
+  "累积天空矩阵",
+  "由全年太阳辐射生成累积天空矩阵（Sky Matrix），是辐射与采光计算的基础数据。"
+ ],
+ "LB Benefit Sky Matrix": [
+  "天空遮蔽收益矩阵",
+  "计算遮阳构件对各方向天空的遮挡收益，用于优化遮阳与采光平衡。"
+ ],
+ "LB Direct Sun Hours": [
+  "直接日照小时数",
+  "统计测点全年或指定时段内被太阳直射的小时数，用于日照合规与遮阳评估。"
+ ],
+ "LB Incident Radiation": [
+  "入射辐射",
+  "计算网格或测点接收到的太阳辐射总量（含直射与散射），支持遮阳遮挡计算。"
+ ],
+ "LB Real Time Incident Radiation": [
+  "实时入射辐射",
+  "按当前时刻的太阳位置快速计算表面瞬时辐射强度。"
+ ],
+ "LB Directional Solar Irradiance": [
+  "方向太阳辐照",
+  "按指定方向统计太阳辐照强度，用于朝向优化与光伏布置。"
+ ],
+ "LB Solar MRT from Solar Components": [
+  "由太阳分量算 MRT",
+  "用直射与散射辐射分量计算平均辐射温度（MRT），可分别统计各朝向。"
+ ],
+ "LB Indoor Solar MRT": [
+  "室内太阳平均辐射温度",
+  "计算太阳透过窗洞后在室内形成的平均辐射温度增量。"
+ ],
+ "LB Outdoor Solar MRT": [
+  "室外太阳平均辐射温度",
+  "计算室外人体受到的太阳辐射等效平均辐射温度。"
+ ],
+ "LB Thermal Indices": [
+  "热指数",
+  "由气温、湿度、风速与辐射计算体感温度、热指数等综合指标。"
+ ],
+ "LB Humidity Metrics": [
+  "湿度指标",
+  "计算相对湿度、绝对湿度、露点温度与焓值等湿度相关指标。"
+ ],
+ "LB Relative Humidity from Dew Point": [
+  "露点算相对湿度",
+  "由干球温度与露点温度反算相对湿度，便于补齐缺失数据。"
+ ],
+ "LB Wind Speed": [
+  "风速",
+  "从气象数据中提取指定高度或时段的风速序列。"
+ ],
+ "LB Degree Days": [
+  "度日数",
+  "计算采暖度日数（HDD）与制冷度日数（CDD），用于估算全年能耗量级。"
+ ],
+ "LB Comfort Statistics": [
+  "舒适度统计",
+  "统计舒适小时数、不舒适小时数与占比，输出可用于图表的统计数据。"
+ ],
+ "LB PMV Comfort": [
+  "PMV 舒适度",
+  "按 ISO 7730 的 PMV/PPD 模型计算室内热舒适，输出逐时 PMV、PPD 与舒适状态。"
+ ],
+ "LB PMV Comfort Parameters": [
+  "PMV 舒适参数",
+  "设置代谢率、服装热阻、空气流速与平均辐射温度等 PMV 计算输入。"
+ ],
+ "LB Adaptive Comfort": [
+  "自适应舒适度",
+  "按 ASHRAE 55 自适应模型评价自然通风建筑的热舒适，输出可接受温度范围与舒适小时数。"
+ ],
+ "LB Adaptive Comfort Parameters": [
+  "自适应舒适参数",
+  "设置自适应模型的风速修正、窗可开启比例等计算条件。"
+ ],
+ "LB UTCI Comfort": [
+  "UTCI 舒适度",
+  "计算通用热气候指数（UTCI），评价室外热环境，输出逐时 UTCI 与冷热应激等级。"
+ ],
+ "LB UTCI Comfort Parameters": [
+  "UTCI 舒适参数",
+  "设置 UTCI 计算所需的服装、代谢率与太阳辐射修正参数。"
+ ],
+ "LB PET Comfort": [
+  "PET 舒适度",
+  "计算生理等效温度（PET），用于室外热舒适的中欧标准评价。"
+ ],
+ "LB PET Body Parameters": [
+  "PET 人体参数",
+  "设置 PET 计算的人体身高、体重、服装与代谢率。"
+ ],
+ "LB Solar Body Parameters": [
+  "太阳人体参数",
+  "设置人体在太阳辐射下的朝向、姿态与吸收系数。"
+ ],
+ "LB Thermal Shade Benefit": [
+  "热遮阳收益",
+  "综合辐射与温度计算遮阳构件带来的热舒适改善量。"
+ ],
+ "LB Shade Benefit": [
+  "遮阳收益",
+  "计算遮阳物对辐射、日照或采光的削减比例，用于遮阳方案比较。"
+ ],
+ "LB Human to Sky Relation": [
+  "人体与天空关系",
+  "计算人体各部位可见的天空比例，用于室外辐射与舒适度修正。"
+ ],
+ "LB View Factors": [
+  "视角系数",
+  "计算表面或测点对各方向天空/表面的视角系数，是辐射计算的核心量。"
+ ],
+ "LB View Percent": [
+  "视野占比",
+  "统计视野内天空、建筑、植被等对象的面积占比。"
+ ],
+ "LB Visibility Percent": [
+  "可见度百分比",
+  "计算目标对象在视野中的可见比例，用于景观与视线分析。"
+ ],
+ "LB Surface Ray Tracing": [
+  "表面光线追踪",
+  "从测点向周边发射光线检测遮挡，输出可见性与遮挡面。"
+ ],
+ "LB Passive Strategies": [
+  "被动式策略列表",
+  "提供可勾选的被动式设计策略（自然通风、蒸发冷却、蓄热等）供焓湿图分析使用。"
+ ],
+ "LB Passive Strategy Parameters": [
+  "被动式策略参数",
+  "设置各被动式策略的适用条件与强度上限。"
+ ],
+ "LB Clothing by Temperature": [
+  "按温度取服装热阻",
+  "按室外温度自动选择对应季节的服装热阻值。"
+ ],
+ "LB Clothing List": [
+  "服装热阻列表",
+  "提供常见着装组合的服装热阻（clo）可选值列表。"
+ ],
+ "LB Activities Met List": [
+  "活动代谢率列表",
+  "提供坐、站、走、跑等活动的代谢率（met）可选值列表。"
+ ],
+ "LB Ankle Draft": [
+  "脚踝吹风感",
+  "按风速与湍流度计算脚踝处吹风感不满意率（DR）。"
+ ],
+ "LB Radiant Asymmetry": [
+  "辐射不对称度",
+  "计算人体上下、左右方向的辐射温度差，评价局部不舒适。"
+ ],
+ "LB Set View": [
+  "设置视图",
+  "把 Rhino 相机切换到指定的标准视图或自定义视角。"
+ ],
+ "LB Capture View": [
+  "捕获视图",
+  "把当前视图截图并输出为图片文件，用于报告与图面归档。"
+ ],
+ "LB Orient to Camera": [
+  "朝向相机",
+  "把物体旋转到始终面向当前相机，常用于文字与图例。"
+ ],
+ "LB Screen Oriented Text": [
+  "屏幕朝向文字",
+  "生成始终面向屏幕的文字标注，缩放视图时保持可读。"
+ ],
+ "LB Open File": [
+  "打开文件",
+  "在系统中用默认程序打开指定文件。"
+ ],
+ "LB Open Directory": [
+  "打开文件夹",
+  "在资源管理器中打开指定目录。"
+ ],
+ "LB To SI": [
+  "转 SI 单位",
+  "把英制或其他单位的数据换算为国际单位制。"
+ ],
+ "LB To IP": [
+  "转 IP 单位",
+  "把国际单位制数据换算为英制（IP）单位。"
+ ],
+ "LB To Unit": [
+  "转换为指定单位",
+  "按目标单位把数据集合换算为任意兼容单位。"
+ ],
+ "LB Unit Converter": [
+  "单位换算器",
+  "对单个数值执行单位换算，支持长度、面积、温度、能量等。"
+ ],
+ "LB Versioner": [
+  "版本管理器",
+  "检查并更新 Ladybug Tools 组件版本，可安装指定版本或回滚。"
+ ],
+ "LB Export UserObject": [
+  "导出 UserObject",
+  "把当前组件导出为 .ghuser 文件，便于分发给其他机器。"
+ ],
+ "LB Legacy Updater": [
+  "旧版组件升级",
+  "把 0.x 旧版 Ladybug 组件替换为 1.x 新版组件。"
+ ],
+ "LB Sync Grasshopper File": [
+  "同步 GH 文件",
+  "把当前 GH 文件与服务器或本地目录同步，便于团队协作。"
+ ],
+ "LB Load Data": [
+  "读取数据",
+  "从 JSON 或文本文件读取 Ladybug 数据集合。"
+ ],
+ "LB Dump Data": [
+  "导出数据",
+  "把数据集合序列化为 JSON 文件，便于交换与存档。"
+ ],
+ "LB Deconstruct Matrix": [
+  "拆解矩阵",
+  "把矩阵拆成数值列表、行列数与元数据。"
+ ],
+ "LB Construct Matrix": [
+  "构建矩阵",
+  "由数值列表和行列数构建矩阵对象，供辐射与采光计算使用。"
+ ],
+ "LB Area Aggregate": [
+  "面积汇总",
+  "按标签或分组汇总网格面积与对应数值的加权平均。"
+ ],
+ "LB Area Normalize": [
+  "面积归一化",
+  "把总量按面积摊平，得到单位面积指标，便于不同规模比较。"
+ ],
+ "LB Apply Metadata": [
+  "应用元数据",
+  "给数据集合附加元数据（如时间步数、风速高度），便于后续组件正确解读集合。"
+ ],
+ "LB Contour Mesh": [
+  "网格等值线",
+  "按数值把网格切成多条等值线并生成图例，适合表达温度、辐射等分布。"
+ ]
 }

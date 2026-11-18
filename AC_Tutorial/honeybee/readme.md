@@ -1,7 +1,7 @@
 # Honeybee 组件速查与系统教程 · Component Reference & Tutorials
 
-> **Ladybug Tools 1.9 · 412 个组件 · 22 篇双语教程 · 零依赖静态站**
-> **Ladybug Tools 1.9 · 412 components · 22 bilingual tutorials · zero-dependency static site**
+> **Ladybug Tools 1.10 · 429 个组件 · 22 篇双语教程 · 零依赖静态站**
+> **Ladybug Tools 1.10 · 429 components · 22 bilingual tutorials · zero-dependency static site**
 
 在线访问 / Live: <https://www.kbitai.com.cn/resources/AC_Tutorial/honeybee/site/index.html>
 
@@ -9,17 +9,17 @@
 
 ## 这是什么 · What It Is
 
-**中文** — 一套面向中文用户的 Ladybug Tools 学习资料：把 Rhino / Grasshopper 中 Ladybug、Honeybee、HB-Energy、HB-Radiance 四个标签页的 **412 个组件**做成可搜索的速查手册，每个组件都带原厂图标、中英名称、完整输入输出端口，并配套 **22 篇中英双语教程**与 **120 条术语表**。
+**中文** — 一套面向中文用户的 Ladybug Tools 学习资料：把 Rhino / Grasshopper 中 Ladybug、Honeybee、HB-Energy、HB-Radiance 四个标签页的 **429 个组件**做成可搜索的速查手册，每个组件都带原厂图标、中英名称、完整输入输出端口，并配套 **22 篇中英双语教程**与 **117 条术语表**。
 
-**English** — A bilingual learning resource for Ladybug Tools. Every one of the **412 components** across the Ladybug, Honeybee, HB-Energy and HB-Radiance tabs is catalogued with its native icon, Chinese and English names, full input/output ports, and linked to **22 bilingual tutorials** plus a **120-term glossary**.
+**English** — A bilingual learning resource for Ladybug Tools. Every one of the **429 components** across the Ladybug, Honeybee, HB-Energy and HB-Radiance tabs is catalogued with its native icon, Chinese and English names, full input/output ports, and linked to **22 bilingual tutorials** plus a **117-term glossary**.
 
 | 能力 Capability | 中文说明 | English |
 |---|---|---|
-| 组件速查 | 412 条，按 4 个标签页、23 个子分类组织，支持中英名、昵称、端口、说明全文搜索 | 412 entries across 4 tabs and 23 sub-categories, full-text search over names, nicknames, ports and descriptions |
+| 组件速查 | 429 条，按 4 个标签页、23 个子分类组织，支持中英名、昵称、端口、说明全文搜索 | 429 entries across 4 tabs and 23 sub-categories, full-text search over names, nicknames, ports and descriptions |
 | 原厂图标 | 直接提取自官方 `.ghuser`，24 / 48 / 96 三档，像素级还原 | Icons extracted from the official `.ghuser` files at 24 / 48 / 96 px |
 | 端口表 | 输入输出名称、推断类型、是否必填、官方英文说明 | Port names, inferred types, required flags and official English notes |
 | 系统教程 | 入门 → 气象 → 建模 → 能量 → 采光 → 实战，共 22 篇 + 4 个附录 | 22 chapters from fundamentals to daylight and energy, plus 4 appendices |
-| 术语表 | 120 条中英对照，覆盖 EPW、构造、采光指标等 | 120 bilingual terms covering EPW, constructions, daylight metrics and more |
+| 术语表 | 117 条中英对照，覆盖 EPW、构造、采光指标等 | 117 bilingual terms covering EPW, constructions, daylight metrics and more |
 | 明暗主题 | 跟随系统记忆，支持打印与移动端 | Dark / light theme, print-friendly, responsive |
 
 ---
@@ -55,12 +55,12 @@ honeybee/
 ├── debug_log_1.md            变更记录 · change log
 ├── cover.svg                 封面与主站卡片缩略图 · cover
 ├── site/                     静态站（index.html / app.js / style.css）
-├── assets/icons/{24,48,96}/  412 × 3 张原厂图标
+├── assets/icons/{24,48,96}/  429 × 3 张原厂图标
 ├── data/
-│   ├── components.json       412 条组件（端口、中英说明）
+│   ├── components.json       429 条组件（端口、中英说明）
 │   ├── categories.json       4 标签页 / 23 子分类
 │   ├── chapters.json         22 篇教程 + 4 附录清单
-│   ├── terms.json            120 条术语
+│   ├── terms.json            117 条术语
 │   ├── raw_components.json   解析中间产物
 │   └── zh_*.json             人工中文译名表（4 份）
 ├── doc/zh|en/                26 篇中英对照 Markdown
@@ -86,11 +86,11 @@ python tools/check_data.py        # 图标、字段、链接、引用自检
 
 | 标签页 Tab | 组件数 | 子分类 | 教程章节 |
 |---|---:|---:|---|
-| Ladybug | 120 | 6 | 04–07 |
+| Ladybug | 122 | 6 | 04–07 |
 | Honeybee | 70 | 4 | 08–12 |
-| HB-Energy | 139 | 8 | 13–17 |
-| HB-Radiance | 83 | 5 | 18–20 |
-| **合计 Total** | **412** | **23** | **22 + 4 附录** |
+| HB-Energy | 143 | 8 | 13–17 |
+| HB-Radiance | 94 | 5 | 18–20 |
+| **合计 Total** | **429** | **23** | **22 + 4 附录** |
 
 ---
 
@@ -106,7 +106,7 @@ python tools/check_data.py        # 图标、字段、链接、引用自检
 
 - **组件图标与英文说明**：© [Ladybug Tools](https://github.com/ladybug-tools)，[AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.html)。仅用于说明各组件功能，不单独再分发图标包。
 - **教程文字、中文译名、站点代码**：[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)。
-- 版本依据：`ladybug-grasshopper 1.69.1`、`honeybee-grasshopper-core 1.43.1`、`-energy 1.59.6`、`-radiance 1.35.3`、`lbt-grasshopper 1.9.18`。
+- 版本依据：Pollination 随附的 `lbt-grasshopper 1.10.6`（组件 `Component.Message` 为 1.10.0–1.10.4）。
 - 官方资料：[Honeybee Primer](https://docs.ladybug.tools/honeybee-primer/) · [HB-Energy Primer](https://docs.ladybug.tools/hb-energy-primer/) · [HB-Radiance Primer](https://docs.ladybug.tools/hb-radiance-primer/) · [Ladybug Primer](https://docs.ladybug.tools/ladybug-primer/)
 
 ---

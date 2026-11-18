@@ -1,145 +1,575 @@
 {
- "_note": "HB-Energy 标签页 139 个组件的中文名与中文说明；键为官方英文名",
- "HB Opaque Material": ["不透光材料", "定义墙体、屋面、楼板等不透光材料的热阻、密度、比热与粗糙度，是构造的基本单元。"],
- "HB Opaque Material No Mass": ["无质量不透光材料", "只设热阻、不设蓄热能力的简化材料，用于方案阶段或轻质构造。"],
- "HB Window Material": ["玻璃材料", "定义单层玻璃的太阳得热系数（SHGC）、可见光透过率与传热系数。"],
- "HB Glass Material": ["玻璃材料", "定义玻璃的太阳光学与热工性能，是窗构造的核心层。"],
- "HB Shade Material": ["遮阳材料", "定义遮阳构件的可见光与太阳透过率。"],
- "HB Blind Material": ["百叶材料", "定义室内百叶的角度、反射率与开启比例，用于遮阳与采光联动。"],
- "HB Vegetation Material": ["植被材料", "定义屋面或墙面植被的叶面积指数、反射率与蒸发特性。"],
- "HB Custom Window Gap Material": ["自定义窗间层材料", "自定义中空玻璃气体层或窗框间层的热工参数。"],
- "HB Window Gap Material": ["窗间层材料", "定义中空玻璃的气体层厚度与气体类型（空气、氩气等）。"],
- "HB Window Frame": ["窗框", "定义窗框的宽度、传热系数与边缘热桥效应。"],
- "HB Opaque Construction": ["不透光构造", "把多层不透光材料按顺序组合为墙体、屋面或楼板构造。"],
- "HB Window Construction": ["窗构造", "把玻璃与窗间层组合为窗构造，决定整窗的 U 值与 SHGC。"],
- "HB Window Construction Shade": ["带遮阳窗构造", "在窗构造上叠加可调节的遮阳层，用于动态遮阳模拟。"],
- "HB Window Construction Dynamic": ["动态窗构造", "定义可切换的电致变色或可调玻璃状态，用于动态采光与能耗模拟。"],
- "HB Shade Construction": ["遮阳构造", "定义遮阳构件的反射率与透过率，独立于几何遮阳面使用。"],
- "HB ConstructionSet": ["构造集", "把外墙、屋面、楼板、窗、门等构造打包为一套构造集，整体赋给模型。"],
- "HB Construction Set by Climate": ["按气候取构造集", "按气候区自动匹配符合当地规范的构造集。"],
- "HB Apply ConstructionSet": ["应用构造集", "把构造集赋给房间或整个模型。"],
- "HB Apply Opaque Construction": ["应用不透光构造", "按面类型把不透光构造批量赋给墙面、屋面或楼板。"],
- "HB Apply Window Construction": ["应用窗构造", "把窗构造批量赋给窗洞。"],
- "HB Apply Shade Construction": ["应用遮阳构造", "把遮阳构造批量赋给遮阳构件。"],
- "HB Exterior Construction Subset": ["外部构造子集", "只定义外墙、屋面、窗等外部围护构造，用于局部覆盖构造集。"],
- "HB Interior Construction Subset": ["内部构造子集", "只定义内墙、楼板等内部构造，用于局部覆盖构造集。"],
- "HB Ground Construction Subset": ["地面构造子集", "只定义与土壤接触的地面构造。"],
- "HB Subface Subset": ["子面构造子集", "只定义窗、门等子面的构造，用于局部覆盖。"],
- "HB Deconstruct Construction": ["拆解构造", "把构造拆成材料层列表与厚度、总热阻等参数。"],
- "HB Deconstruct ConstructionSet": ["拆解构造集", "把构造集拆成各类构造对象。"],
- "HB Deconstruct ConstructionSet Interior": ["拆解构造集内部项", "读取构造集中的内部构造部分。"],
- "HB Deconstruct Material": ["拆解材料", "把材料拆成热工参数与光学参数。"],
- "HB Search Materials": ["搜索材料", "按关键词在材料库中检索材料。"],
- "HB Search Constructions": ["搜索构造", "按关键词检索构造库中的构造。"],
- "HB Search Construction Sets": ["搜索构造集", "按关键词检索构造集库。"],
- "HB Construction Types": ["建筑构造类型列表", "提供构造集库中的建筑类型（轻质、重质、木结构等）可选值。"],
- "HB Blower Pressure Converter": ["风机压力换算", "把风机风量与压头换算为能耗计算所需的功率参数。"],
- "HB Constant Schedule": ["恒定运行计划", "在整个时段内保持同一个数值的运行计划。"],
- "HB Weekly Schedule": ["周运行计划", "按周一至周日分别定义逐时数值，可叠加节假日规则。"],
- "HB Fixed Interval Schedule": ["定间隔运行计划", "按固定间隔（如 15 分钟）定义运行计划数值。"],
- "HB Seasonal Schedule": ["季节运行计划", "按季节切换不同运行计划，用于采暖/制冷季差异较大的场景。"],
- "HB Gene Pool to Day Schedule": ["基因池转日计划", "把 Grasshopper 基因池（滑块序列）转换为一日 24 小时的运行计划，便于参数化优化。"],
- "HB Schedule to Data": ["运行计划转数据", "把运行计划展开为逐时数据集合，便于绘图与核对。"],
- "HB Deconstruct Schedule": ["拆解运行计划", "把运行计划拆成数值、类型与时段规则。"],
- "HB Apply Room Schedules": ["应用房间运行计划", "把指定运行计划批量赋给房间的各类负荷。"],
- "HB Apply Shade Schedule": ["应用遮阳运行计划", "为遮阳构件指定开合时间表。"],
- "HB Type Limit": ["类型限值", "限定运行计划数值的上下限与类型，避免误输入。"],
- "HB Search Schedules": ["搜索运行计划", "按关键词检索运行计划库。"],
- "HB ProgramType": ["房间用途模板", "把人员、照明、设备、新风、 infiltration 与温度设定打包为一套房间用途模板。"],
- "HB People": ["人员", "定义人员密度、代谢率、在室率与舒适模型。"],
- "HB Lighting": ["照明", "定义照明功率密度、照明时间表与可见光发热比例。"],
- "HB Equipment": ["设备", "定义设备功率密度、使用时间表与发热/耗电比例。"],
- "HB Process Load": ["工艺负荷", "定义与人员无关的工艺设备负荷及其时间表。"],
- "HB Infiltration": ["渗透风", "定义通过缝隙渗入的室外空气量及其时间表。"],
- "HB Ventilation": ["新风", "定义按人、按面积或按换气次数计算的新风量。"],
- "HB Fan Ventilation": ["风机新风", "定义带风机的新风系统风量与风机能耗。"],
- "HB Window Opening": ["可开启窗", "定义窗的可开启面积与自然通风控制策略。"],
- "HB Ventilation Control": ["通风控制", "设置自然通风的开启条件（室内外温差、焓差、风速）。"],
- "HB Setpoint": ["温度设定点", "定义采暖与制冷设定温度及其时间表。"],
- "HB Service Hot Water": ["生活热水", "定义生活热水用量、供水温度与加热效率。"],
- "HB Apply Load Values": ["应用负荷数值", "把负荷数值批量替换到房间的对应负荷上。"],
- "HB Apply Absolute Load Values": ["应用绝对负荷值", "按绝对值（而非密度）设置房间负荷。"],
- "HB Apply Setpoint Values": ["应用设定点数值", "把温度设定值批量赋给房间。"],
- "HB Apply ProgramType": ["应用用途模板", "把房间用途模板批量赋给房间。"],
- "HB Apply Daylight Control": ["应用采光控制", "把采光控制策略（照度阈值、调光比例）赋给房间的照明。"],
- "HB Blend ProgramTypes": ["混合用途模板", "按面积比例把多个用途模板混合为一个新模板。"],
- "HB Deconstruct People": ["拆解人员", "把人员负荷对象拆成密度、代谢率、时间表等参数。"],
- "HB Deconstruct Lighting": ["拆解照明", "把照明负荷对象拆成功率密度与时间表等参数。"],
- "HB Deconstruct Equipment": ["拆解设备", "把设备负荷对象拆成功率密度与时间表等参数。"],
- "HB Deconstruct Infiltration": ["拆解渗透风", "把渗透风对象拆成风量与时间表等参数。"],
- "HB Deconstruct Ventilation": ["拆解新风", "把新风对象拆成风量计算方式与时间表。"],
- "HB Deconstruct Setpoint": ["拆解设定点", "把温度设定点对象拆成采暖/制冷设定与时间表。"],
- "HB Deconstruct Hot Water": ["拆解生活热水", "把生活热水对象拆成用水量、温度与效率。"],
- "HB Deconstruct ProgramType": ["拆解用途模板", "把房间用途模板拆成各类负荷对象。"],
- "HB Airflow Newtwork": ["气流网络", "定义多区域气流网络（AirflowNetwork），模拟门窗渗漏与跨房间气流。"],
- "HB IdealAir": ["理想空调系统", "为房间加载理想空调（Ideal Air Loads），只算负荷不建具体设备，是最常用的负荷计算方法。"],
- "HB All-Air HVAC": ["全空气系统", "按参数自动生成全空气（变风量/定风量）空调系统。"],
- "HB DOAS HVAC": ["独立新风系统", "生成独立新风（DOAS）配合末端设备的空调系统。"],
- "HB HeatCool HVAC": ["冷热末端系统", "生成只负责供热与供冷、不含通风的末端系统。"],
- "HB Detailed HVAC": ["详细 HVAC 系统", "用 OpenStudio 详细 HVAC 对象搭建复杂空调系统。"],
- "HB All-Air HVAC Templates": ["全空气系统模板列表", "提供可用的全空气空调系统模板名称。"],
- "HB DOAS HVAC Templates": ["独立新风系统模板列表", "提供可用的独立新风系统模板名称。"],
- "HB HeatCool HVAC Templates": ["冷热末端系统模板列表", "提供可用的供热/供冷末端系统模板名称。"],
- "HB SHW Templates": ["生活热水系统模板列表", "提供可用的生活热水系统模板名称。"],
- "HB SHW System": ["生活热水系统", "定义生活热水的热源类型、效率与分配损失。"],
- "HB Electric Load Center": ["配电负荷中心", "定义建筑用电负荷、光伏与储能，用于净零能耗分析。"],
- "HB Photovoltaic Properties": ["光伏属性", "为屋面或遮阳面定义光伏板的效率、倾角与转换系数。"],
- "HB Radiant HVAC Properties": ["辐射空调属性", "定义辐射地板/顶棚的面积、水温与换热参数。"],
- "HB Set Conditioned": ["设置空调与否", "标记房间是否设置空调系统，未空调房间不参与负荷计算。"],
- "HB Adiabatic by Type": ["按类型设绝热", "把指定类型的面设为绝热边界，用于简化相邻空间。"],
- "HB Other Side Temperature": ["对侧温度", "为面指定另一侧温度，模拟与不建模空间的换热。"],
- "HB Ground": ["地面边界", "定义与土壤接触的地面边界条件与土壤温度。"],
- "HB Plenum": ["吊顶回风腔", "把吊顶空间设为回风腔并定义其热工行为。"],
- "HB Internal Mass": ["内部蓄热体", "定义房间内部的家具、隔断等蓄热体面积与构造。"],
- "HB Patch Missing Adjacency": ["补齐缺失相邻", "自动查找并补齐未匹配的相邻面，修复模型缺口。"],
- "HB Simulation Parameter": ["模拟参数", "汇总能量模拟的全部参数（时段、输出、阴影、HVAC 等）。"],
- "HB Sizing Parameter": ["设备选型参数", "设置冷热负荷设计日与设备选型系数。"],
- "HB Shadow Calculation": ["阴影计算设置", "设置阴影计算的频率与算法，平衡精度与速度。"],
- "HB Simulation Control": ["模拟控制", "设置模拟类型（负荷、能耗、光伏）与是否运行。"],
- "HB Simulation Output": ["模拟输出设置", "勾选需要输出的结果变量，控制结果文件大小。"],
- "HB Custom Simulation Output": ["自定义输出", "手工添加 EnergyPlus 输出变量与报表。"],
- "HB Create OSM Measure": ["生成 OSM 措施", "把模型操作封装为 OpenStudio Measure，便于批量应用。"],
- "HB Load Measure": ["加载措施", "加载已有的 OpenStudio Measure 到模拟流程。"],
- "HB Empty OSM": ["空 OSM 文件", "生成一个空的 OpenStudio 模型，用于自定义建模流程。"],
- "HB Model to OSM": ["模型转 OSM", "把 Honeybee 模型翻译为 OpenStudio 模型（.osm）。"],
- "HB Run OSM": ["运行 OSM", "直接运行 .osm 文件并返回结果。"],
- "HB Run IDF": ["运行 IDF", "直接运行 EnergyPlus 的 .idf 文件。"],
- "HB Run OSW": ["运行 OSW", "按 OpenStudio 工作流（.osw）运行完整模拟流程。"],
- "HB Annual Loads": ["全年负荷", "运行全年冷热负荷模拟，输出逐时负荷与峰值。"],
- "HB Generation Loads": ["发电负荷", "模拟光伏等发电系统的逐时发电量。"],
- "HB Peak Loads": ["峰值负荷", "提取设计日峰值冷热负荷，用于设备选型。"],
- "HB Shadow Calculation": ["阴影计算设置", "设置阴影计算的频率与算法，平衡精度与速度。"],
- "HB Load Shade Benefit": ["加载遮阳收益", "把预先计算的遮阳收益数据加载到模型中。"],
- "HB Read Room Energy Result": ["读取房间能耗结果", "读取房间的逐时冷热负荷、得热与能耗结果。"],
- "HB Read Face Result": ["读取面结果", "读取各面的表面温度、得热与辐射结果。"],
- "HB Face Result by Type": ["按类型汇总面结果", "按墙、屋面、窗等类型汇总面结果。"],
- "HB Filter Room Result": ["筛选房间结果", "按房间或时段筛选能耗结果数据。"],
- "HB Normalize by Floor Area": ["按面积归一化", "把能耗结果换算为单位面积指标（kWh/m²）。"],
- "HB End Use Intensity": ["终端能耗强度", "统计供暖、制冷、照明、设备等分项能耗强度。"],
- "HB Carbon Emission Intensity": ["碳排放强度", "按能源种类与排放因子计算单位面积碳排放。"],
- "HB Balance Temperature": ["平衡温度", "计算建筑得热与失热相等时的室外平衡温度。"],
- "HB Thermal Load Balance": ["热负荷平衡", "把房间冷热负荷拆解为围护、渗透、人员、设备等分项贡献。"],
- "HB Read Thermal Matrix": ["读取热工矩阵", "读取逐时室内外温度矩阵，用于热力图与舒适度分析。"],
- "HB Visualize Thermal Map": ["可视化热力图", "把温度或舒适度结果渲染为空间热力图。"],
- "HB PMV Comfort Map": ["PMV 舒适度图", "在房间网格上逐点计算 PMV 并生成舒适度分布图。"],
- "HB Adaptive Comfort Map": ["自适应舒适度图", "在自然通风条件下生成自适应舒适度分布图。"],
- "HB UTCI Comfort Map": ["UTCI 舒适度图", "生成室外 UTCI 热应力分布图。"],
- "HB Read Environment Matrix": ["读取环境矩阵", "读取模拟过程中的室内外环境参数矩阵。"],
- "HB Read HVAC Sizing": ["读取 HVAC 选型", "读取设备选型计算结果（风量、冷热量）。"],
- "HB Read Zone Sizing": ["读取热区选型", "读取按热区汇总的设备选型结果。"],
- "HB Read Generation Result": ["读取发电结果", "读取光伏等发电系统的逐时发电与收益结果。"],
- "HB Read Room Comfort Result": ["读取房间舒适结果", "读取房间逐时温度、湿度与舒适指标。"],
- "HB Read Custom Result": ["读取自定义结果", "按输出变量名读取自定义模拟结果。"],
- "HB Read Tabular Data": ["读取表格数据", "读取 EnergyPlus 报表中的汇总表格数据。"],
- "HB Read Result Dictionary": ["读取结果字典", "读取结果文件的变量字典，确认可用的输出项。"],
- "HB Color Rooms": ["房间结果着色", "按数值为房间着色，快速看出负荷或温度分布。"],
- "HB Color Faces": ["面结果着色", "按数值为面着色，显示表面温度或得热分布。"],
- "HB Window Opening": ["可开启窗", "定义窗的可开启面积与自然通风控制策略。"],
- "HB Building Programs": ["建筑用途模板列表", "提供用途模板库中的建筑类型可选值。"],
- "HB Building Vintages": ["建筑年代列表", "提供建筑年代（影响构造与规范）可选值。"],
- "HB Climate Zones": ["气候区列表", "提供 ASHRAE 气候区可选值。"],
- "HB Construction Types": ["建筑构造类型列表", "提供构造集库中的建筑类型（轻质、重质、木结构等）可选值。"],
- "HB Face Energy Attributes": ["面能量属性列表", "提供面可查看的能量属性名称列表。"],
- "HB Room Energy Attributes": ["房间能量属性列表", "提供房间可查看的能量属性名称列表。"],
- "HB Search Programs": ["搜索用途模板", "按关键词检索房间用途模板库。"]
+ "_note": "HB-Energy 标签页 143 个组件的中文名与中文说明；键为官方英文名",
+ "HB Opaque Material": [
+  "不透光材料",
+  "定义墙体、屋面、楼板等不透光材料的热阻、密度、比热与粗糙度，是构造的基本单元。"
+ ],
+ "HB Opaque Material No Mass": [
+  "无质量不透光材料",
+  "只设热阻、不设蓄热能力的简化材料，用于方案阶段或轻质构造。"
+ ],
+ "HB Window Material": [
+  "玻璃材料",
+  "定义单层玻璃的太阳得热系数（SHGC）、可见光透过率与传热系数。"
+ ],
+ "HB Glass Material": [
+  "玻璃材料",
+  "定义玻璃的太阳光学与热工性能，是窗构造的核心层。"
+ ],
+ "HB Shade Material": [
+  "遮阳材料",
+  "定义遮阳构件的可见光与太阳透过率。"
+ ],
+ "HB Blind Material": [
+  "百叶材料",
+  "定义室内百叶的角度、反射率与开启比例，用于遮阳与采光联动。"
+ ],
+ "HB Vegetation Material": [
+  "植被材料",
+  "定义屋面或墙面植被的叶面积指数、反射率与蒸发特性。"
+ ],
+ "HB Custom Window Gap Material": [
+  "自定义窗间层材料",
+  "自定义中空玻璃气体层或窗框间层的热工参数。"
+ ],
+ "HB Window Gap Material": [
+  "窗间层材料",
+  "定义中空玻璃的气体层厚度与气体类型（空气、氩气等）。"
+ ],
+ "HB Window Frame": [
+  "窗框",
+  "定义窗框的宽度、传热系数与边缘热桥效应。"
+ ],
+ "HB Opaque Construction": [
+  "不透光构造",
+  "把多层不透光材料按顺序组合为墙体、屋面或楼板构造。"
+ ],
+ "HB Window Construction": [
+  "窗构造",
+  "把玻璃与窗间层组合为窗构造，决定整窗的 U 值与 SHGC。"
+ ],
+ "HB Window Construction Shade": [
+  "带遮阳窗构造",
+  "在窗构造上叠加可调节的遮阳层，用于动态遮阳模拟。"
+ ],
+ "HB Window Construction Dynamic": [
+  "动态窗构造",
+  "定义可切换的电致变色或可调玻璃状态，用于动态采光与能耗模拟。"
+ ],
+ "HB Shade Construction": [
+  "遮阳构造",
+  "定义遮阳构件的反射率与透过率，独立于几何遮阳面使用。"
+ ],
+ "HB ConstructionSet": [
+  "构造集",
+  "把外墙、屋面、楼板、窗、门等构造打包为一套构造集，整体赋给模型。"
+ ],
+ "HB Construction Set by Climate": [
+  "按气候取构造集",
+  "按气候区自动匹配符合当地规范的构造集。"
+ ],
+ "HB Apply ConstructionSet": [
+  "应用构造集",
+  "把构造集赋给房间或整个模型。"
+ ],
+ "HB Apply Opaque Construction": [
+  "应用不透光构造",
+  "按面类型把不透光构造批量赋给墙面、屋面或楼板。"
+ ],
+ "HB Apply Window Construction": [
+  "应用窗构造",
+  "把窗构造批量赋给窗洞。"
+ ],
+ "HB Apply Shade Construction": [
+  "应用遮阳构造",
+  "把遮阳构造批量赋给遮阳构件。"
+ ],
+ "HB Exterior Construction Subset": [
+  "外部构造子集",
+  "只定义外墙、屋面、窗等外部围护构造，用于局部覆盖构造集。"
+ ],
+ "HB Interior Construction Subset": [
+  "内部构造子集",
+  "只定义内墙、楼板等内部构造，用于局部覆盖构造集。"
+ ],
+ "HB Ground Construction Subset": [
+  "地面构造子集",
+  "只定义与土壤接触的地面构造。"
+ ],
+ "HB Subface Subset": [
+  "子面构造子集",
+  "只定义窗、门等子面的构造，用于局部覆盖。"
+ ],
+ "HB Deconstruct Construction": [
+  "拆解构造",
+  "把构造拆成材料层列表与厚度、总热阻等参数。"
+ ],
+ "HB Deconstruct ConstructionSet": [
+  "拆解构造集",
+  "把构造集拆成各类构造对象。"
+ ],
+ "HB Deconstruct ConstructionSet Interior": [
+  "拆解构造集内部项",
+  "读取构造集中的内部构造部分。"
+ ],
+ "HB Deconstruct Material": [
+  "拆解材料",
+  "把材料拆成热工参数与光学参数。"
+ ],
+ "HB Search Materials": [
+  "搜索材料",
+  "按关键词在材料库中检索材料。"
+ ],
+ "HB Search Constructions": [
+  "搜索构造",
+  "按关键词检索构造库中的构造。"
+ ],
+ "HB Search Construction Sets": [
+  "搜索构造集",
+  "按关键词检索构造集库。"
+ ],
+ "HB Construction Types": [
+  "建筑构造类型列表",
+  "提供构造集库中的建筑类型（轻质、重质、木结构等）可选值。"
+ ],
+ "HB Blower Pressure Converter": [
+  "风机压力换算",
+  "把风机风量与压头换算为能耗计算所需的功率参数。"
+ ],
+ "HB Constant Schedule": [
+  "恒定运行计划",
+  "在整个时段内保持同一个数值的运行计划。"
+ ],
+ "HB Weekly Schedule": [
+  "周运行计划",
+  "按周一至周日分别定义逐时数值，可叠加节假日规则。"
+ ],
+ "HB Fixed Interval Schedule": [
+  "定间隔运行计划",
+  "按固定间隔（如 15 分钟）定义运行计划数值。"
+ ],
+ "HB Seasonal Schedule": [
+  "季节运行计划",
+  "按季节切换不同运行计划，用于采暖/制冷季差异较大的场景。"
+ ],
+ "HB Gene Pool to Day Schedule": [
+  "基因池转日计划",
+  "把 Grasshopper 基因池（滑块序列）转换为一日 24 小时的运行计划，便于参数化优化。"
+ ],
+ "HB Schedule to Data": [
+  "运行计划转数据",
+  "把运行计划展开为逐时数据集合，便于绘图与核对。"
+ ],
+ "HB Deconstruct Schedule": [
+  "拆解运行计划",
+  "把运行计划拆成数值、类型与时段规则。"
+ ],
+ "HB Apply Room Schedules": [
+  "应用房间运行计划",
+  "把指定运行计划批量赋给房间的各类负荷。"
+ ],
+ "HB Apply Shade Schedule": [
+  "应用遮阳运行计划",
+  "为遮阳构件指定开合时间表。"
+ ],
+ "HB Type Limit": [
+  "类型限值",
+  "限定运行计划数值的上下限与类型，避免误输入。"
+ ],
+ "HB Search Schedules": [
+  "搜索运行计划",
+  "按关键词检索运行计划库。"
+ ],
+ "HB ProgramType": [
+  "房间用途模板",
+  "把人员、照明、设备、新风、 infiltration 与温度设定打包为一套房间用途模板。"
+ ],
+ "HB People": [
+  "人员",
+  "定义人员密度、代谢率、在室率与舒适模型。"
+ ],
+ "HB Lighting": [
+  "照明",
+  "定义照明功率密度、照明时间表与可见光发热比例。"
+ ],
+ "HB Equipment": [
+  "设备",
+  "定义设备功率密度、使用时间表与发热/耗电比例。"
+ ],
+ "HB Process Load": [
+  "工艺负荷",
+  "定义与人员无关的工艺设备负荷及其时间表。"
+ ],
+ "HB Infiltration": [
+  "渗透风",
+  "定义通过缝隙渗入的室外空气量及其时间表。"
+ ],
+ "HB Ventilation": [
+  "新风",
+  "定义按人、按面积或按换气次数计算的新风量。"
+ ],
+ "HB Fan Ventilation": [
+  "风机新风",
+  "定义带风机的新风系统风量与风机能耗。"
+ ],
+ "HB Window Opening": [
+  "可开启窗",
+  "定义窗的可开启面积与自然通风控制策略。"
+ ],
+ "HB Ventilation Control": [
+  "通风控制",
+  "设置自然通风的开启条件（室内外温差、焓差、风速）。"
+ ],
+ "HB Setpoint": [
+  "温度设定点",
+  "定义采暖与制冷设定温度及其时间表。"
+ ],
+ "HB Service Hot Water": [
+  "生活热水",
+  "定义生活热水用量、供水温度与加热效率。"
+ ],
+ "HB Apply Load Values": [
+  "应用负荷数值",
+  "把负荷数值批量替换到房间的对应负荷上。"
+ ],
+ "HB Apply Absolute Load Values": [
+  "应用绝对负荷值",
+  "按绝对值（而非密度）设置房间负荷。"
+ ],
+ "HB Apply Setpoint Values": [
+  "应用设定点数值",
+  "把温度设定值批量赋给房间。"
+ ],
+ "HB Apply ProgramType": [
+  "应用用途模板",
+  "把房间用途模板批量赋给房间。"
+ ],
+ "HB Apply Daylight Control": [
+  "应用采光控制",
+  "把采光控制策略（照度阈值、调光比例）赋给房间的照明。"
+ ],
+ "HB Blend ProgramTypes": [
+  "混合用途模板",
+  "按面积比例把多个用途模板混合为一个新模板。"
+ ],
+ "HB Deconstruct People": [
+  "拆解人员",
+  "把人员负荷对象拆成密度、代谢率、时间表等参数。"
+ ],
+ "HB Deconstruct Lighting": [
+  "拆解照明",
+  "把照明负荷对象拆成功率密度与时间表等参数。"
+ ],
+ "HB Deconstruct Equipment": [
+  "拆解设备",
+  "把设备负荷对象拆成功率密度与时间表等参数。"
+ ],
+ "HB Deconstruct Infiltration": [
+  "拆解渗透风",
+  "把渗透风对象拆成风量与时间表等参数。"
+ ],
+ "HB Deconstruct Ventilation": [
+  "拆解新风",
+  "把新风对象拆成风量计算方式与时间表。"
+ ],
+ "HB Deconstruct Setpoint": [
+  "拆解设定点",
+  "把温度设定点对象拆成采暖/制冷设定与时间表。"
+ ],
+ "HB Deconstruct Hot Water": [
+  "拆解生活热水",
+  "把生活热水对象拆成用水量、温度与效率。"
+ ],
+ "HB Deconstruct ProgramType": [
+  "拆解用途模板",
+  "把房间用途模板拆成各类负荷对象。"
+ ],
+ "HB Airflow Newtwork": [
+  "气流网络",
+  "定义多区域气流网络（AirflowNetwork），模拟门窗渗漏与跨房间气流。"
+ ],
+ "HB IdealAir": [
+  "理想空调系统",
+  "为房间加载理想空调（Ideal Air Loads），只算负荷不建具体设备，是最常用的负荷计算方法。"
+ ],
+ "HB All-Air HVAC": [
+  "全空气系统",
+  "按参数自动生成全空气（变风量/定风量）空调系统。"
+ ],
+ "HB DOAS HVAC": [
+  "独立新风系统",
+  "生成独立新风（DOAS）配合末端设备的空调系统。"
+ ],
+ "HB HeatCool HVAC": [
+  "冷热末端系统",
+  "生成只负责供热与供冷、不含通风的末端系统。"
+ ],
+ "HB Detailed HVAC": [
+  "详细 HVAC 系统",
+  "用 OpenStudio 详细 HVAC 对象搭建复杂空调系统。"
+ ],
+ "HB All-Air HVAC Templates": [
+  "全空气系统模板列表",
+  "提供可用的全空气空调系统模板名称。"
+ ],
+ "HB DOAS HVAC Templates": [
+  "独立新风系统模板列表",
+  "提供可用的独立新风系统模板名称。"
+ ],
+ "HB HeatCool HVAC Templates": [
+  "冷热末端系统模板列表",
+  "提供可用的供热/供冷末端系统模板名称。"
+ ],
+ "HB SHW Templates": [
+  "生活热水系统模板列表",
+  "提供可用的生活热水系统模板名称。"
+ ],
+ "HB SHW System": [
+  "生活热水系统",
+  "定义生活热水的热源类型、效率与分配损失。"
+ ],
+ "HB Electric Load Center": [
+  "配电负荷中心",
+  "定义建筑用电负荷、光伏与储能，用于净零能耗分析。"
+ ],
+ "HB Photovoltaic Properties": [
+  "光伏属性",
+  "为屋面或遮阳面定义光伏板的效率、倾角与转换系数。"
+ ],
+ "HB Radiant HVAC Properties": [
+  "辐射空调属性",
+  "定义辐射地板/顶棚的面积、水温与换热参数。"
+ ],
+ "HB Set Conditioned": [
+  "设置空调与否",
+  "标记房间是否设置空调系统，未空调房间不参与负荷计算。"
+ ],
+ "HB Adiabatic by Type": [
+  "按类型设绝热",
+  "把指定类型的面设为绝热边界，用于简化相邻空间。"
+ ],
+ "HB Other Side Temperature": [
+  "对侧温度",
+  "为面指定另一侧温度，模拟与不建模空间的换热。"
+ ],
+ "HB Ground": [
+  "地面边界",
+  "定义与土壤接触的地面边界条件与土壤温度。"
+ ],
+ "HB Plenum": [
+  "吊顶回风腔",
+  "把吊顶空间设为回风腔并定义其热工行为。"
+ ],
+ "HB Internal Mass": [
+  "内部蓄热体",
+  "定义房间内部的家具、隔断等蓄热体面积与构造。"
+ ],
+ "HB Patch Missing Adjacency": [
+  "补齐缺失相邻",
+  "自动查找并补齐未匹配的相邻面，修复模型缺口。"
+ ],
+ "HB Simulation Parameter": [
+  "模拟参数",
+  "汇总能量模拟的全部参数（时段、输出、阴影、HVAC 等）。"
+ ],
+ "HB Sizing Parameter": [
+  "设备选型参数",
+  "设置冷热负荷设计日与设备选型系数。"
+ ],
+ "HB Shadow Calculation": [
+  "阴影计算设置",
+  "设置阴影计算的频率与算法，平衡精度与速度。"
+ ],
+ "HB Simulation Control": [
+  "模拟控制",
+  "设置模拟类型（负荷、能耗、光伏）与是否运行。"
+ ],
+ "HB Simulation Output": [
+  "模拟输出设置",
+  "勾选需要输出的结果变量，控制结果文件大小。"
+ ],
+ "HB Custom Simulation Output": [
+  "自定义输出",
+  "手工添加 EnergyPlus 输出变量与报表。"
+ ],
+ "HB Create OSM Measure": [
+  "生成 OSM 措施",
+  "把模型操作封装为 OpenStudio Measure，便于批量应用。"
+ ],
+ "HB Load Measure": [
+  "加载措施",
+  "加载已有的 OpenStudio Measure 到模拟流程。"
+ ],
+ "HB Empty OSM": [
+  "空 OSM 文件",
+  "生成一个空的 OpenStudio 模型，用于自定义建模流程。"
+ ],
+ "HB Model to OSM": [
+  "模型转 OSM",
+  "把 Honeybee 模型翻译为 OpenStudio 模型（.osm）。"
+ ],
+ "HB Run OSM": [
+  "运行 OSM",
+  "直接运行 .osm 文件并返回结果。"
+ ],
+ "HB Run IDF": [
+  "运行 IDF",
+  "直接运行 EnergyPlus 的 .idf 文件。"
+ ],
+ "HB Run OSW": [
+  "运行 OSW",
+  "按 OpenStudio 工作流（.osw）运行完整模拟流程。"
+ ],
+ "HB Annual Loads": [
+  "全年负荷",
+  "运行全年冷热负荷模拟，输出逐时负荷与峰值。"
+ ],
+ "HB Generation Loads": [
+  "发电负荷",
+  "模拟光伏等发电系统的逐时发电量。"
+ ],
+ "HB Peak Loads": [
+  "峰值负荷",
+  "提取设计日峰值冷热负荷，用于设备选型。"
+ ],
+ "HB Load Shade Benefit": [
+  "加载遮阳收益",
+  "把预先计算的遮阳收益数据加载到模型中。"
+ ],
+ "HB Read Room Energy Result": [
+  "读取房间能耗结果",
+  "读取房间的逐时冷热负荷、得热与能耗结果。"
+ ],
+ "HB Read Face Result": [
+  "读取面结果",
+  "读取各面的表面温度、得热与辐射结果。"
+ ],
+ "HB Face Result by Type": [
+  "按类型汇总面结果",
+  "按墙、屋面、窗等类型汇总面结果。"
+ ],
+ "HB Filter Room Result": [
+  "筛选房间结果",
+  "按房间或时段筛选能耗结果数据。"
+ ],
+ "HB Normalize by Floor Area": [
+  "按面积归一化",
+  "把能耗结果换算为单位面积指标（kWh/m²）。"
+ ],
+ "HB End Use Intensity": [
+  "终端能耗强度",
+  "统计供暖、制冷、照明、设备等分项能耗强度。"
+ ],
+ "HB Carbon Emission Intensity": [
+  "碳排放强度",
+  "按能源种类与排放因子计算单位面积碳排放。"
+ ],
+ "HB Balance Temperature": [
+  "平衡温度",
+  "计算建筑得热与失热相等时的室外平衡温度。"
+ ],
+ "HB Thermal Load Balance": [
+  "热负荷平衡",
+  "把房间冷热负荷拆解为围护、渗透、人员、设备等分项贡献。"
+ ],
+ "HB Read Thermal Matrix": [
+  "读取热工矩阵",
+  "读取逐时室内外温度矩阵，用于热力图与舒适度分析。"
+ ],
+ "HB Visualize Thermal Map": [
+  "可视化热力图",
+  "把温度或舒适度结果渲染为空间热力图。"
+ ],
+ "HB PMV Comfort Map": [
+  "PMV 舒适度图",
+  "在房间网格上逐点计算 PMV 并生成舒适度分布图。"
+ ],
+ "HB Adaptive Comfort Map": [
+  "自适应舒适度图",
+  "在自然通风条件下生成自适应舒适度分布图。"
+ ],
+ "HB UTCI Comfort Map": [
+  "UTCI 舒适度图",
+  "生成室外 UTCI 热应力分布图。"
+ ],
+ "HB Read Environment Matrix": [
+  "读取环境矩阵",
+  "读取模拟过程中的室内外环境参数矩阵。"
+ ],
+ "HB Read HVAC Sizing": [
+  "读取 HVAC 选型",
+  "读取设备选型计算结果（风量、冷热量）。"
+ ],
+ "HB Read Zone Sizing": [
+  "读取热区选型",
+  "读取按热区汇总的设备选型结果。"
+ ],
+ "HB Read Generation Result": [
+  "读取发电结果",
+  "读取光伏等发电系统的逐时发电与收益结果。"
+ ],
+ "HB Read Room Comfort Result": [
+  "读取房间舒适结果",
+  "读取房间逐时温度、湿度与舒适指标。"
+ ],
+ "HB Read Custom Result": [
+  "读取自定义结果",
+  "按输出变量名读取自定义模拟结果。"
+ ],
+ "HB Read Tabular Data": [
+  "读取表格数据",
+  "读取 EnergyPlus 报表中的汇总表格数据。"
+ ],
+ "HB Read Result Dictionary": [
+  "读取结果字典",
+  "读取结果文件的变量字典，确认可用的输出项。"
+ ],
+ "HB Color Rooms": [
+  "房间结果着色",
+  "按数值为房间着色，快速看出负荷或温度分布。"
+ ],
+ "HB Color Faces": [
+  "面结果着色",
+  "按数值为面着色，显示表面温度或得热分布。"
+ ],
+ "HB Building Programs": [
+  "建筑用途模板列表",
+  "提供用途模板库中的建筑类型可选值。"
+ ],
+ "HB Building Vintages": [
+  "建筑年代列表",
+  "提供建筑年代（影响构造与规范）可选值。"
+ ],
+ "HB Climate Zones": [
+  "气候区列表",
+  "提供 ASHRAE 气候区可选值。"
+ ],
+ "HB Face Energy Attributes": [
+  "面能量属性列表",
+  "提供面可查看的能量属性名称列表。"
+ ],
+ "HB Room Energy Attributes": [
+  "房间能量属性列表",
+  "提供房间可查看的能量属性名称列表。"
+ ],
+ "HB Search Programs": [
+  "搜索用途模板",
+  "按关键词检索房间用途模板库。"
+ ],
+ "HB Apply Exhaust by Fixture": [
+  "按洁具设置排风",
+  "以单个洁具风量乘以洁具数量，为房间或建筑程序设置排风量。"
+ ],
+ "HB Deconstruct Exhaust Air": [
+  "拆解排风",
+  "把排风对象拆成单位面积风量、洁具风量、洁具数量、时间表与效率等字段。"
+ ],
+ "HB Exhaust Air": [
+  "排风",
+  "创建排风对象，可写入建筑程序或直接赋予房间；两类风量最终相加。"
+ ],
+ "HB Ventilation Distribution": [
+  "通风分配",
+  "设置新风量取和还是取大值，以及冷却、加热分配效率与二次回流比例。"
+ ]
 }

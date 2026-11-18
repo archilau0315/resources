@@ -47,3 +47,15 @@
 - **变更**：打包 `site/ data/ assets/ doc/ tools/ reports/ cover.svg readme.md debug_log_1.md` 上传至 `/www/wwwroot/kbitai.com.cn/resources/AC_Tutorial/honeybee/`（替换前已备份至 `/tmp/honeybee-backup.tar.gz`）；同步更新 `/www/wwwroot/kbitai.com.cn/resources/index.html`（旧版备份 `/tmp/resources-index-backup.html`）。
 - **备注**：线上抽查 5 个 URL 均 200；浏览器实测首页 412 组件、HB Room 详情端口表、教程页渲染全部通过。
 
+
+### 7. 对齐 Pollination 随附的 Ladybug Tools 1.10
+
+- **时间**：2026-11-18 10:48
+- **模块**：组件安装、	ools/parse_components.py、	ools/extract_icons.py、data/*.json、eadme.md
+- **变更**：
+  1. 确认 Pollination 已把 Ladybug Tools 库与引擎装在 `C:\Program Files\ladybug_tools`（python / openstudio / radiance / resources / grasshopper），但 Grasshopper 的 UserObjects 中没有组件。
+  2. 把 `C:\Program Files\ladybug_tools\grasshopper\{ladybug_grasshopper,honeybee_grasshopper_{core,energy,radiance}}\user_objects\*.ghuser` 复制到 `%APPDATA%\Grasshopper\UserObjects\<包名>\user_objects\`，共 429 个组件。
+  3. 用 Pollination 自带 python 执行 `python -m ladybug_rhino set-python-search`，把 site-packages 写入 `C:\ProgramData\McNeel\Rhinoceros\8.0\scripts\python-3_lbt.pth`；清理了指向已删路径的冗余行。
+  4. 数据流水线改为读取新路径，重跑 extract_icons / parse_components / build_data / gen_appendix；补 17 个新增组件的中文名与说明。
+  5. 统计由 412（120/70/139/83）更新为 429（122/70/143/94），术语 117 条，readme 同步。
+- **备注**：删除了一度误装的 `%USERPROFILE%\ladybug_tools`（pip 安装的 1.10.6 旧副本），避免与 Pollination 自带库版本冲突；现只保留一套 1.10.x。新增组件 17 个：LB Apply Metadata、LB Contour Mesh、HB Exhaust Air 系列 4 个、HB 灯具/采光标准 11 个。

@@ -16,7 +16,7 @@ from PIL import Image
 from ghuser import read_user_object
 from naming import slugify
 
-SITE_PACKAGES = r"C:\Program Files\python311\Lib\site-packages"
+SITE_PACKAGES = r"C:\Program Files\ladybug_tools\grasshopper"
 PACKAGES = (
     "ladybug_grasshopper",
     "honeybee_grasshopper_core",

@@ -1,8 +1,8 @@
 # B · Component Index
 
-> All 412 components grouped by tab and sub-category.
+> All 429 components grouped by tab and sub-category.
 
-## Ladybug (120)
+## Ladybug (122)
 
 | Component | Chinese | Sub-category | Chapter |
 |---|---|---|---|
@@ -11,6 +11,7 @@
 | LB Ankle Draft | 脚踝吹风感 | 数据分析 | 6 |
 | LB Apply Analysis Period | 应用分析时段 | 数据分析 | 6 |
 | LB Apply Conditional Statement | 应用条件语句 | 数据分析 | 6 |
+| LB Apply Metadata | 应用元数据 | 数据分析 | 6 |
 | LB Apply Pattern | 应用数据模式 | 数据分析 | 6 |
 | LB Arithmetic Operation | 算术运算 | 数据分析 | 6 |
 | LB Calculate HOY | 计算 HOY | 数据分析 | 6 |
@@ -64,6 +65,7 @@
 | LB Color Range | 色阶 | 扩展工具 | 7 |
 | LB Compass | 指北针 | 扩展工具 | 7 |
 | LB Construct Matrix | 构建矩阵 | 扩展工具 | 7 |
+| LB Contour Mesh | 网格等值线 | 扩展工具 | 7 |
 | LB Create Legend | 创建图例 | 扩展工具 | 7 |
 | LB Deconstruct Matrix | 拆解矩阵 | 扩展工具 | 7 |
 | LB Deconstruct VisualizationSet | 拆解可视化集 | 扩展工具 | 7 |
@@ -202,7 +204,7 @@
 | HB Visualize Quick | 快速显示 | 显示与检查 | 11 |
 | HB Visualize Wireframe | 线框显示 | 显示与检查 | 11 |
 
-## HB-Energy (139)
+## HB-Energy (143)
 
 | Component | Chinese | Sub-category | Chapter |
 |---|---|---|---|
@@ -270,11 +272,13 @@
 | HB Airflow Newtwork | 气流网络 | 负荷与内扰 | 14 |
 | HB Apply Absolute Load Values | 应用绝对负荷值 | 负荷与内扰 | 14 |
 | HB Apply Daylight Control | 应用采光控制 | 负荷与内扰 | 14 |
+| HB Apply Exhaust by Fixture | 按洁具设置排风 | 负荷与内扰 | 14 |
 | HB Apply Load Values | 应用负荷数值 | 负荷与内扰 | 14 |
 | HB Apply ProgramType | 应用用途模板 | 负荷与内扰 | 14 |
 | HB Apply Setpoint Values | 应用设定点数值 | 负荷与内扰 | 14 |
 | HB Blower Pressure Converter | 风机压力换算 | 负荷与内扰 | 14 |
 | HB Deconstruct Equipment | 拆解设备 | 负荷与内扰 | 14 |
+| HB Deconstruct Exhaust Air | 拆解排风 | 负荷与内扰 | 14 |
 | HB Deconstruct Hot Water | 拆解生活热水 | 负荷与内扰 | 14 |
 | HB Deconstruct Infiltration | 拆解渗透风 | 负荷与内扰 | 14 |
 | HB Deconstruct Lighting | 拆解照明 | 负荷与内扰 | 14 |
@@ -283,6 +287,7 @@
 | HB Deconstruct Setpoint | 拆解设定点 | 负荷与内扰 | 14 |
 | HB Deconstruct Ventilation | 拆解新风 | 负荷与内扰 | 14 |
 | HB Equipment | 设备 | 负荷与内扰 | 14 |
+| HB Exhaust Air | 排风 | 负荷与内扰 | 14 |
 | HB Fan Ventilation | 风机新风 | 负荷与内扰 | 14 |
 | HB Infiltration | 渗透风 | 负荷与内扰 | 14 |
 | HB Lighting | 照明 | 负荷与内扰 | 14 |
@@ -292,6 +297,7 @@
 | HB Setpoint | 温度设定点 | 负荷与内扰 | 14 |
 | HB Ventilation | 新风 | 负荷与内扰 | 14 |
 | HB Ventilation Control | 通风控制 | 负荷与内扰 | 14 |
+| HB Ventilation Distribution | 通风分配 | 负荷与内扰 | 14 |
 | HB Window Opening | 可开启窗 | 负荷与内扰 | 14 |
 | HB Balance Temperature | 平衡温度 | 结果读取 | 17 |
 | HB Carbon Emission Intensity | 碳排放强度 | 结果读取 | 17 |
@@ -346,11 +352,12 @@
 | HB UTCI Comfort Map | UTCI 舒适度图 | 热力图 | 17 |
 | HB Visualize Thermal Map | 可视化热力图 | 热力图 | 17 |
 
-## HB-Radiance (83)
+## HB-Radiance (94)
 
 | Component | Chinese | Sub-category | Chapter |
 |---|---|---|---|
 | HB Assign Grids and Views | 指定网格与视图 | 基础属性 | 19 |
+| HB Assign Luminaires | 赋予灯具 | 基础属性 | 19 |
 | HB Automatic Aperture Group | 自动窗组 | 基础属性 | 19 |
 | HB Dynamic Aperture Group | 动态窗组 | 基础属性 | 19 |
 | HB Dynamic Shade Group | 动态遮阳组 | 基础属性 | 19 |
@@ -359,6 +366,7 @@
 | HB Face Radiance Attributes | 面采光属性列表 | 基础属性 | 19 |
 | HB Get Dynamic Groups | 读取动态组 | 基础属性 | 19 |
 | HB Get Grids and Views | 读取网格与视图 | 基础属性 | 19 |
+| HB Get Luminaires | 取回灯具 | 基础属性 | 19 |
 | HB Radial Grid from Rooms | 按房间生成径向网格 | 基础属性 | 19 |
 | HB Radial Sensor Grid | 径向传感器网格 | 基础属性 | 19 |
 | HB Room Radiance Attributes | 房间采光属性列表 | 基础属性 | 19 |
@@ -372,8 +380,12 @@
 | HB Certain Illuminance | 定照度天空 | 光源与天空 | 18 |
 | HB CIE Standard Sky | CIE 标准天空 | 光源与天空 | 18 |
 | HB Climatebased Sky | 气候天空 | 光源与天空 | 18 |
+| HB Custom Lamp | 自定义光源 | 光源与天空 | 18 |
 | HB Custom Sky | 自定义天空 | 光源与天空 | 18 |
 | HB Deconstruct Wea | 拆解天空文件 | 光源与天空 | 18 |
+| HB Luminaire | 灯具 | 光源与天空 | 18 |
+| HB Luminaire Zone | 灯具分区 | 光源与天空 | 18 |
+| HB Visualize Luminaire | 显示灯具 | 光源与天空 | 18 |
 | HB Visualize Sky | 天空可视化 | 光源与天空 | 18 |
 | HB Wea From Clear Sky | 晴天天空文件 | 光源与天空 | 18 |
 | HB Wea From EPW | 由 EPW 生成天空文件 | 光源与天空 | 18 |
@@ -406,16 +418,21 @@
 | HB Translucent Modifier 3 | 三波段半透材质 | 材质 | 18 |
 | HB Ambient Resolution | 环境分辨率 | 模拟配方 | 20 |
 | HB Annual Daylight | 全年采光 | 模拟配方 | 20 |
+| HB Annual Daylight EN17037 | EN17037 全年采光 | 模拟配方 | 20 |
 | HB Annual Irradiance | 全年辐照 | 模拟配方 | 20 |
+| HB BREEAM Daylight 4b | BREEAM 4b 采光 | 模拟配方 | 20 |
 | HB Check Scene | 场景检查 | 模拟配方 | 20 |
 | HB Cumulative Radiation | 累积辐射 | 模拟配方 | 20 |
 | HB Daylight Factor | 采光系数 | 模拟配方 | 20 |
 | HB Direct Sun Hours | 直接日照小时数 | 模拟配方 | 20 |
 | HB Imageless Annual Glare | 无图像全年眩光 | 模拟配方 | 20 |
+| HB LEED Option I | LEED 选项一采光 | 模拟配方 | 20 |
+| HB LEED Option II | LEED 选项二采光 | 模拟配方 | 20 |
 | HB Point-In-Time Grid-Based | 时刻网格采光 | 模拟配方 | 20 |
 | HB Point-In-Time View-Based | 时刻视图渲染 | 模拟配方 | 20 |
 | HB Radiance Parameter | Radiance 参数 | 模拟配方 | 20 |
 | HB Sky View | 天空视野 | 模拟配方 | 20 |
+| HB WELL Daylight | WELL 采光 | 模拟配方 | 20 |
 | HB Adjust HDR | 调整 HDR | 结果处理 | 20 |
 | HB Annual Average Values | 年均值 | 结果处理 | 20 |
 | HB Annual Cumulative Values | 年累积值 | 结果处理 | 20 |
