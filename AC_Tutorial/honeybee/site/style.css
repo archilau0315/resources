@@ -149,24 +149,23 @@ body {
 .content-count { font-size: 13px; color: var(--text-mute); }
 
 /* ====== 组件卡片 ====== */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 12px; }
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 12px 12px 10px; cursor: pointer; display: flex; flex-direction: column; gap: 6px;
+  padding: 10px; cursor: pointer; display: flex; flex-direction: column; gap: 4px;
   transition: transform .12s, box-shadow .15s, border-color .15s;
 }
 .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
 .card-icon {
-  width: 100%; aspect-ratio: 1;
-  background: var(--surface-2); border-radius: var(--radius-sm);
-  display: flex; align-items: center; justify-content: center; overflow: hidden;
+  width: 52px; height: 52px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
 }
 .card-icon img {
-  width: 30%; height: 30%; object-fit: contain; display: block;
+  width: 100%; height: 100%; object-fit: contain; display: block;
 }
-.card-name { font-size: 13px; font-weight: 600; line-height: 1.35; padding: 0 2px; }
+.card-name { font-size: 12.5px; font-weight: 600; line-height: 1.35; }
 .card-name small { display: block; color: var(--text-mute); font-weight: 400; font-size: 11px; margin-top: 2px; }
-.card-cat { font-size: 11px; color: var(--text-mute); margin-top: auto; padding: 0 2px; }
+.card-cat { font-size: 10.5px; color: var(--text-mute); margin-top: auto; }
 .card-tag {
   display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 4px;
   background: var(--accent-bg); color: var(--accent); margin-right: 6px;
@@ -333,5 +332,5 @@ body {
   .layout { height: auto; flex-direction: column; padding: 0 14px; }
   .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); max-height: 240px; }
   .ports-grid { grid-template-columns: 1fr; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
 }
