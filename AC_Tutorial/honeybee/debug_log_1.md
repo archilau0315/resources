@@ -70,3 +70,15 @@
   3. 全部章节与站点头部的版本口径统一为 1.10.x / 429 组件；`cover.svg` 改为「429 组件速查 · 26 篇教程」。
   4. 开发计划.md 的 412 计数、1.9 版本号同步到 429 / 1.10.58。
 - **备注**：截图由 `tools/gh_shot.ps1` 以 PrintWindow(PW_RENDERFULLCONTENT) 抓取，窗口级渲染，不含桌面悬浮窗；`python tools/check_data.py` 自检 0 错误。
+
+### 9. 图标矢量清晰化 + 全站中英一键切换
+
+- **时间**：2026-11-18 11:45
+- **模块**：tools/vectorize_icons.py、tools/build_port_i18n.py、tools/check_data.py、site/{index.html,app.js,util.js,i18n.js,style.css}、data/{port_i18n.json,chapters.json}、readme.md
+- **变更**：
+  1. 新增 `tools/vectorize_icons.py`：以 96×96 PNG 为输入，VTracer 描摹为 SVG 并补 `viewBox="0 0 96 96"`，产出 `assets/icons/svg/*.svg` 429 个；`check_data.py` 增加矢量图标、端口译名、章节英文名校验。
+  2. `style.css` 删除 `image-rendering: pixelated`，卡片图标改为最大 112px、弹窗 72px 的纯矢量缩放；新增语言按钮、端口折叠与中文要点样式。
+  3. 新增 `site/i18n.js`（中英文案字典）、`site/util.js`（esc / 图标路径 / 端口要点 / Markdown）；`site/app.js` 增加 `state.lang`、`setUiLang`、双语渲染与 SVG 图标 `onerror` 回退，拆分后各文件均 ≤500 行。
+  4. 新增 `tools/build_port_i18n.py` 生成 `data/port_i18n.json`：整名覆盖表 + token 词典，覆盖全部 1504 个端口名；`chapters.json` 补 `partEn` 英文篇名。
+  5. `index.html` 顶栏加入「中 / EN」切换（默认中文，`localStorage` 记忆），静态文案改用 `data-i18n` 挂钩；教程正文按界面语言自动选择中/英文件。
+- **备注**：端口中文要点由前端从英文原文抽取单位/默认值/范围，无法抽取则不显示，避免出现半句英文；无头浏览器实测 429 卡片渲染、80 张首批 SVG、中英切换、弹窗端口与教程正文均正常；`check_data.py` 0 错误。

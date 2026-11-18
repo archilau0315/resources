@@ -25,6 +25,7 @@ def main():
     comps = load("components.json")
     chapters = load("chapters.json")
     terms = load("terms.json")
+    port_i18n = load("port_i18n.json")
     names = {c["name"] for c in comps}
     errors = []
 
@@ -34,10 +35,21 @@ def main():
                 errors.append(f"{c.get('name')} 缺字段 {field}")
         if not c["zh"]:
             errors.append(f"{c['name']} 无中文名")
+        if not os.path.exists(os.path.join(ROOT, "assets", "icons", "svg", c["id"] + ".svg")):
+            errors.append(f"缺矢量图标 svg/{c['id']}.svg")
         for size in SIZES:
             if not os.path.exists(os.path.join(ROOT, "assets", "icons", str(size), c["id"] + ".png")):
-                errors.append(f"缺图标 {size}/{c['id']}.png")
+                errors.append(f"缺回退图标 {size}/{c['id']}.png")
                 break
+
+    for c in comps:
+        for p in c["in"] + c["out"]:
+            if not port_i18n.get(p["n"]):
+                errors.append(f"端口缺中文名 {p['n']}")
+
+    for part in chapters:
+        if not part.get("partEn"):
+            errors.append(f"章节缺英文名 {part.get('part')}")
 
     for part in chapters:
         for item in part["items"]:
@@ -55,7 +67,7 @@ def main():
         if not text.startswith("# "):
             errors.append(f"{os.path.basename(path)} 缺少一级标题")
 
-    for name in ("components.json", "categories.json", "chapters.json", "terms.json"):
+    for name in ("components.json", "categories.json", "chapters.json", "terms.json", "port_i18n.json"):
         if not os.path.exists(os.path.join(DATA, name)):
             errors.append(f"缺数据文件 {name}")
 

@@ -1,39 +1,39 @@
 [
- {"part": "Part 0 · 入门", "items": [
+ {"part": "Part 0 · 入门", "partEn": "Part 0 · Getting Started", "items": [
    {"slug": "01-what-is-lbt", "zh": "Ladybug Tools 是什么", "en": "What Ladybug Tools Is"},
    {"slug": "02-install", "zh": "安装与自检", "en": "Install and Verify"},
    {"slug": "03-interface", "zh": "界面与数据流", "en": "Interface and Data Flow"}
  ]},
- {"part": "Part 1 · 气象与环境数据", "items": [
+ {"part": "Part 1 · 气象与环境数据", "partEn": "Part 1 · Weather and Environment", "items": [
    {"slug": "04-weather", "zh": "天气数据与站点", "en": "Weather Data and Sites"},
    {"slug": "05-sun-sky", "zh": "太阳、天空与阴影", "en": "Sun, Sky and Shadows"},
    {"slug": "06-data-analysis", "zh": "数据分析与图表", "en": "Data Analysis and Charts"},
    {"slug": "07-comfort-visualize", "zh": "舒适度与可视化表达", "en": "Comfort and Visualization"}
  ]},
- {"part": "Part 2 · 建模", "items": [
+ {"part": "Part 2 · 建模", "partEn": "Part 2 · Modeling", "items": [
    {"slug": "08-first-model", "zh": "建出第一个模型", "en": "Build Your First Model"},
    {"slug": "09-clean-model", "zh": "模型整理与合法性", "en": "Clean and Validate the Model"},
    {"slug": "10-batch-generate", "zh": "批量生成与参数化", "en": "Batch Generation and Parametrics"},
    {"slug": "11-inspect-visualize", "zh": "属性查看与图面表达", "en": "Inspection and Display"},
    {"slug": "12-serialize-exchange", "zh": "拆分、重组与文件交换", "en": "Serialize and Exchange"}
  ]},
- {"part": "Part 3 · 能量", "items": [
+ {"part": "Part 3 · 能量", "partEn": "Part 3 · Energy", "items": [
    {"slug": "13-materials-constructions", "zh": "材料与构造三步法", "en": "Materials and Constructions"},
    {"slug": "14-schedules-loads", "zh": "运行计划、负荷与内扰", "en": "Schedules, Loads and Gains"},
    {"slug": "15-hvac", "zh": "HVAC 与生活热水", "en": "HVAC and Hot Water"},
    {"slug": "16-simulation", "zh": "模拟设置与运行", "en": "Simulation Setup and Run"},
    {"slug": "17-results", "zh": "读结果与看图", "en": "Reading Results"}
  ]},
- {"part": "Part 4 · 采光", "items": [
+ {"part": "Part 4 · 采光", "partEn": "Part 4 · Daylight", "items": [
    {"slug": "18-radiance-materials-sky", "zh": "Radiance 材质与天空", "en": "Radiance Materials and Skies"},
    {"slug": "19-sensor-grids-views", "zh": "传感器网格与视图", "en": "Sensor Grids and Views"},
    {"slug": "20-daylight-metrics", "zh": "采光指标与模拟", "en": "Daylight Metrics and Simulation"}
  ]},
- {"part": "Part 5 · 实战与排查", "items": [
+ {"part": "Part 5 · 实战与排查", "partEn": "Part 5 · Practice and Troubleshooting", "items": [
    {"slug": "21-case-study", "zh": "完整案例：一间办公室的采光 + 能耗", "en": "Case Study: Office Daylight and Energy"},
    {"slug": "22-troubleshooting", "zh": "排错手册与检查清单", "en": "Troubleshooting and Checklist"}
  ]},
- {"part": "附录 · Appendix", "items": [
+ {"part": "附录 · Appendix", "partEn": "Appendix", "items": [
    {"slug": "a-terms", "zh": "A · 术语表", "en": "A · Glossary"},
    {"slug": "b-index", "zh": "B · 组件全索引", "en": "B · Component Index"},
    {"slug": "c-hbjson", "zh": "C · HBJSON 数据字典", "en": "C · HBJSON Dictionary"},

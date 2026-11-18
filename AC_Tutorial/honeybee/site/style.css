@@ -81,6 +81,16 @@ body {
   width: 36px; height: 36px; border: none; border-radius: var(--radius);
   background: var(--surface-2); color: var(--text); cursor: pointer; font-size: 16px;
 }
+.lang-switch {
+  display: flex; gap: 2px; background: var(--surface-2); padding: 3px; border-radius: var(--radius);
+}
+.lang-switch button {
+  border: none; background: transparent; color: var(--text-dim); cursor: pointer;
+  font-size: 12px; padding: 4px 9px; border-radius: 6px;
+}
+.lang-switch button.active {
+  background: var(--surface); color: var(--accent); font-weight: 700; box-shadow: var(--shadow);
+}
 
 /* ====== 布局 ====== */
 .layout {
@@ -147,7 +157,7 @@ body {
   width: 100%; aspect-ratio: 1; background: var(--surface-2); border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
-.card-icon img { width: 72%; height: 72%; object-fit: contain; image-rendering: pixelated; }
+.card-icon img { width: 76%; height: 76%; max-width: 112px; max-height: 112px; object-fit: contain; }
 .card-name { font-size: 13px; font-weight: 600; line-height: 1.35; }
 .card-name small { display: block; color: var(--text-mute); font-weight: 400; font-size: 11px; }
 .card-cat { font-size: 11px; color: var(--text-mute); margin-top: auto; }
@@ -183,7 +193,7 @@ body {
   width: 88px; height: 88px; flex-shrink: 0; background: var(--surface-2);
   border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
 }
-.modal-icon img { width: 72px; height: 72px; image-rendering: pixelated; }
+.modal-icon img { width: 72px; height: 72px; object-fit: contain; }
 .modal-title-block h2 { font-size: 19px; margin-bottom: 4px; }
 .modal-title-block h2 small { color: var(--text-mute); font-weight: 400; font-size: 13px; }
 .modal-breadcrumb { font-size: 12px; color: var(--text-mute); margin-bottom: 6px; }
@@ -212,6 +222,14 @@ body {
 .port-name { font-weight: 600; }
 .port-name em { font-style: normal; font-size: 11px; color: var(--text-mute); font-weight: 400; margin-left: 6px; }
 .port-info { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+.port-d { margin-top: 4px; }
+.port-d summary { font-size: 11px; color: var(--text-mute); cursor: pointer; user-select: none; }
+.port-d summary:hover { color: var(--accent); }
+.port-d-body {
+  margin-top: 4px; font-size: 11.5px; line-height: 1.6; color: var(--text-mute);
+  white-space: pre-line; max-height: 160px; overflow: auto;
+}
+.port-note-zh { margin-top: 3px; font-size: 11px; color: var(--text-mute); }
 
 /* ====== 教程 ====== */
 .doc-list { display: grid; gap: 22px; }
