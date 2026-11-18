@@ -5,17 +5,19 @@
 多一圈浑浊过渡色，放大看就是“发虚、水泡”。这里改为：
 
 1. 先把 RGBA 预乘 alpha 再放大，避免透明黑渗进颜色；
-2. 调色板只从 alpha>200 的实色像素提取，颜色保持纯净；
+2. 调色板只从完全不透明的实色像素提取，排除抗锯齿混合色；
 3. 32 色 + 6 级层次差，保留原厂图标的渐变与高光，不被压成大片平色；
 4. 以 12 倍（288×288）二值轮廓做 polygon 描摹，边缘全为直线段、无曲线外鼓，
    1 个画布单位≈0.39 显示像素，阶梯远小于像素；
-5. 轮廓阈值取 50% alpha，不外扩，避免图标发胖、边缘呈水泡状。
+5. 轮廓阈值取 50% alpha，不外扩，避免图标发胖、边缘呈水泡状；
+6. 描摹后把所有填充色吸附回调色板，消除 vtracer 生成的近似色薄层，颜色交界变硬边。
 
 用法：
     python tools/vectorize_icons.py            # 全部
     python tools/vectorize_icons.py hb-room    # 只处理名称含关键字的图标
 """
 import os
+import re
 import sys
 import tempfile
 
@@ -28,6 +30,7 @@ SRC = os.path.join(ROOT, 'assets', 'icons', '24')
 DST = os.path.join(ROOT, 'assets', 'icons', 'svg')
 SCALE = 12       # 24 -> 288
 PALETTE = 32     # 实色区域保留的配色数（原厂图标最多 22 色）
+MERGE = 12       # 调色板内距离小于该值的近似色合并为一个，避免同色薄层
 ALPHA_CUT = 128  # 轮廓阈值（50% 覆盖率，不内缩也不外扩）
 
 # vtracer 只接受位置参数：
@@ -55,34 +58,56 @@ def prepare(src_path):
     big = Image.fromarray(
         (np.concatenate([rgb_b, a_b[..., None]], -1) * 255).round().astype(np.uint8), 'RGBA')
 
-    # 调色板只看实色像素，排除透明区与抗锯齿混合色
+    # 调色板只取完全不透明的实色像素，排除抗锯齿混合色；色数不足时放宽
     src_px = np.asarray(im)
-    solid = src_px[src_px[..., 3] > 200][:, :3]
+    solid = src_px[src_px[..., 3] >= 255][:, :3]
+    if len(solid) < PALETTE:
+        solid = src_px[src_px[..., 3] > 200][:, :3]
     pal = Image.fromarray(solid.reshape(-1, 1, 3), 'RGB').quantize(colors=PALETTE)
     q = big.convert('RGB').quantize(palette=pal, dither=Image.Dither.NONE).convert('RGB')
     q.putalpha(big.getchannel('A').point(lambda v: 255 if v > ALPHA_CUT else 0))
-    return q
+
+    # 直接统计不透明像素的实际颜色，避免调色板索引不连续导致取错色
+    rgba = np.asarray(q)
+    solid_px = rgba[..., :3][rgba[..., 3] > 0]
+    uniq, counts = np.unique(solid_px, axis=0, return_counts=True)
+    # 按出现次数保留主色，距离过近的近似色直接合并
+    keep = []
+    for i in np.argsort(-counts):
+        c = uniq[i].astype(np.int32)
+        if all(int(((c - k) ** 2).sum()) > MERGE * MERGE for k in keep):
+            keep.append(c)
+    return q, np.array(keep, dtype=np.int32)
 
 
-def add_viewbox(path, size):
-    """补 viewBox，保证任意尺寸缩放都按矢量重绘。"""
+def snap_fills(text, colors):
+    """把 vtracer 生成的近似色全部吸附回调色板，消除同色系薄层与虚边。"""
+    def repl(m):
+        h = m.group(1)
+        rgb = np.array([int(h[i:i + 2], 16) for i in (0, 2, 4)], dtype=np.int32)
+        idx = int(((colors - rgb) ** 2).sum(1).argmin())
+        return 'fill="#%02X%02X%02X"' % tuple(colors[idx])
+    return re.sub(r'fill="#([0-9a-fA-F]{6})"', repl, text)
+
+
+def finalize(path, size, colors):
+    """吸附近似色并补 viewBox，保证任意尺寸缩放都按矢量重绘。"""
     with open(path, encoding='utf-8') as f:
-        s = f.read()
-    if 'viewBox' in s:
-        return
-    s = s.replace('<svg ', '<svg viewBox="0 0 %d %d" ' % (size, size), 1)
+        s = snap_fills(f.read(), colors)
+    if 'viewBox' not in s:
+        s = s.replace('<svg ', '<svg viewBox="0 0 %d %d" ' % (size, size), 1)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(s)
 
 
 def vectorize(src_path, dst_path):
-    big = prepare(src_path)
+    img, colors = prepare(src_path)
     tmp = tempfile.NamedTemporaryFile(suffix='.png', delete=False)
     tmp.close()
     try:
-        big.save(tmp.name)
+        img.save(tmp.name)
         vtracer.convert_image_to_svg_py(tmp.name, dst_path, *ARGS)
-        add_viewbox(dst_path, big.width)
+        finalize(dst_path, img.width, colors)
     finally:
         os.unlink(tmp.name)
 

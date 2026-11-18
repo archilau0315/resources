@@ -9,7 +9,7 @@
   }
 
   // 图标：矢量 SVG，任意缩放清晰；失败由调用方回退 PNG
-  var ICON_V = '?v=20261118e';
+  var ICON_V = '?v=20261118f';
   function iconSrc(id) { return '../assets/icons/svg/' + id + '.svg' + ICON_V; }
   function iconFallback(id, size) { return '../assets/icons/' + (size || 48) + '/' + id + '.png'; }
 

@@ -151,3 +151,16 @@
   3. 仍为 `polygon` + `cutout`，288×288 画布 + viewBox；`corner_threshold=60`、`length_threshold=2.0` 不变。
 - **验证**（10 个随机图标，288 渲染）：轮廓外溢 11.27%→7.75%，轮廓缺失 3.86%→6.90%（内外基本平衡，不再单向发胖），颜色偏差 7.02→4.84（降 31%）；429 个 SVG 全部生成、0 失败，平均 22.1KB、最大 58.7KB、总计 9.24MB，全部含 `viewBox="0 0 288 288"`。
 - **备注**：图标 URL 版本号升 `?v=20261118e`，i18n/util/app 同步；临时脚本 `_color_probe.py`、`_shape_probe.py`、`_check_svg.py` 用后删除。
+
+### 15. 图标颜色交界硬边化：合并近似色 + 填充吸附
+
+- **时间**：2026-11-18 13:20
+- **模块**：tools/vectorize_icons.py、assets/icons/svg/*（429）、site/util.js、site/index.html、readme.md
+- **问题**：第 14 版图标轮廓已正常，但各颜色之间的边界仍不够清晰利落，整体仍有薄雾感。
+- **根因**：调色板本身没问题，问题在 vtracer 输出端——它会为同一色系生成大量仅差 1~2 个色阶的填充色（hb-room 249 个 path 里有 187 个不同 fill，lb-adaptive-comfort 38 个），相邻色块差值小于人眼分辨阈值，放大后表现为同色系薄层和虚边。
+- **变更**：
+  1. `prepare()` 改为直接从量化后的不透明像素统计实际颜色与出现次数（原实现用调色板索引取色，索引不连续会取错色并抛 IndexError）；
+  2. 按出现次数保留主色，RGB 欧氏距离小于 `MERGE=12` 的近似色合并为一个；
+  3. 新增 `snap_fills()`，描摹后把每个 `fill` 吸附到最近的主色，`finalize()` 统一完成吸附与 `viewBox` 补全。
+- **验证**：hb-room 唯一填充色 187→20、lb-adaptive-comfort 38→8；429 个 SVG 唯一色数最大 32、平均 15.8，无一超过调色板上限；resvg 全量渲染 429 个 0 失败，半透明像素占比平均 2.73%（仅轮廓抗锯齿）；平均 20.6KB、最大 57.9KB。
+- **备注**：图标 URL 版本号升 `?v=20261118f`，`util.js` 同步升版；临时脚本 `_progress.py`、`_pal_probe.py`、`_verify.py`、`_render_check.py`、`_svg_stat.py`、`_crisp_probe.py` 用后删除。
