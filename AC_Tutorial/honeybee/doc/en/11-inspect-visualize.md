@@ -3,6 +3,12 @@
 > Draw the model's properties, not just its shape.
 ![Color library component: automatic color scheme assignment by type, batch colorization of the model](../assets/shots/11-color-library.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Proper Honeybee Analysis Modeling](https://www.bilibili.com/video/BV1pa411h7dh/)
+- [Basic Graphics in Ladybug Tools](https://www.bilibili.com/video/BV11b4y177Xq/)
 
 ## What This Chapter Solves
 

@@ -4,6 +4,13 @@
 
 Grasshopper shows batteries; the disk stores HBJSON. Many "the results don't match" problems end with a search for `identifier` in the file: either two rooms share a name or a window is attached to the wrong face.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Dragonfly Custom Weather and Design-Day Files](https://www.bilibili.com/video/BV1EL4y1M7Yf/)
+- [Course Intro (series overview)](https://www.bilibili.com/video/BV16Y411L7CM/)
+
 ## Hierarchy
 
 ```

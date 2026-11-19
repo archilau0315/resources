@@ -3,6 +3,12 @@
 > Decide whether people feel comfortable, then draw it well enough to print.
 ![Psychrometric chart: dry-bulb temperature, relative humidity and comfort zone overlay for thermal comfort evaluation](../assets/shots/07-comfort-psychrometric.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Outdoor Thermal Comfort Analysis, Part 01](https://www.bilibili.com/video/BV1rt4y1v7U1/)
+- [Thermal Environment Calculation and Butterfly Wind Coupling](https://www.bilibili.com/video/BV1dY411V7uY/)
 
 ## What This Chapter Solves
 

@@ -2,6 +2,13 @@
 
 > Pick the system type first.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [HVAC Templates and Natural Ventilation](https://www.bilibili.com/video/BV1gr4y1B7r8/)
+- [Thermal Environment Calculation and Butterfly Wind Coupling](https://www.bilibili.com/video/BV1dY411V7uY/)
+
 ## What This Chapter Solves
 
 Chapters 13–14 produced **loads** — how much heating and cooling each room needs. Loads are not energy; equipment sits in between. This chapter connects the two along three routes: **Ideal Air Loads** (no equipment, fast baseline), **template systems** (one name builds a full system) and **Detailed HVAC** (Ironbug, special projects only). Hot water is split: demand comes from [[HB Service Hot Water]] in the ProgramType (Ch. 14), equipment from [[HB SHW System]] here.

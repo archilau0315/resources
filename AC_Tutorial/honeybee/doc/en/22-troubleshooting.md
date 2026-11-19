@@ -4,6 +4,13 @@
 
 Read the component's `report` output before anything else. It carries the full trace and file name; the popup's `Solution exception` only shows the last line. Diagnose in a fixed order: **units → geometry → properties → paths and engines → simulation parameters**. Skipping ahead usually means fixing the wrong thing.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Ladybug_Honeybee Usage Sharing](https://www.bilibili.com/video/BV1dzgseUE9S/)
+- [Course Intro (series overview)](https://www.bilibili.com/video/BV16Y411L7CM/)
+
 ## Installation and Environment
 
 | Symptom | Likely cause | What to do |

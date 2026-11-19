@@ -2,6 +2,12 @@
 
 > Materials set reflection; skies set where light comes from.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Ladybug Tools Daylight (whiteboard talk)](https://www.bilibili.com/video/BV1fF411W7X1/)
+
 ## What This Chapter Solves
 
 EnergyPlus computes heat; Radiance computes light. Radiance results depend on how surfaces reflect and how the sky emits. **Modifiers** are Radiance-specific materials and cannot be reused from EnergyPlus constructions. A **ModifierSet** packages wall, roof, window and shade materials for a whole model. For skies, annual studies use a `.wea` file; point-in-time studies use a CIE or climate-based sky.

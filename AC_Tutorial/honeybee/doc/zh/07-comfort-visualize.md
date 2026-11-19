@@ -3,6 +3,12 @@
 > 先判断「人舒不舒服」，再把结果画成一张能放进报告的图。
 ![焓湿图：干球温度、相对湿度与舒适区的叠加，用于热舒适评价](../assets/shots/07-comfort-psychrometric.png)
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [室外热舒适分析 Part 01](https://www.bilibili.com/video/BV1rt4y1v7U1/)
+- [LBT 热环境计算及 Butterfly 耦合风速](https://www.bilibili.com/video/BV1dY411V7uY/)
 
 ## 本章解决什么
 

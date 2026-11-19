@@ -2,6 +2,13 @@
 
 > One massing, many windows and zones.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Proper Honeybee Analysis Modeling](https://www.bilibili.com/video/BV1pa411h7dh/)
+- [Ladybug_Honeybee Usage Sharing](https://www.bilibili.com/video/BV1dzgseUE9S/)
+
 ## What This Chapter Solves
 
 Drawing a hundred windows by hand is not an option. This chapter chains massing → Rooms → windows → shading → zones → names, with every key number on a slider so the whole building updates at once.

@@ -2,6 +2,13 @@
 
 > 用 Pollination 一键装好，再用两个组件确认引擎齐全。
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [LBT 介绍及安装](https://www.bilibili.com/video/BV1jT4y1e7yA/)
+- [如何安装 Ladybug tools](https://www.bilibili.com/video/BV1f94y1Y7dz/)
+
 ## 本章解决什么
 
 装 Ladybug Tools 不只是装几个 Grasshopper 电池，还要装它背后调用的 Python 库、OpenStudio、EnergyPlus、Radiance。少装一样，组件能拖出来、能变绿，一运行就报错。本章给出顺序：先装、再看、最后用最小例子验一遍。

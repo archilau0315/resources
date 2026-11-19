@@ -2,6 +2,12 @@
 
 > Cut overlaps, solve adjacency, pass validation.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Proper Honeybee Analysis Modeling](https://www.bilibili.com/video/BV1pa411h7dh/)
+
 ## What This Chapter Solves
 
 The first model only has to look right. Real projects have overlapping masses, walls that miss by a millimeter, and interior walls still treated as exterior. This chapter fixes the geometry, builds room-to-room adjacencies, and validates until no severe errors remain.

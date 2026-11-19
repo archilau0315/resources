@@ -3,6 +3,12 @@
 > 把站点位置变成太阳轨迹，再用它判断谁被挡住、谁晒得到。
 ![年度气象数据映射到太阳轨迹：全年 8760 小时数值在天球上的可视化](../assets/shots/05-sun-sky.png)
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [太阳、太阳辐射与环境](https://www.bilibili.com/video/BV11P4y1F7AA/)
+- [日照分析](https://www.bilibili.com/video/BV1XR4y1L7Qb/)
 
 ## 本章解决什么
 

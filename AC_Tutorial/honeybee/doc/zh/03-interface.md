@@ -3,6 +3,12 @@
 > 四个标签页、一条主线，看懂线往哪走就不会乱接。
 ![Grasshopper 画布与组件连线：左侧 Ladybug 标签页、中间画布、右侧输入 Panel](../assets/shots/03-rhino-interface.png)
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [Ladybug Tools 中的基础图形](https://www.bilibili.com/video/BV11b4y177Xq/)
+- [LBT 介绍及安装](https://www.bilibili.com/video/BV1jT4y1e7yA/)
 
 ## 本章解决什么
 

@@ -212,3 +212,19 @@ eadme.md
   - `21-case-overview.png`（全流程）→ 16 模拟设置与运行。
   同时删除自绘示意图、6 张视频候选帧、接触表与全部临时脚本，清理 `tmp/`（227MB 视频）。
 - **备注**：后续若需更多真实连线图，只能走视频抽帧（本机 yt-dlp + opencv 可用，无 ffmpeg，需整段下载后抽帧；OpenCV 在中文路径下 `imwrite` 静默失败，须用 `imencode().tofile()`）。
+
+### 19. 26 篇教程加入国内可直达的 B 站教学视频链接
+
+- **时间**：2026-11-19
+- **模块**：doc/zh/*.md、doc/en/*.md（共 52 个文件）
+- **背景**：用户要求教程加入教学视频链接，且必须国内能直达、无需翻墙。官方 Ladybug Tools Academy 全部视频托管在 YouTube，国内无法打开，故改用 B 站搬运镜像。
+- **视频源调研**：
+  1. 官方 `docs.ladybug.tools/ladybug-tools-academy` 39 页全是 YouTube 嵌入（`{% embed url="https://youtu.be/..." %}`），国内不可达；
+  2. 锁定 B 站 UP 主「孤岛Studio」《Fly!Ladybug&Honeybee 建筑性能分析教程》合集（UID 182927334），从视频页 `window.__INITIAL_STATE__` 提取到完整 19 集（标题 + BV 号），覆盖安装、气象、太阳/辐射、热舒适、建模、能耗、HVAC、采光等主题；
+  3. 另补 5 个同主题单集（如何安装 Ladybug tools Rhino7 版、室外热舒适 Part01、EPW 国内镜像、气象与被动策略可视化 V2.0、ladybug_honeybee 使用分享），合计 24 个可用视频；
+  4. 全部 BV 号经 B 站公开接口 `api.bilibili.com/x/web-interface/view?bvid=` 验证真实可访问，链接形如 `https://www.bilibili.com/video/BV...`，国内直开无需翻墙。
+- **变更**：每篇教程 md 在引言/配图之后、第一个正文小节之前，插入 `## 📺 配套教学视频`（中文）/ `## 📺 Companion Videos`（英文）区块，含来源说明 + 按主题匹配的 1–4 个视频链接。26 章（含附录 A–D）全覆盖；无直接对应视频的章节指向最相关的合集集或合集总览。
+  - 匹配示例：02 安装→P2 介绍及安装 + 安装单集；05 太阳天空→P7 太阳辐射 + P8 日照分析；07 舒适度→室外热舒适 + P10 热环境；15 HVAC→P13 空调模板；20 采光→P17 板书采光；21 案例→P15 从零建模完整流程。
+- **前端**：区块为标准 markdown（h2 + 引用 + 链接列表），由 `site/util.js` 的 `mdToHtml` / `inline` 原生渲染，链接带 `target="_blank" rel="noopener"`，**无需改前端代码**。
+- **校验**：本地 `python -m http.server` 起站，浏览器实看 01 章（中/英切换）与附录 A，视频块渲染正确、点击直达 B 站；脚本校验 52 个文件每文件恰好 1 个视频块且均位于文件上半部。
+- **备注**：`doc/zh/a-terms.md`、`doc/en/a-terms.md` 因正文以大表格开头（无前置 h2），首次插入时视频块落到文末，已单独修正到表格之前。

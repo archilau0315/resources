@@ -2,6 +2,13 @@
 
 > 先选系统类型，再谈效率参数。
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [空调模板与自然通风](https://www.bilibili.com/video/BV1gr4y1B7r8/)
+- [LBT 热环境计算及 Butterfly 耦合风速](https://www.bilibili.com/video/BV1dY411V7uY/)
+
 ## 本章解决什么
 
 第 13、14 章算出来的是**负荷（Load）**：房间需要多少冷热量。负荷不等于能耗，中间还差一套设备。本章把负荷接到设备上，有三条路线：

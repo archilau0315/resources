@@ -2,6 +2,13 @@
 
 > 本教程以 Ladybug Tools 1.10.x 为准。四个 Grasshopper 包各自独立发版，面板上显示的数字又与包版本不同——这一页把三套编号对齐，并说明图标与正文的使用许可。
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [LBT 介绍及安装](https://www.bilibili.com/video/BV1jT4y1e7yA/)
+- [Ladybug Tools 的本土化数据库分享](https://www.bilibili.com/video/BV1sX4y1e7Qi/)
+
 ## 包版本对照
 
 | 包（PyPI 名） | 本教程版本 | 组件数 | 负责范围 |

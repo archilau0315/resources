@@ -3,6 +3,12 @@
 > 一间 12 m × 8 m、层高 3.2 m 的南向单间办公室，从一份 EPW 一路做到能量模拟、sDA / ASE 与结论表达。每一步只列关键组件、关键参数和该步产出；按顺序连起来，就是一条可以复现的完整链路。
 ![完整案例工作流概览：EPW → 建模 → 开窗 → 构造 → 能量 → 采光 → 结果](../assets/shots/21-case-overview.png)
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [从零开始的 Honeybee 自然通风模型建模及分析](https://www.bilibili.com/video/BV1X3411W7rt/)
+- [Fly!Ladybug&Honeybee 课程简介（合集总览）](https://www.bilibili.com/video/BV16Y411L7CM/)
 
 ## 案例设定
 

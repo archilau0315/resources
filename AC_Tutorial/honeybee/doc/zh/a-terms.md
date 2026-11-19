@@ -2,6 +2,14 @@
 
 > 收录 Ladybug Tools 工作流中最常遇到的 120 个术语，中英对照。
 
+
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [Fly!Ladybug&Honeybee 课程简介（合集总览）](https://www.bilibili.com/video/BV16Y411L7CM/)
+
+
 | English | 中文 | 说明 |
 |---|---|---|
 | Ladybug | 瓢虫 | 气象与环境数据分析工具集，负责 EPW、太阳、舒适度与图表。 |
@@ -121,6 +129,7 @@
 | Irradiance | 辐照度 | 单位面积辐射功率，W/m²。 |
 | Luminance | 亮度 | 单位面积发光强度，cd/m²。 |
 | Glare | 眩光 | 过亮或亮度过大对比引起的不适。 |
+
 
 ## 下一步
 

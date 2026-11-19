@@ -2,6 +2,13 @@
 
 > All 429 components grouped by tab and sub-category.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Ladybug_Honeybee Usage Sharing](https://www.bilibili.com/video/BV1dzgseUE9S/)
+- [Basic Graphics in Ladybug Tools](https://www.bilibili.com/video/BV11b4y177Xq/)
+
 ## Ladybug (122)
 
 | Component | Chinese | Sub-category | Chapter |

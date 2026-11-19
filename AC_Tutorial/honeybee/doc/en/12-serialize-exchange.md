@@ -4,6 +4,13 @@
 
 ![Component wiring: the model travels between components as an Object data stream](../assets/shots/03-rhino-interface.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Ladybug_Honeybee Usage Sharing](https://www.bilibili.com/video/BV1dzgseUE9S/)
+- [Proper Honeybee Analysis Modeling](https://www.bilibili.com/video/BV1pa411h7dh/)
+
 ## What This Chapter Solves
 
 A model should not live only inside the current Grasshopper file. This chapter covers three tasks: splitting a model into the parts you need, writing objects to disk and reading them back, and exchanging with OpenStudio, EnergyPlus and gbXML. The rule: serialization keeps properties, manual rebuilding does not.

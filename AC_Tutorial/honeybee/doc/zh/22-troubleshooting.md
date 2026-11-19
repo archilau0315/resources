@@ -2,6 +2,13 @@
 
 > Ladybug Tools 的报错大多不在组件本身，而在上游：单位、几何、路径、引擎。这份手册按"先环境、再几何、后模拟"的顺序排了 29 条高频问题，每条给出现象、真实原因和可执行的排查动作；末尾是一张提交前必过的 12 项清单。
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [ladybug_honeybee 使用分享](https://www.bilibili.com/video/BV1dzgseUE9S/)
+- [Fly!Ladybug&Honeybee 课程简介（合集总览）](https://www.bilibili.com/video/BV16Y411L7CM/)
+
 ## 怎么用这份手册
 
 先看报错出现在哪一步，再看该步对应的表。组件面板上的 `report` 输出永远是第一现场——它比弹窗里的 `Solution exception` 详细得多，先读它，再动手。

@@ -3,6 +3,14 @@
 > Find the nearest site and get its epw, stat and ddy files.
 ![Wind vertical profile and EPW data: workflow from weather file import to wind speed distribution by height](../assets/shots/04-weather-epw.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Weather Data: Sources and Content](https://www.bilibili.com/video/BV1Km4y1d7b8/)
+- [One-click Climate Info & EPW China Mirror](https://www.bilibili.com/video/BV1KQ4y1u77S/)
+- [Weather & Passive Strategy Visualization V2.0](https://www.bilibili.com/video/BV1Ra4y1o7q5/)
+- [Localized Database for Ladybug Tools](https://www.bilibili.com/video/BV1sX4y1e7Qi/)
 
 ## What This Chapter Solves
 

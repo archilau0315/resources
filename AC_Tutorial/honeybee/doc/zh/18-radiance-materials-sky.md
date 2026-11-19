@@ -2,6 +2,12 @@
 
 > 材质决定反射，天空决定光从哪来。
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [板书 Ladybug Tools 建筑采光粗粗讲](https://www.bilibili.com/video/BV1fF411W7X1/)
+
 ## 本章解决什么
 
 前面的 EnergyPlus 算的是热量，Radiance 算的是光。光的结果高度依赖两样东西：表面怎么反射、天空怎么发光。本章把这两样配齐：

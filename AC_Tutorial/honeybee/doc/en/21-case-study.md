@@ -3,6 +3,12 @@
 > One 96 m² south-facing office, from an EPW file to sDA/ASE and an EUI number. Each step lists only the components, the inputs that matter, and what comes out; chained in order they form a reproducible workflow.
 ![Complete case study workflow overview: EPW → model → apertures → constructions → energy → daylight → results](../assets/shots/21-case-overview.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Building a Honeybee Natural Ventilation Model from Scratch](https://www.bilibili.com/video/BV1X3411W7rt/)
+- [Course Intro (series overview)](https://www.bilibili.com/video/BV16Y411L7CM/)
 
 ## Setup
 

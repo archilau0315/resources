@@ -3,6 +3,12 @@
 > A free toolbox inside Grasshopper for energy and daylight.
 ![Ladybug Tools analysis tools: complete Grasshopper canvas with weather import, sun analysis, comfort and radiation workflows](../assets/shots/02-grasshopper.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Course Intro (series overview)](https://www.bilibili.com/video/BV16Y411L7CM/)
+- [LBT Intro and Install](https://www.bilibili.com/video/BV1jT4y1e7yA/)
 
 ## What This Chapter Solves
 

@@ -4,6 +4,13 @@
 
 Grasshopper 里看到的是电池，磁盘上存的是 HBJSON。很多"结果对不上"的问题，打开文件搜一下 `identifier` 就能定位：到底是两个房间重名，还是窗挂错了面。它也是 Pollination、Python 脚本、gbXML 互转的共同中间态。
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [Dragonfly 自定义气象数据文件和设计日文件](https://www.bilibili.com/video/BV1EL4y1M7Yf/)
+- [Fly!Ladybug&Honeybee 课程简介（合集总览）](https://www.bilibili.com/video/BV16Y411L7CM/)
+
 ## 层级结构
 
 ```

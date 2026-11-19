@@ -2,6 +2,14 @@
 
 > 120 terms you will meet in a Ladybug Tools workflow.
 
+
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Course Intro (series overview)](https://www.bilibili.com/video/BV16Y411L7CM/)
+
+
 | English | Chinese | Notes |
 |---|---|---|
 | Ladybug | 瓢虫 | 气象与环境数据分析工具集，负责 EPW、太阳、舒适度与图表。 |
@@ -121,6 +129,7 @@
 | Irradiance | 辐照度 | 单位面积辐射功率，W/m²。 |
 | Luminance | 亮度 | 单位面积发光强度，cd/m²。 |
 | Glare | 眩光 | 过亮或亮度过大对比引起的不适。 |
+
 
 ## Next
 

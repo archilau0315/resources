@@ -2,6 +2,12 @@
 
 > 材料 → 构造 → 构造集，一层层打包。
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [Honeybee 建筑能耗设置 1](https://www.bilibili.com/video/BV1Wi4y117iw/)
+
 ## 本章解决什么
 
 能量模拟的热量进出，全靠围护结构的热工参数。Honeybee 把它们分成三层：材料（Material）是最小一层；构造（Construction）是若干材料按顺序叠成的一层墙或窗；构造集（ConstructionSet）把所有部位的构造打包，一次性赋给房间。顺序不能跳。

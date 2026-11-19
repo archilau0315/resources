@@ -3,6 +3,12 @@
 > 一套跑在 Grasshopper 里、能算能耗与采光的免费建筑性能工具集。
 ![Ladybug Tools 分析工具总览：天气导入、太阳分析、舒适度与辐射评估的完整 Grasshopper 画布](../assets/shots/02-grasshopper.png)
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [Fly!Ladybug&Honeybee 课程简介（合集总览）](https://www.bilibili.com/video/BV16Y411L7CM/)
+- [LBT 介绍及安装](https://www.bilibili.com/video/BV1jT4y1e7yA/)
 
 ## 本章解决什么
 

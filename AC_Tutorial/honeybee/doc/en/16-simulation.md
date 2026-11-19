@@ -4,6 +4,13 @@
 
 ![Full energy simulation workflow: weather, model and settings feed the run component](../assets/shots/21-case-overview.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Honeybee Energy Setup 1](https://www.bilibili.com/video/BV1Wi4y117iw/)
+- [Building a Honeybee Natural Ventilation Model from Scratch](https://www.bilibili.com/video/BV1X3411W7rt/)
+
 ## What This Chapter Solves
 
 A complete simulation needs the model, the weather file and the settings. This chapter assembles run period, timestep, shadow algorithm and outputs into one parameter object, then runs **OpenStudio / EnergyPlus** through OSM, IDF or OSW. OSM is an OpenStudio model, IDF is native EnergyPlus input, OSW is a workflow of Measures. Daily work needs only OSM. The run yields `sql` results, `zsz` design-day loads, `rdd` output names and `html` reports.

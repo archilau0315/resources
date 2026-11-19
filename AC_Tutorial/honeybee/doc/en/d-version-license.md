@@ -2,6 +2,13 @@
 
 > This tutorial targets Ladybug Tools 1.10.x. The four Grasshopper packages ship independently, and the number on a battery is neither of those versions — this page aligns all three numbering systems and states how the icons and text may be used.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [LBT Intro and Install](https://www.bilibili.com/video/BV1jT4y1e7yA/)
+- [Localized Database for Ladybug Tools](https://www.bilibili.com/video/BV1sX4y1e7Qi/)
+
 ## Package Versions
 
 | Package (PyPI name) | Version here | Components | Scope |

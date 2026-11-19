@@ -2,6 +2,12 @@
 
 > Material → Construction → ConstructionSet, packed in order.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Honeybee Energy Setup 1](https://www.bilibili.com/video/BV1Wi4y117iw/)
+
 ## What This Chapter Solves
 
 Heat flow through the envelope depends entirely on thermal properties. Honeybee uses three layers: a Material is one layer; a Construction stacks materials in order; a ConstructionSet packs every envelope and interior construction and is assigned to Rooms in one step.

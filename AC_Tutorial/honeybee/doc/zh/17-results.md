@@ -2,6 +2,13 @@
 
 > 先看总量，再看分项，最后看分布。
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [从零开始的 Honeybee 自然通风模型建模及分析](https://www.bilibili.com/video/BV1X3411W7rt/)
+- [Honeybee 建筑能耗设置 1](https://www.bilibili.com/video/BV1Wi4y117iw/)
+
 ## 本章解决什么
 
 一次能量模拟会生成 `sql`、`zsz`、`html` 等文件。`sql` 是数据库，不能直接画图；本章用 HB-Energy 的 Result 组件把它翻译成带时间标签的**数据集合（Data Collection）**，再回答五个问题：

@@ -3,6 +3,12 @@
 > Four tabs, one main line. Follow the wire and wiring stops being guesswork.
 ![Grasshopper canvas with connected components: Ladybug tab on the left, canvas in the middle, Panel inputs on the right](../assets/shots/03-rhino-interface.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Basic Graphics in Ladybug Tools](https://www.bilibili.com/video/BV11b4y177Xq/)
+- [LBT Intro and Install](https://www.bilibili.com/video/BV1jT4y1e7yA/)
 
 ## What This Chapter Solves
 

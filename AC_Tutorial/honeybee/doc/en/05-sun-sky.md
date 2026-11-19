@@ -3,6 +3,12 @@
 > Turn a location into a sun path, then see who is shaded.
 ![Annual weather data mapped to sun path: visualization of all 8760 annual hours on the celestial sphere](../assets/shots/05-sun-sky.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Sun, Solar Radiation and Environment](https://www.bilibili.com/video/BV11P4y1F7AA/)
+- [Sunlight Hours Analysis](https://www.bilibili.com/video/BV1XR4y1L7Qb/)
 
 ## What This Chapter Solves
 

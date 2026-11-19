@@ -4,6 +4,12 @@
 
 ![Grasshopper 画布：几何输入 → HB Room from Solid → HB Add Subface → HB Model 的真实连线](../assets/shots/02-grasshopper.png)
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [正确的 Honeybee 分析模型建模姿势](https://www.bilibili.com/video/BV1pa411h7dh/)
+
 ## 本章解决什么
 
 Rhino 里的盒子只是几何，Ladybug Tools 看不懂。本章把封闭实体变成 Honeybee 的层级对象：模型（Model）→ 房间（Room）→ 面（Face）→ 窗（Aperture）/ 门（Door），并跑通第一次校验。做完你会得到一个能继续加材料、加负荷的标准模型。

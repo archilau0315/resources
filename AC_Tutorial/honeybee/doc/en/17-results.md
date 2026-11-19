@@ -2,6 +2,13 @@
 
 > Totals first, end uses next, maps last.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Building a Honeybee Natural Ventilation Model from Scratch](https://www.bilibili.com/video/BV1X3411W7rt/)
+- [Honeybee Energy Setup 1](https://www.bilibili.com/video/BV1Wi4y117iw/)
+
 ## What This Chapter Solves
 
 The simulation writes `sql`, `zsz` and `html`. The `sql` is a database, not a chart. This chapter turns it into time-stamped **Data Collections** and answers five questions: how much energy per year (**EUI**), which end use dominates, whether equipment is large enough, which room performs worst, and whether people are comfortable.

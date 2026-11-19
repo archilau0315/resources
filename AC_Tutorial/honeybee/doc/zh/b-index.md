@@ -2,6 +2,13 @@
 
 > 全部 429 个组件，按插件标签页与子分类排列；点击站点中的组件可查看端口与说明。
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [ladybug_honeybee 使用分享](https://www.bilibili.com/video/BV1dzgseUE9S/)
+- [Ladybug Tools 中的基础图形](https://www.bilibili.com/video/BV11b4y177Xq/)
+
 ## Ladybug（122）
 
 | 组件 | 中文名 | 子分类 | 章节 |

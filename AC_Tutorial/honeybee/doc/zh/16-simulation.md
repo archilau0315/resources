@@ -4,6 +4,13 @@
 
 ![完整能量模拟工作流：气象、模型、参数汇入模拟组件，输出结果文件](../assets/shots/21-case-overview.png)
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [Honeybee 建筑能耗设置 1](https://www.bilibili.com/video/BV1Wi4y117iw/)
+- [从零开始的 Honeybee 自然通风模型建模及分析](https://www.bilibili.com/video/BV1X3411W7rt/)
+
 ## 本章解决什么
 
 模型、气象、参数三样齐了，才是一次完整的能量模拟。本章做三件事：

@@ -2,6 +2,13 @@
 
 > 一套体量，批量开窗、分区、命名。
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [正确的 Honeybee 分析模型建模姿势](https://www.bilibili.com/video/BV1pa411h7dh/)
+- [ladybug_honeybee 使用分享](https://www.bilibili.com/video/BV1dzgseUE9S/)
+
 ## 本章解决什么
 
 手动画一百个窗不现实。本章用 Honeybee 的批量组件，把"体量 → 房间 → 窗 → 遮阳 → 热区 → 命名"串成一条可复用的链，所有关键数字接滑杆（Number Slider），改一个值整栋楼跟着变。

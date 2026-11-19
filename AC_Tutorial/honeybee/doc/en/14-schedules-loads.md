@@ -2,6 +2,12 @@
 
 > Schedules set the shape, loads set the size, a ProgramType packs both.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Honeybee Energy Setup 1](https://www.bilibili.com/video/BV1Wi4y117iw/)
+
 ## What This Chapter Solves
 
 The same building can use twice the energy depending on how it is operated. This chapter builds schedules (0–1 profiles over time), then internal load objects (people, lighting, equipment, ventilation, infiltration, setpoints), and packs them into a ProgramType applied to Rooms in one step.

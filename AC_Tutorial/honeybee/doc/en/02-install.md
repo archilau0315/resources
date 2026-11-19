@@ -2,6 +2,13 @@
 
 > One-click install, then two batteries to prove it works.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [LBT Intro and Install](https://www.bilibili.com/video/BV1jT4y1e7yA/)
+- [How to Install Ladybug Tools](https://www.bilibili.com/video/BV1f94y1Y7dz/)
+
 ## What This Chapter Solves
 
 Installing Ladybug Tools also installs the Python libraries, OpenStudio, EnergyPlus and Radiance that the batteries call. Miss one and the components still appear and still turn green — until you press run. This chapter gives the order: install, inspect, then prove it with a minimal example. Version: components 1.10.x (1.10.0 / 1.10.1 on the ribbon), Rhino 7 and 8, Windows and macOS.

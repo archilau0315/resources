@@ -3,6 +3,11 @@
 > DF for the worst case, sDA for the year, ASE for glare.
 ![Annual glare potential: visualization of direct glare risk at all times of the year](../assets/shots/20-glare-daylight.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Ladybug Tools Daylight (whiteboard talk)](https://www.bilibili.com/video/BV1fF411W7X1/)
 
 ## What This Chapter Solves
 

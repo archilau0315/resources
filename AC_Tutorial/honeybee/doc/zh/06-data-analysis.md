@@ -3,6 +3,12 @@
 > 把 8760 个数字变成月曲线、焓湿图、风玫瑰，先看懂气候再动手设计。
 ![辐射玫瑰图：各朝向太阳辐射量的比较，叠加周边建筑遮挡](../assets/shots/06-data-analysis.png)
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [Ladybug Tools 中的基础图形](https://www.bilibili.com/video/BV11b4y177Xq/)
+- [气象数据与被动策略在线可视化 V2.0](https://www.bilibili.com/video/BV1Ra4y1o7q5/)
 
 ## 本章解决什么
 

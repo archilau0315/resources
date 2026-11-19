@@ -3,6 +3,14 @@
 > 找到离项目最近的站点，拿到 epw、stat、ddy 三个文件。
 ![风垂直剖面与 EPW 数据：从气象文件导入到风速高度分布的工作流](../assets/shots/04-weather-epw.png)
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [气象数据来源与内容](https://www.bilibili.com/video/BV1Km4y1d7b8/)
+- [绿建气候信息一键生成获取（EPW 国内镜像）](https://www.bilibili.com/video/BV1KQ4y1u77S/)
+- [气象数据与被动策略在线可视化 V2.0](https://www.bilibili.com/video/BV1Ra4y1o7q5/)
+- [Ladybug Tools 的本土化数据库分享](https://www.bilibili.com/video/BV1sX4y1e7Qi/)
 
 ## 本章解决什么
 

@@ -3,6 +3,12 @@
 > Turn 8760 numbers into monthly curves, a psychrometric chart and a wind rose.
 ![Radiation rose: comparison of solar radiation by orientation, with surrounding building context](../assets/shots/06-data-analysis.png)
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Basic Graphics in Ladybug Tools](https://www.bilibili.com/video/BV11b4y177Xq/)
+- [Weather & Passive Strategy Visualization V2.0](https://www.bilibili.com/video/BV1Ra4y1o7q5/)
 
 ## What This Chapter Solves
 

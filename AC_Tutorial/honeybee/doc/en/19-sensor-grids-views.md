@@ -2,6 +2,12 @@
 
 > Grids say where it is bright; views say how it looks.
 
+## 📺 Companion Videos
+
+> From the Bilibili series "Fly! Ladybug & Honeybee" by uploader 孤岛Studio. Opens directly in mainland China — no VPN needed. Links open Bilibili in a new tab.
+
+- [Ladybug Tools Daylight (whiteboard talk)](https://www.bilibili.com/video/BV1fF411W7X1/)
+
 ## What This Chapter Solves
 
 Daylight results land on **sensors**, not on rooms; images come from a **camera**. This chapter prepares a **Sensor Grid** (points with positions and directions, the receivers of calculation) and a **View** (camera position, direction and projection). Both must be attached to the model so recipes can find them.

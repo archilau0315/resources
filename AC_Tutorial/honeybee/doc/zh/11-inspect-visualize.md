@@ -3,6 +3,12 @@
 > 把模型属性画出来，交付前自查。
 ![颜色库组件：按类型自动分配配色方案，批量给模型上色](../assets/shots/11-color-library.png)
 
+## 📺 配套教学视频
+
+> 视频来自 B 站 UP 主「孤岛Studio」的《Fly!Ladybug&Honeybee 建筑性能分析教程》合集，国内可直接打开，无需翻墙。点击链接在新标签页打开 B 站。
+
+- [正确的 Honeybee 分析模型建模姿势](https://www.bilibili.com/video/BV1pa411h7dh/)
+- [Ladybug Tools 中的基础图形](https://www.bilibili.com/video/BV11b4y177Xq/)
 
 ## 本章解决什么
 
