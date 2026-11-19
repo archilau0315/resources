@@ -228,3 +228,4 @@ eadme.md
 - **前端**：区块为标准 markdown（h2 + 引用 + 链接列表），由 `site/util.js` 的 `mdToHtml` / `inline` 原生渲染，链接带 `target="_blank" rel="noopener"`，**无需改前端代码**。
 - **校验**：本地 `python -m http.server` 起站，浏览器实看 01 章（中/英切换）与附录 A，视频块渲染正确、点击直达 B 站；脚本校验 52 个文件每文件恰好 1 个视频块且均位于文件上半部。
 - **备注**：`doc/zh/a-terms.md`、`doc/en/a-terms.md` 因正文以大表格开头（无前置 h2），首次插入时视频块落到文末，已单独修正到表格之前。
+- **推送**：2026-11-19 已推送到 GitHub 新建公开仓库 git@github.com:archilau0315/resources.git（master 分支，本地与远端 HEAD 均为 19a4a64）。Gitee 因 SSH 公钥未添加暂未推送。
